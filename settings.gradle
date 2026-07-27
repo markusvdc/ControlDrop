@@ -6,4 +6,4 @@ pluginManagement {
 	}
 }
 
-rootProject.name = 'cap-food'
+rootProject.name = 'dropcontrol'

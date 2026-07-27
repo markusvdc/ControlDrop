@@ -1,41 +1,34 @@
 {
   "schemaVersion": 1,
-  "id": "capfood",
+  "id": "dropcontrol",
   "version": "${version}",
-  "name": "CAP FOOD",
-  "description": "Development:\nRiquinho — Project concept, direction, and development.\nDekuzinho — Implementation and development support.\nCodex — Development assistance and technical collaboration.\n\nTools:\nVSCode — Source code development.\nFigma — Interface design and prototyping.\nTrello — Project organization and management.\nGitHub — Code versioning and storage.",
+  "name": "DROP CONTROL",
+  "description": "A clean foundation for configuring item drops through a vanilla-inspired interface.",
   "authors": ["markusvdc"],
   "contact": {
-    "homepage": "https://github.com/markusvdc/capfood",
-    "sources": "https://github.com/markusvdc/capfood",
-    "issues": "https://github.com/markusvdc/capfood/issues"
+    "homepage": "https://github.com/markusvdc/dropcontrol",
+    "sources": "https://github.com/markusvdc/dropcontrol",
+    "issues": "https://github.com/markusvdc/dropcontrol/issues"
   },
   "custom": {
     "modmenu": {
       "links": {
-        "capfood.link.pinterest": "https://pinterest.com/markusvdc/",
-        "capfood.link.github": "https://github.com/markusvdc/",
-        "capfood.link.medium": "https://markusvdc.medium.com/",
-        "capfood.link.instagram": "https://www.instagram.com/markusvdc/"
+        "dropcontrol.link.pinterest": "https://pinterest.com/markusvdc/",
+        "dropcontrol.link.github": "https://github.com/markusvdc/",
+        "dropcontrol.link.medium": "https://markusvdc.medium.com/",
+        "dropcontrol.link.instagram": "https://www.instagram.com/markusvdc/"
       }
     }
   },
   "license": "MIT",
-  "icon": "assets/capfood/icon.png",
+  "icon": "assets/dropcontrol/icon.png",
   "environment": "client",
   "entrypoints": {
-    "main": [
-      "br.com.capfood.CapFood"
-    ],
-    "client": [
-      "br.com.capfood.client.CapFoodClient"
-    ],
-    "modmenu": [
-      "br.com.capfood.client.CapFoodModMenuIntegration"
-    ]
+    "main": ["br.com.dropcontrol.DropControl"],
+    "modmenu": ["br.com.dropcontrol.client.DropControlModMenuIntegration"]
   },
   "mixins": [
-    "capfood.mixins.json"
+    "dropcontrol.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=0.19.3",
