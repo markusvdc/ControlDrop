@@ -19,6 +19,7 @@ import net.minecraft.resources.Identifier;
 public final class DropControlConfig {
 	public static final String CONSTANT_THREAT = "constant_threat";
 	public static final String PARKED_SADDLED_HORSES = "parked_saddled_horses";
+	public static final String RABBITS_AVOID_FENCES = "rabbits_avoid_fences";
 	private static final int CURRENT_CONFIG_VERSION = 2;
 	private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
 	private static final Path CONFIG_PATH = FabricLoader.getInstance().getConfigDir().resolve("dropcontrol.json");
@@ -34,7 +35,11 @@ public final class DropControlConfig {
 		"dropcontrol:witch_all"
 	);
 	private static final Set<String> AVAILABLE_MARKERS = availableMarkers();
-	private static final Set<String> AVAILABLE_OPTIONS = Set.of(CONSTANT_THREAT, PARKED_SADDLED_HORSES);
+	private static final Set<String> AVAILABLE_OPTIONS = Set.of(
+		CONSTANT_THREAT,
+		PARKED_SADDLED_HORSES,
+		RABBITS_AVOID_FENCES
+	);
 
 	private static volatile Set<String> selectedItems = AVAILABLE_MARKERS;
 	private static volatile Set<String> enabledOptions = Set.of();
@@ -88,6 +93,7 @@ public final class DropControlConfig {
 
 	public static boolean constantThreat() { return isOptionEnabled(CONSTANT_THREAT); }
 	public static boolean saddledHorseStaysPut() { return isOptionEnabled(PARKED_SADDLED_HORSES); }
+	public static boolean rabbitsAvoidFences() { return isOptionEnabled(RABBITS_AVOID_FENCES); }
 
 	public static boolean isSelected(Identifier markerId) {
 		return selectedItems.contains(markerId.toString());

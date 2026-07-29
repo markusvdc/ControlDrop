@@ -6,7 +6,8 @@
     "AbstractHorseMixin",
     "EntityMixin",
     "LivingEntityMixin",
-    "PatrolSpawnerMixin"
+    "PatrolSpawnerMixin",
+    "RabbitMixin"
   ],
   "injectors": {
     "defaultRequire": 1

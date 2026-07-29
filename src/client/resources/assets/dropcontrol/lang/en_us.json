@@ -27,6 +27,8 @@
   "dropcontrol.options.constant_threat.description": "Patrols occur 15x more often, deal 2x damage, and captains drop 2 Ominous Bottles.",
   "dropcontrol.options.parked_saddled_horses": "PARKED HORSE",
   "dropcontrol.options.parked_saddled_horses.description": "Saddled horses remain still without a rider, preventing them from wandering away on their own.",
+  "dropcontrol.options.rabbits_avoid_fences": "FENCED RABBITS",
+  "dropcontrol.options.rabbits_avoid_fences.description": "Rabbits avoid jumping over fences while moving.",
   "dropcontrol.options.status.applied": "Interface options saved.",
   "dropcontrol.status.applied": "Interface selection saved.",
   "dropcontrol.status.save_failed": "Could not save the configuration.",

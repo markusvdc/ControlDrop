@@ -46,6 +46,11 @@ public final class DropControlOptionsScreen extends Screen {
 					DropControlConfig.PARKED_SADDLED_HORSES,
 					Component.translatable("dropcontrol.options.parked_saddled_horses"),
 					Component.translatable("dropcontrol.options.parked_saddled_horses.description")
+				),
+				new GlobalOptionList.Option(
+					DropControlConfig.RABBITS_AVOID_FENCES,
+					Component.translatable("dropcontrol.options.rabbits_avoid_fences"),
+					Component.translatable("dropcontrol.options.rabbits_avoid_fences.description")
 				)
 			)
 		);
