@@ -2,8 +2,9 @@ package br.com.dropcontrol.client.screen;
 
 import br.com.dropcontrol.client.screen.component.ActionButtons;
 import br.com.dropcontrol.client.screen.component.DropBasePanel;
-import br.com.dropcontrol.client.screen.component.GlobalOptionEntry;
+import br.com.dropcontrol.client.screen.component.GlobalOptionList;
 import br.com.dropcontrol.config.DropControlConfig;
+import java.util.List;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
@@ -12,12 +13,10 @@ public final class DropControlOptionsScreen extends Screen {
 	private static final int MAX_CONTENT_WIDTH = 540;
 	private static final int SIDE_MARGIN = 16;
 	private static final int OPTIONS_TOP = 137;
-	private static final int OPTION_HEIGHT = 30;
 
 	private final Screen parent;
 	private final DropBasePanel basePanel = new DropBasePanel();
-	private GlobalOptionEntry optionOneEntry;
-	private boolean optionOne;
+	private GlobalOptionList optionList;
 	private Component status = Component.empty();
 	private int statusColor = 0xFF9CD67A;
 
@@ -30,21 +29,29 @@ public final class DropControlOptionsScreen extends Screen {
 	protected void init() {
 		int contentWidth = Math.min(MAX_CONTENT_WIDTH, this.width - SIDE_MARGIN * 2);
 		int left = (this.width - contentWidth) / 2;
-		this.optionOne = DropControlConfig.optionOne();
-
-		this.optionOneEntry = new GlobalOptionEntry(
-			left,
-			OPTIONS_TOP,
-			contentWidth,
-			OPTION_HEIGHT,
-			Component.translatable("dropcontrol.options.one"),
-			Component.translatable("dropcontrol.options.one.description"),
-			this.optionOne,
-			selected -> this.optionOne = selected
-		);
-		this.addRenderableWidget(this.optionOneEntry);
-
 		int buttonY = this.height - 36;
+		int listBottom = Math.max(OPTIONS_TOP + 56, buttonY - 12);
+		this.optionList = new GlobalOptionList(
+			this.minecraft,
+			contentWidth,
+			listBottom - OPTIONS_TOP,
+			OPTIONS_TOP,
+			List.of(
+				new GlobalOptionList.Option(
+					DropControlConfig.CONSTANT_THREAT,
+					Component.translatable("dropcontrol.options.constant_threat"),
+					Component.translatable("dropcontrol.options.constant_threat.description")
+				),
+				new GlobalOptionList.Option(
+					DropControlConfig.PARKED_SADDLED_HORSES,
+					Component.translatable("dropcontrol.options.parked_saddled_horses"),
+					Component.translatable("dropcontrol.options.parked_saddled_horses.description")
+				)
+			)
+		);
+		this.optionList.setX(left);
+		this.addRenderableWidget(this.optionList);
+
 		ActionButtons actionButtons = new ActionButtons(
 			left,
 			buttonY,
@@ -60,16 +67,11 @@ public final class DropControlOptionsScreen extends Screen {
 	}
 
 	private void toggleAllOptions() {
-		this.optionOneEntry.setSelected(!this.optionOne);
+		this.optionList.setAllSelected(!this.optionList.areAllSelected());
 	}
 
 	private void applyOptions() {
-		boolean saved = DropControlConfig.saveOptions(
-			this.optionOne,
-			DropControlConfig.optionTwo(),
-			DropControlConfig.optionThree(),
-			DropControlConfig.optionFour()
-		);
+		boolean saved = DropControlConfig.saveOptions(this.optionList.enabledIds());
 		this.status = Component.translatable(saved ? "dropcontrol.options.status.applied" : "dropcontrol.status.save_failed");
 		this.statusColor = saved ? 0xFF9CD67A : 0xFFFF6B6B;
 	}

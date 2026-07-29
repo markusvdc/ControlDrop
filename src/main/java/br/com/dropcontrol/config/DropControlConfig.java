@@ -17,7 +17,9 @@ import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.resources.Identifier;
 
 public final class DropControlConfig {
-	private static final int CURRENT_CONFIG_VERSION = 1;
+	public static final String CONSTANT_THREAT = "constant_threat";
+	public static final String PARKED_SADDLED_HORSES = "parked_saddled_horses";
+	private static final int CURRENT_CONFIG_VERSION = 2;
 	private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
 	private static final Path CONFIG_PATH = FabricLoader.getInstance().getConfigDir().resolve("dropcontrol.json");
 	private static final Set<String> ADDED_MARKERS = Set.of(
@@ -32,12 +34,10 @@ public final class DropControlConfig {
 		"dropcontrol:witch_all"
 	);
 	private static final Set<String> AVAILABLE_MARKERS = availableMarkers();
+	private static final Set<String> AVAILABLE_OPTIONS = Set.of(CONSTANT_THREAT, PARKED_SADDLED_HORSES);
 
 	private static volatile Set<String> selectedItems = AVAILABLE_MARKERS;
-	private static volatile boolean optionOne;
-	private static volatile boolean optionTwo;
-	private static volatile boolean optionThree;
-	private static volatile boolean optionFour;
+	private static volatile Set<String> enabledOptions = Set.of();
 
 	private DropControlConfig() {
 	}
@@ -49,17 +49,14 @@ public final class DropControlConfig {
 		}
 		try {
 			ConfigData data = GSON.fromJson(Files.readString(CONFIG_PATH, StandardCharsets.UTF_8), ConfigData.class);
-			optionOne = data != null && data.optionOne;
-			optionTwo = data != null && data.optionTwo;
-			optionThree = data != null && data.optionThree;
-			optionFour = data != null && data.optionFour;
 			boolean needsMigration =
 				data == null || data.configVersion == null || data.configVersion < CURRENT_CONFIG_VERSION;
-			selectedItems = needsMigration
+			selectedItems = data == null || data.configVersion == null
 				? AVAILABLE_MARKERS
 				: sanitize(data.selectedItems);
+			enabledOptions = needsMigration ? migrateOptions(data) : sanitizeOptions(data.enabledOptions);
 			if (needsMigration) {
-				save(selectedItems, optionOne, optionTwo, optionThree, optionFour);
+				save(selectedItems, enabledOptions);
 			}
 		} catch (IOException | JsonParseException exception) {
 			applyFirstInstallDefaults();
@@ -69,29 +66,28 @@ public final class DropControlConfig {
 
 	public static synchronized boolean saveSelection(Collection<Identifier> itemIds) {
 		Set<String> sanitized = sanitize(itemIds.stream().map(Identifier::toString).toList());
-		if (!save(sanitized, optionOne, optionTwo, optionThree, optionFour)) {
+		if (!save(sanitized, enabledOptions)) {
 			return false;
 		}
 		selectedItems = sanitized;
 		return true;
 	}
 
-	public static synchronized boolean saveOptions(boolean one, boolean two, boolean three, boolean four) {
-		if (!save(selectedItems, one, two, three, four)) {
+	public static synchronized boolean saveOptions(Collection<String> optionIds) {
+		Set<String> sanitized = sanitizeOptions(optionIds);
+		if (!save(selectedItems, sanitized)) {
 			return false;
 		}
-		optionOne = one;
-		optionTwo = two;
-		optionThree = three;
-		optionFour = four;
+		enabledOptions = sanitized;
 		return true;
 	}
 
-	public static boolean optionOne() { return optionOne; }
-	public static boolean constantThreat() { return optionOne; }
-	public static boolean optionTwo() { return optionTwo; }
-	public static boolean optionThree() { return optionThree; }
-	public static boolean optionFour() { return optionFour; }
+	public static boolean isOptionEnabled(String optionId) {
+		return enabledOptions.contains(optionId);
+	}
+
+	public static boolean constantThreat() { return isOptionEnabled(CONSTANT_THREAT); }
+	public static boolean saddledHorseStaysPut() { return isOptionEnabled(PARKED_SADDLED_HORSES); }
 
 	public static boolean isSelected(Identifier markerId) {
 		return selectedItems.contains(markerId.toString());
@@ -109,17 +105,16 @@ public final class DropControlConfig {
 		return addedRuleCount() + removedRuleCount();
 	}
 
-	private static boolean save(Set<String> items, boolean one, boolean two, boolean three, boolean four) {
+	private static boolean save(Set<String> items, Set<String> options) {
 		try {
 			Files.createDirectories(CONFIG_PATH.getParent());
 			Path temporaryPath = CONFIG_PATH.resolveSibling(CONFIG_PATH.getFileName() + ".tmp");
 			ConfigData data = new ConfigData(
 				CURRENT_CONFIG_VERSION,
 				items.stream().sorted().toList(),
-				one,
-				two,
-				three,
-				four
+				options.stream().sorted().toList(),
+				null,
+				null
 			);
 			Files.writeString(temporaryPath, GSON.toJson(data), StandardCharsets.UTF_8);
 			Files.move(temporaryPath, CONFIG_PATH, StandardCopyOption.REPLACE_EXISTING);
@@ -142,6 +137,29 @@ public final class DropControlConfig {
 		return Set.copyOf(sanitized);
 	}
 
+	private static Set<String> sanitizeOptions(Collection<String> ids) {
+		if (ids == null) {
+			return Set.of();
+		}
+		return ids.stream()
+			.filter(AVAILABLE_OPTIONS::contains)
+			.collect(java.util.stream.Collectors.toUnmodifiableSet());
+	}
+
+	private static Set<String> migrateOptions(ConfigData data) {
+		if (data == null) {
+			return Set.of();
+		}
+		LinkedHashSet<String> migrated = new LinkedHashSet<>();
+		if (Boolean.TRUE.equals(data.optionOne)) {
+			migrated.add(CONSTANT_THREAT);
+		}
+		if (Boolean.TRUE.equals(data.optionTwo)) {
+			migrated.add(PARKED_SADDLED_HORSES);
+		}
+		return Set.copyOf(migrated);
+	}
+
 	private static int selectedCount(Set<String> markers) {
 		int count = 0;
 		for (String marker : markers) {
@@ -160,16 +178,15 @@ public final class DropControlConfig {
 
 	private static void applyFirstInstallDefaults() {
 		selectedItems = AVAILABLE_MARKERS;
-		optionOne = optionTwo = optionThree = optionFour = false;
+		enabledOptions = Set.of();
 	}
 
 	private record ConfigData(
 		Integer configVersion,
 		List<String> selectedItems,
-		boolean optionOne,
-		boolean optionTwo,
-		boolean optionThree,
-		boolean optionFour
+		List<String> enabledOptions,
+		Boolean optionOne,
+		Boolean optionTwo
 	) {
 	}
 }
