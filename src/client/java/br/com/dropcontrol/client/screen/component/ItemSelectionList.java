@@ -29,21 +29,9 @@ public final class ItemSelectionList extends AbstractWidget {
 			ItemEntry.category(minecraft, "dropcontrol.category.add_drop"),
 			new ItemEntry(
 				minecraft,
-				"dropcontrol:spider_ores",
-				Items.RAW_IRON,
-				"dropcontrol.marker.spider_ores"
-			),
-			new ItemEntry(
-				minecraft,
 				"dropcontrol:witch_potions",
 				Items.OMINOUS_BOTTLE,
 				"dropcontrol.marker.witch_potions"
-			),
-			new ItemEntry(
-				minecraft,
-				"dropcontrol:creeper_ores",
-				Items.RAW_IRON,
-				"dropcontrol.marker.creeper_ores"
 			),
 			new ItemEntry(
 				minecraft,
@@ -51,24 +39,13 @@ public final class ItemSelectionList extends AbstractWidget {
 				Identifier.withDefaultNamespace("textures/block/tnt_side.png"),
 				"dropcontrol.marker.creeper_tnt"
 			),
-			new ItemEntry(
-				minecraft,
-				"dropcontrol:skeleton_ores",
-				Items.RAW_IRON,
-				"dropcontrol.marker.skeleton_ores"
-			),
-			new ItemEntry(
-				minecraft,
-				"dropcontrol:zombie_ores",
-				Items.RAW_IRON,
-				"dropcontrol.marker.zombie_ores"
-			),
-
 			ItemEntry.category(minecraft, "dropcontrol.category.remove_drop"),
 			new ItemEntry(
 				minecraft,
 				"dropcontrol:witch_all",
-				Items.POTION,
+				Identifier.withDefaultNamespace("textures/item/potion.png"),
+				Identifier.withDefaultNamespace("textures/item/potion_overlay.png"),
+				0xFFF82423,
 				"dropcontrol.marker.witch_all"
 			),
 			new ItemEntry(

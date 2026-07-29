@@ -2,6 +2,7 @@ package br.com.dropcontrol.gameplay;
 
 import br.com.dropcontrol.DropControl;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 
@@ -38,6 +39,16 @@ public final class DropDebugLog {
 			rule,
 			BuiltInRegistries.ITEM.getKey(stack.getItem()),
 			stack.getCount()
+		);
+	}
+
+	public static void preserved(LivingEntity entity, EquipmentSlot slot, ItemStack stack) {
+		DropControl.LOGGER.info(
+			"[DROP DEBUG] entity={} rule=preserve_picked_up_item item={} count={} slot={}",
+			entityId(entity),
+			BuiltInRegistries.ITEM.getKey(stack.getItem()),
+			stack.getCount(),
+			slot
 		);
 	}
 

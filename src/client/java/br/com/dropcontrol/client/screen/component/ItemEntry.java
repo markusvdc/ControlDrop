@@ -15,6 +15,8 @@ public final class ItemEntry {
 	private final Minecraft minecraft;
 	private final Identifier itemId;
 	private final Identifier texture;
+	private final Identifier tintedTexture;
+	private final int tintColor;
 	private final Component name;
 	private final boolean category;
 	private boolean selected;
@@ -28,6 +30,27 @@ public final class ItemEntry {
 			minecraft,
 			Identifier.parse(markerId),
 			itemTexture(icon),
+			null,
+			0xFFFFFFFF,
+			Component.translatable(translationKey),
+			false
+		);
+	}
+
+	public ItemEntry(
+		Minecraft minecraft,
+		String markerId,
+		Identifier texture,
+		Identifier tintedTexture,
+		int tintColor,
+		String translationKey
+	) {
+		this(
+			minecraft,
+			Identifier.parse(markerId),
+			texture,
+			tintedTexture,
+			tintColor,
 			Component.translatable(translationKey),
 			false
 		);
@@ -38,25 +61,39 @@ public final class ItemEntry {
 			minecraft,
 			Identifier.parse(markerId),
 			texture,
+			null,
+			0xFFFFFFFF,
 			Component.translatable(translationKey),
 			false
 		);
 	}
 
 	private ItemEntry(Minecraft minecraft, Item item, Component name, boolean category) {
-		this(minecraft, BuiltInRegistries.ITEM.getKey(item), itemTexture(item), name, category);
+		this(
+			minecraft,
+			BuiltInRegistries.ITEM.getKey(item),
+			itemTexture(item),
+			null,
+			0xFFFFFFFF,
+			name,
+			category
+		);
 	}
 
 	private ItemEntry(
 		Minecraft minecraft,
 		Identifier itemId,
 		Identifier texture,
+		Identifier tintedTexture,
+		int tintColor,
 		Component name,
 		boolean category
 	) {
 		this.minecraft = minecraft;
 		this.itemId = itemId;
 		this.texture = texture;
+		this.tintedTexture = tintedTexture;
+		this.tintColor = tintColor;
 		this.name = name;
 		this.category = category;
 		this.selected = !category && DropControlConfig.isSelected(itemId);
@@ -99,6 +136,21 @@ public final class ItemEntry {
 		}
 
 		drawCheckbox(graphics, x + 8, y + 9);
+		if (this.tintedTexture != null) {
+			graphics.blit(
+				RenderPipelines.GUI_TEXTURED,
+				this.tintedTexture,
+				x + 29,
+				y + 7,
+				0,
+				0,
+				16,
+				16,
+				16,
+				16,
+				this.tintColor
+			);
+		}
 		graphics.blit(RenderPipelines.GUI_TEXTURED, this.texture, x + 29, y + 7, 0, 0, 16, 16, 16, 16);
 		graphics.text(this.minecraft.font, this.name, x + 52, y + 11, 0xFFFFFFFF, true);
 	}

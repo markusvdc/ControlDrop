@@ -21,11 +21,7 @@ public final class DropControlConfig {
 	private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
 	private static final Path CONFIG_PATH = FabricLoader.getInstance().getConfigDir().resolve("dropcontrol.json");
 	private static final Set<String> ADDED_MARKERS = Set.of(
-		"dropcontrol:skeleton_ores",
 		"dropcontrol:witch_potions",
-		"dropcontrol:zombie_ores",
-		"dropcontrol:spider_ores",
-		"dropcontrol:creeper_ores",
 		"dropcontrol:creeper_tnt"
 	);
 	private static final Set<String> REMOVED_MARKERS = Set.of(
@@ -92,6 +88,7 @@ public final class DropControlConfig {
 	}
 
 	public static boolean optionOne() { return optionOne; }
+	public static boolean constantThreat() { return optionOne; }
 	public static boolean optionTwo() { return optionTwo; }
 	public static boolean optionThree() { return optionThree; }
 	public static boolean optionFour() { return optionFour; }
