@@ -13,6 +13,7 @@
   "dropcontrol.marker.creeper_tnt": "CREEPER (TNT)",
   "dropcontrol.marker.skeleton_bow": "SKELETON (BOW)",
   "dropcontrol.marker.skeleton_armor": "SKELETON (ARMOR)",
+  "dropcontrol.marker.pillager_crossbow": "PILLAGER (CROSSBOW)",
   "dropcontrol.marker.zombie_armor": "ZOMBIE (ARMOR)",
   "dropcontrol.marker.zombie_weapons": "ZOMBIE (WEAPONS)",
   "dropcontrol.marker.witch_all": "WITCH (ALL)",
@@ -28,7 +29,9 @@
   "dropcontrol.options.parked_saddled_horses": "PARKED HORSE",
   "dropcontrol.options.parked_saddled_horses.description": "Saddled horses remain still without a rider, preventing them from wandering away on their own.",
   "dropcontrol.options.rabbits_avoid_fences": "FENCED RABBITS",
-  "dropcontrol.options.rabbits_avoid_fences.description": "Rabbits avoid jumping over fences while moving.",
+  "dropcontrol.options.rabbits_avoid_fences.description": "Rabbits avoid fences while moving, preventing them from jumping out of enclosed areas.",
+  "dropcontrol.options.endermen_dont_pick_up_blocks": "BLOCK-FREE ENDERMEN",
+  "dropcontrol.options.endermen_dont_pick_up_blocks.description": "Endermen continue spawning normally but do not pick up blocks from the world.",
   "dropcontrol.options.status.applied": "Interface options saved.",
   "dropcontrol.status.applied": "Interface selection saved.",
   "dropcontrol.status.save_failed": "Could not save the configuration.",
@@ -39,5 +42,5 @@
   "dropcontrol.link.medium": "Medium",
   "dropcontrol.link.instagram": "Instagram",
   "modmenu.summaryTranslation.dropcontrol": "Control Minecraft drops through a direct, vanilla-inspired interface.",
-  "modmenu.descriptionTranslation.dropcontrol": "Initial DROP CONTROL foundation, ready for drop rules."
+  "modmenu.descriptionTranslation.dropcontrol": "Development:\nRiquinho — Project concept, direction, and development.\nDekuzinho — Implementation and development support.\n\nTools:\nCodex — Development assistance and technical collaboration.\nVSCode — Source code development.\nFigma — Interface design and prototyping.\nTrello — Project organization and management.\nGitHub — Code versioning and storage."
 }

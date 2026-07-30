@@ -51,6 +51,11 @@ public final class DropControlOptionsScreen extends Screen {
 					DropControlConfig.RABBITS_AVOID_FENCES,
 					Component.translatable("dropcontrol.options.rabbits_avoid_fences"),
 					Component.translatable("dropcontrol.options.rabbits_avoid_fences.description")
+				),
+				new GlobalOptionList.Option(
+					DropControlConfig.ENDERMEN_DONT_PICK_UP_BLOCKS,
+					Component.translatable("dropcontrol.options.endermen_dont_pick_up_blocks"),
+					Component.translatable("dropcontrol.options.endermen_dont_pick_up_blocks.description")
 				)
 			)
 		);

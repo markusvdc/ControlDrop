@@ -62,6 +62,12 @@ public final class ItemSelectionList extends AbstractWidget {
 			),
 			new ItemEntry(
 				minecraft,
+				"dropcontrol:pillager_crossbow",
+				Identifier.withDefaultNamespace("textures/item/crossbow_standby.png"),
+				"dropcontrol.marker.pillager_crossbow"
+			),
+			new ItemEntry(
+				minecraft,
 				"dropcontrol:zombie_armor",
 				Items.IRON_CHESTPLATE,
 				"dropcontrol.marker.zombie_armor"

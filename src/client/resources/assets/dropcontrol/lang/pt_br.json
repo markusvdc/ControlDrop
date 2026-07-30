@@ -13,6 +13,7 @@
   "dropcontrol.marker.creeper_tnt": "CREEPER (TNT)",
   "dropcontrol.marker.skeleton_bow": "ESQUELETO (ARCO)",
   "dropcontrol.marker.skeleton_armor": "ESQUELETO (ARMADURAS)",
+  "dropcontrol.marker.pillager_crossbow": "SAQUEADOR (BESTA)",
   "dropcontrol.marker.zombie_armor": "ZUMBI (ARMADURAS)",
   "dropcontrol.marker.zombie_weapons": "ZUMBI (ARMAS)",
   "dropcontrol.marker.witch_all": "BRUXA (TUDO)",
@@ -28,7 +29,9 @@
   "dropcontrol.options.parked_saddled_horses": "CAVALO ESTACIONADO",
   "dropcontrol.options.parked_saddled_horses.description": "Cavalos selados permanecem parados sem jogador montado, impedindo que se afastem andando sozinhos.",
   "dropcontrol.options.rabbits_avoid_fences": "COELHOS CERCADOS",
-  "dropcontrol.options.rabbits_avoid_fences.description": "Coelhos evitam pular sobre cercas enquanto se movimentam.",
+  "dropcontrol.options.rabbits_avoid_fences.description": "Coelhos evitam cercas durante seus movimentos, impedindo que pulem para fora de áreas cercadas.",
+  "dropcontrol.options.endermen_dont_pick_up_blocks": "ENDERMAN BLOQUEADO",
+  "dropcontrol.options.endermen_dont_pick_up_blocks.description": "Endermen continuam aparecendo normalmente, mas não pegam blocos do mundo.",
   "dropcontrol.options.status.applied": "Opções de interface salvas.",
   "dropcontrol.status.applied": "Seleção de interface salva.",
   "dropcontrol.status.save_failed": "Não foi possível salvar a configuração.",
@@ -38,6 +41,6 @@
   "dropcontrol.link.github": "GitHub",
   "dropcontrol.link.medium": "Medium",
   "dropcontrol.link.instagram": "Instagram",
-  "modmenu.summaryTranslation.dropcontrol": "Controle os drops do Minecraft com uma interface direta e fiel ao vanilla.",
-  "modmenu.descriptionTranslation.dropcontrol": "Base inicial do DROP CONTROL, preparada para receber as regras de drops."
+  "modmenu.summaryTranslation.dropcontrol": "Personalize os drops dos monstros do seu jeito, com uma interface simples, intuitiva e totalmente integrada ao estilo vanilla do Minecraft.",
+  "modmenu.descriptionTranslation.dropcontrol": "Desenvolvimento:\nRiquinho — Conceito, direção e desenvolvimento do projeto.\nDekuzinho — Implementação e suporte no desenvolvimento.\n\nFerramentas:\nCodex — Assistência de desenvolvimento e colaboração técnica.\nVSCode — Desenvolvimento do código-fonte.\nFigma — Design e prototipação de interface.\nTrello — Organização e gerenciamento do projeto.\nGitHub — Versionamento e armazenamento do código."
 }

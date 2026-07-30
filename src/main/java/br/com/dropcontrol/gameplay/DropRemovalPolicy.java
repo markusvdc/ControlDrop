@@ -17,6 +17,8 @@ public final class DropRemovalPolicy {
 		Identifier.fromNamespaceAndPath("dropcontrol", "skeleton_bow");
 	private static final Identifier SKELETON_ARMOR =
 		Identifier.fromNamespaceAndPath("dropcontrol", "skeleton_armor");
+	private static final Identifier PILLAGER_CROSSBOW =
+		Identifier.fromNamespaceAndPath("dropcontrol", "pillager_crossbow");
 	private static final Identifier ZOMBIE_ARMOR =
 		Identifier.fromNamespaceAndPath("dropcontrol", "zombie_armor");
 	private static final Identifier ZOMBIE_WEAPONS =
@@ -60,6 +62,19 @@ public final class DropRemovalPolicy {
 				DropDebugLog.removed(entity, "remove_armor", stack);
 			}
 			return removeArmor;
+		}
+
+		if (entity.getType() == EntityTypes.PILLAGER) {
+			if (isPreservedEquipment(entity, stack)) {
+				return false;
+			}
+
+			boolean remove =
+				DropControlConfig.isSelected(PILLAGER_CROSSBOW) && stack.is(Items.CROSSBOW);
+			if (remove) {
+				DropDebugLog.removed(entity, "remove_crossbow", stack);
+			}
+			return remove;
 		}
 
 		if (entity.getType() != EntityTypes.ZOMBIE) {

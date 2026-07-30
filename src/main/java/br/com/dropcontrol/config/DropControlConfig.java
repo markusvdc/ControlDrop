@@ -20,7 +20,9 @@ public final class DropControlConfig {
 	public static final String CONSTANT_THREAT = "constant_threat";
 	public static final String PARKED_SADDLED_HORSES = "parked_saddled_horses";
 	public static final String RABBITS_AVOID_FENCES = "rabbits_avoid_fences";
-	private static final int CURRENT_CONFIG_VERSION = 2;
+	public static final String ENDERMEN_DONT_PICK_UP_BLOCKS = "endermen_dont_pick_up_blocks";
+	private static final int CURRENT_CONFIG_VERSION = 3;
+	private static final String PILLAGER_CROSSBOW = "dropcontrol:pillager_crossbow";
 	private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
 	private static final Path CONFIG_PATH = FabricLoader.getInstance().getConfigDir().resolve("dropcontrol.json");
 	private static final Set<String> ADDED_MARKERS = Set.of(
@@ -30,6 +32,7 @@ public final class DropControlConfig {
 	private static final Set<String> REMOVED_MARKERS = Set.of(
 		"dropcontrol:skeleton_bow",
 		"dropcontrol:skeleton_armor",
+		PILLAGER_CROSSBOW,
 		"dropcontrol:zombie_armor",
 		"dropcontrol:zombie_weapons",
 		"dropcontrol:witch_all"
@@ -38,7 +41,8 @@ public final class DropControlConfig {
 	private static final Set<String> AVAILABLE_OPTIONS = Set.of(
 		CONSTANT_THREAT,
 		PARKED_SADDLED_HORSES,
-		RABBITS_AVOID_FENCES
+		RABBITS_AVOID_FENCES,
+		ENDERMEN_DONT_PICK_UP_BLOCKS
 	);
 
 	private static volatile Set<String> selectedItems = AVAILABLE_MARKERS;
@@ -56,9 +60,7 @@ public final class DropControlConfig {
 			ConfigData data = GSON.fromJson(Files.readString(CONFIG_PATH, StandardCharsets.UTF_8), ConfigData.class);
 			boolean needsMigration =
 				data == null || data.configVersion == null || data.configVersion < CURRENT_CONFIG_VERSION;
-			selectedItems = data == null || data.configVersion == null
-				? AVAILABLE_MARKERS
-				: sanitize(data.selectedItems);
+			selectedItems = migrateSelection(data);
 			enabledOptions = needsMigration ? migrateOptions(data) : sanitizeOptions(data.enabledOptions);
 			if (needsMigration) {
 				save(selectedItems, enabledOptions);
@@ -94,6 +96,7 @@ public final class DropControlConfig {
 	public static boolean constantThreat() { return isOptionEnabled(CONSTANT_THREAT); }
 	public static boolean saddledHorseStaysPut() { return isOptionEnabled(PARKED_SADDLED_HORSES); }
 	public static boolean rabbitsAvoidFences() { return isOptionEnabled(RABBITS_AVOID_FENCES); }
+	public static boolean endermenDontPickUpBlocks() { return isOptionEnabled(ENDERMEN_DONT_PICK_UP_BLOCKS); }
 
 	public static boolean isSelected(Identifier markerId) {
 		return selectedItems.contains(markerId.toString());
@@ -162,6 +165,18 @@ public final class DropControlConfig {
 		}
 		if (Boolean.TRUE.equals(data.optionTwo)) {
 			migrated.add(PARKED_SADDLED_HORSES);
+		}
+		return Set.copyOf(migrated);
+	}
+
+	private static Set<String> migrateSelection(ConfigData data) {
+		if (data == null || data.configVersion == null) {
+			return AVAILABLE_MARKERS;
+		}
+
+		LinkedHashSet<String> migrated = new LinkedHashSet<>(sanitize(data.selectedItems));
+		if (data.configVersion < 3) {
+			migrated.add(PILLAGER_CROSSBOW);
 		}
 		return Set.copyOf(migrated);
 	}

@@ -10,8 +10,9 @@ Leia este arquivo antes de alterar, compilar ou testar o projeto.
 - Fabric API: `0.155.0+26.2`.
 - Mod Menu: `20.0.1`.
 - Java: `25`.
+- JDK: `25.0.3`, versão LTS mais recente adotada pelo projeto, com suporte prolongado.
 - JDK usado no desenvolvimento:
-  `C:\Users\marku\AppData\Local\Temp\smarttrade-jdk25\jdk-25.0.3+9`
+  `D:\MARKUS\GAMES\minecraft\java\jdk-25.0.3`
 
 ## Build
 
@@ -20,7 +21,7 @@ Antes de executar qualquer operação potencialmente demorada, como build, varre
 Execute o build com o JDK 25 configurado:
 
 ```powershell
-$env:JAVA_HOME='C:\Users\marku\AppData\Local\Temp\smarttrade-jdk25\jdk-25.0.3+9'
+$env:JAVA_HOME='D:\MARKUS\GAMES\minecraft\java\jdk-25.0.3'
 $env:Path="$env:JAVA_HOME\bin;$env:Path"
 .\gradlew.bat clean build --warning-mode all
 ```
@@ -108,7 +109,22 @@ Nunca remova, mova ou substitua outros mods dessas pastas.
 
 ## Padrões da primeira instalação
 
-- Todos os marcadores de drop devem iniciar selecionados.
-- Todas as opções globais devem iniciar desativadas.
+- Todas as opções principais devem iniciar ativas por padrão na primeira instalação.
+- Todas as opções globais devem iniciar inativas por padrão na primeira instalação.
+- Novas opções principais e globais devem seguir esses mesmos padrões, inclusive quando exigirem migração do formato de configuração.
 - Configurações antigas podem ser migradas uma única vez quando houver mudança de versão do formato.
 - Depois da migração, escolhas já salvas pelo jogador devem ser preservadas.
+
+## Clareza e precisão do README
+
+- Garanta que todas as opções e funcionalidades destinadas ao jogador estejam descritas de forma completa, clara e explicativa.
+- Confira o comportamento real no código antes de editar a documentação e compare as descrições com constantes, listas, condições e valores implementados.
+- Informe todos os valores fixos relevantes, incluindo quantidades, multiplicadores, porcentagens, distâncias, alcances, durações, intervalos, limites, chances e tempos.
+- Essa precisão é especialmente importante quando o mod não permite que o jogador altere esses valores.
+- Não use expressões vagas como “mais rápido”, “por algum tempo”, “itens compatíveis” ou nomes genéricos de categorias quando existir um valor, prazo, lista ou critério exato no código.
+- Para cada opção, explique quando ela é ativada, o que afeta, o que permanece inalterado e quais são suas exceções, exclusões, condições de término e comportamentos especiais.
+- Quando existir uma lista fechada de itens, blocos, entidades ou categorias, enumere seus integrantes ou defina precisamente a categoria usada.
+- Informe os valores e estados padrão da primeira instalação e esclareça como configurações existentes são preservadas ou migradas.
+- Não há problema se as descrições ficarem longas. Priorize clareza e precisão, pois o jogador precisa entender exatamente o comportamento oferecido.
+- Ao adicionar ou corrigir uma opção, revise também as demais descrições do README e complete valores, limites, escopos ou exceções que estejam ausentes.
+- Não invente comportamentos. Toda afirmação deve corresponder ao código atual.
