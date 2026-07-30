@@ -32,7 +32,7 @@ public final class ItemSelectionList extends AbstractWidget {
 				"dropcontrol:witch_potions",
 				Identifier.withDefaultNamespace("textures/item/potion.png"),
 				Identifier.withDefaultNamespace("textures/item/potion_overlay.png"),
-				0xFF1F1FA1,
+				0xFFC2FF66,
 				"dropcontrol.marker.witch_potions"
 			),
 			new ItemEntry(
