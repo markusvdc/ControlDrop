@@ -32,6 +32,8 @@
   "dropcontrol.options.rabbits_avoid_fences.description": "Impede um coelho de saltar quando uma cerca da tag vanilla #minecraft:fences estiver à frente do movimento, até 1,35 bloco adiante e 0,8 bloco para cada lado. A busca cobre 5 × 5 blocos no plano horizontal e 2 níveis verticais, do Y atual ao bloco abaixo; ao detectar a cerca, cancela o salto e interrompe a navegação.",
   "dropcontrol.options.endermen_dont_pick_up_blocks": "ENDERMAN BLOQUEADO",
   "dropcontrol.options.endermen_dont_pick_up_blocks.description": "Impede endermen de iniciar a ação de pegar blocos do mundo. Blocos que já estejam sendo carregados permanecem com o enderman e ainda podem ser colocados normalmente.",
+  "dropcontrol.options.chestplate_elytra_swap": "TROCA DE PEITORAL",
+  "dropcontrol.options.chestplate_elytra_swap.description": "Alterna entre o peitoral equipado e uma elytra do inventário ao pressionar Grave Accent, a tecla antes do 1. Se uma elytra estiver equipada, troca por um peitoral. Entre vários itens do tipo necessário, usa o que tiver menos durabilidade restante.",
   "dropcontrol.options.status.applied": "Opções de interface salvas.",
   "dropcontrol.status.applied": "Seleção de interface salva.",
   "dropcontrol.status.save_failed": "Não foi possível salvar a configuração.",

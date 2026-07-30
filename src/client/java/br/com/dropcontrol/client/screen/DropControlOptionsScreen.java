@@ -56,6 +56,11 @@ public final class DropControlOptionsScreen extends Screen {
 					DropControlConfig.ENDERMEN_DONT_PICK_UP_BLOCKS,
 					Component.translatable("dropcontrol.options.endermen_dont_pick_up_blocks"),
 					Component.translatable("dropcontrol.options.endermen_dont_pick_up_blocks.description")
+				),
+				new GlobalOptionList.Option(
+					DropControlConfig.CHESTPLATE_ELYTRA_SWAP,
+					Component.translatable("dropcontrol.options.chestplate_elytra_swap"),
+					Component.translatable("dropcontrol.options.chestplate_elytra_swap.description")
 				)
 			)
 		);

@@ -25,6 +25,7 @@
   "environment": "client",
   "entrypoints": {
     "main": ["br.com.dropcontrol.DropControl"],
+    "client": ["br.com.dropcontrol.client.DropControlClient"],
     "modmenu": ["br.com.dropcontrol.client.DropControlModMenuIntegration"]
   },
   "mixins": [
