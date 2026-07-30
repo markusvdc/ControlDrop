@@ -30,7 +30,9 @@ public final class ItemSelectionList extends AbstractWidget {
 			new ItemEntry(
 				minecraft,
 				"dropcontrol:witch_potions",
-				Items.OMINOUS_BOTTLE,
+				Identifier.withDefaultNamespace("textures/item/potion.png"),
+				Identifier.withDefaultNamespace("textures/item/potion_overlay.png"),
+				0xFF1F1FA1,
 				"dropcontrol.marker.witch_potions"
 			),
 			new ItemEntry(
