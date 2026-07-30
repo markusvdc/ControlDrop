@@ -117,14 +117,30 @@ Nunca remova, mova ou substitua outros mods dessas pastas.
 
 ## Clareza e precisão do README
 
-- Garanta que todas as opções e funcionalidades destinadas ao jogador estejam descritas de forma completa, clara e explicativa.
+- Garanta que todas as opções e funcionalidades destinadas ao jogador estejam descritas de forma sucinta, clara e restrita ao funcionamento da opção.
 - Confira o comportamento real no código antes de editar a documentação e compare as descrições com constantes, listas, condições e valores implementados.
-- Informe todos os valores fixos relevantes, incluindo quantidades, multiplicadores, porcentagens, distâncias, alcances, durações, intervalos, limites, chances e tempos.
-- Essa precisão é especialmente importante quando o mod não permite que o jogador altere esses valores.
-- Não use expressões vagas como “mais rápido”, “por algum tempo”, “itens compatíveis” ou nomes genéricos de categorias quando existir um valor, prazo, lista ou critério exato no código.
-- Para cada opção, explique quando ela é ativada, o que afeta, o que permanece inalterado e quais são suas exceções, exclusões, condições de término e comportamentos especiais.
-- Quando existir uma lista fechada de itens, blocos, entidades ou categorias, enumere seus integrantes ou defina precisamente a categoria usada.
+- Informe o que a opção faz, quais elementos afeta, seus valores fixos relevantes, as condições necessárias para compreender seu funcionamento e os comportamentos especiais produzidos diretamente por ela.
+- Preserve quantidades, multiplicadores, porcentagens, distâncias, alcances, durações, intervalos, limites, chances e tempos, especialmente quando não forem configuráveis.
+- Não transforme descrições em tutoriais de Minecraft. Exclua conhecimentos gerais do jogo, explicações de mecânicas vanilla e dúvidas que possam ser resolvidas pela wiki.
+- Prefira afirmações positivas que definam diretamente o escopo. Não prolongue o texto enumerando tudo que a opção não faz, não altera ou não afeta.
+- Não use “caso ativada”, “quando estiver ativa”, “ao ativar esta opção” nem expressões equivalentes; o contexto da interface já informa que o comportamento depende da opção ativa.
+- Não use expressões vagas ou categorias genéricas quando o código fornecer um valor, prazo, lista ou critério exato.
+- Listas fechadas podem permanecer quando forem indispensáveis para compreender exatamente o escopo da opção.
+- Descrições que ultrapassem `450` caracteres sem contar espaços exigem revisão obrigatória. O valor é um gatilho, não um limite rígido.
+- Nessa revisão, remova explicações gerais de Minecraft, redundâncias, frases negativas desnecessárias, exemplos sem utilidade para definir a opção e detalhes técnicos internos sem impacto para o jogador.
 - Informe os valores e estados padrão da primeira instalação e esclareça como configurações existentes são preservadas ou migradas.
-- Não há problema se as descrições ficarem longas. Priorize clareza e precisão, pois o jogador precisa entender exatamente o comportamento oferecido.
-- Ao adicionar ou corrigir uma opção, revise também as demais descrições do README e complete valores, limites, escopos ou exceções que estejam ausentes.
+- Ao adicionar ou corrigir uma opção, revise também as demais descrições do README.
 - Não invente comportamentos. Toda afirmação deve corresponder ao código atual.
+
+## Sincronização dos tooltips globais
+
+- O tooltip em português de cada opção global deve permanecer literalmente igual à descrição correspondente no README, desconsiderando apenas marcações exclusivas do Markdown.
+- Toda mudança de regra, valor, limite, escopo, condição ou exceção de uma opção global deve atualizar, no mesmo conjunto de alterações, a descrição no README, o tooltip em português e todas as traduções do tooltip.
+- Os tooltips devem seguir as regras de concisão do README: informar funcionamento, escopo, valores fixos e somente as condições ou comportamentos especiais necessários para compreender a opção.
+- Tooltips não devem se tornar tutoriais de Minecraft nem enumerar comportamentos inalterados sem necessidade. Prefira afirmações positivas e diretas.
+- Tooltips que ultrapassem `450` caracteres sem contar espaços exigem a mesma revisão obrigatória definida para o README.
+- As traduções devem preservar conteúdo completo e semanticamente equivalente ao texto principal em português.
+- A largura máxima dos tooltips de opções globais deve permanecer em `425 px`, exatamente `2,5×` a largura vanilla de `170 px`.
+- O avanço vertical entre as linhas dos tooltips globais deve permanecer uniforme em `12 px`, exatamente `2 px` maior que o line-height vanilla de `10 px`, sem acumular novamente o espaço especial vanilla após a primeira linha.
+- Essas dimensões personalizadas devem continuar restritas aos tooltips das opções globais; tooltips de itens, botões e outras interfaces devem conservar o comportamento vanilla.
+- Antes de alterar qualquer descrição, confira constantes, listas, condições e valores no código real. Não invente comportamentos.
