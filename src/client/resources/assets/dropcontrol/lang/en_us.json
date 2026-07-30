@@ -32,7 +32,7 @@
   "dropcontrol.options.rabbits_avoid_fences.description": "Prevents a rabbit from jumping when a fence in the vanilla #minecraft:fences tag is ahead of its movement, up to 1.35 blocks forward and 0.8 blocks to either side. The search covers a 5 × 5 block horizontal area and 2 vertical levels, from the current Y to the block below; detecting a fence cancels the jump and stops navigation.",
   "dropcontrol.options.endermen_dont_pick_up_blocks": "BLOCK-FREE ENDERMEN",
   "dropcontrol.options.endermen_dont_pick_up_blocks.description": "Prevents endermen from starting the action of picking up blocks from the world. Blocks already being carried remain with the enderman and can still be placed normally.",
-  "dropcontrol.options.chestplate_elytra_swap": "CHESTPLATE SWAP",
+  "dropcontrol.options.chestplate_elytra_swap": "QUICK ELYTRA",
   "dropcontrol.options.chestplate_elytra_swap.description": "Switches between the equipped chestplate and an elytra from the inventory when Grave Accent, the key before 1, is pressed. If an elytra is equipped, it switches to a chestplate. When several items of the required type are available, it uses the one with the least remaining durability.",
   "dropcontrol.options.status.applied": "Interface options saved.",
   "dropcontrol.status.applied": "Interface selection saved.",
