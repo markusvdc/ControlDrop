@@ -173,7 +173,7 @@ public final class DropControlConfig {
 	}
 
 	private static Set<String> migrateSelection(ConfigData data) {
-		if (data == null || data.configVersion == null) {
+		if (data == null || data.configVersion == null || data.selectedItems == null) {
 			return AVAILABLE_MARKERS;
 		}
 
