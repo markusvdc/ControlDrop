@@ -17,7 +17,12 @@ import net.minecraft.world.item.equipment.Equippable;
 
 public final class DropControlClient implements ClientModInitializer {
 	private static final int CHEST_ARMOR_MENU_SLOT = 6;
+	private static final long MOUSE_IDLE_PAUSE_DELAY_MS = 15_000L;
 	private static boolean graveAccentWasDown;
+	private static double lastMouseX;
+	private static double lastMouseY;
+	private static long lastMouseMovementTime;
+	private static boolean mousePositionInitialized;
 
 	@Override
 	public void onInitializeClient() {
@@ -30,6 +35,38 @@ public final class DropControlClient implements ClientModInitializer {
 			swapChestEquipment(minecraft);
 		}
 		graveAccentWasDown = graveAccentDown;
+		tickMouseIdlePause(minecraft);
+	}
+
+	private static void tickMouseIdlePause(Minecraft minecraft) {
+		double mouseX = minecraft.mouseHandler.xpos();
+		double mouseY = minecraft.mouseHandler.ypos();
+		long now = System.nanoTime() / 1_000_000L;
+		boolean mouseMoved = !mousePositionInitialized || mouseX != lastMouseX || mouseY != lastMouseY;
+
+		lastMouseX = mouseX;
+		lastMouseY = mouseY;
+		mousePositionInitialized = true;
+		if (mouseMoved) {
+			lastMouseMovementTime = now;
+		}
+
+		boolean canPauseForIdle = DropControlConfig.pauseWhenMouseIdle()
+			&& minecraft.level != null
+			&& minecraft.player != null
+			&& minecraft.gui.screen() == null
+			&& minecraft.isWindowActive()
+			&& minecraft.hasSingleplayerServer()
+			&& !minecraft.getSingleplayerServer().isPublished();
+		if (!canPauseForIdle) {
+			lastMouseMovementTime = now;
+			return;
+		}
+
+		if (now - lastMouseMovementTime >= MOUSE_IDLE_PAUSE_DELAY_MS) {
+			minecraft.pauseGame(false);
+			lastMouseMovementTime = now;
+		}
 	}
 
 	private static void swapChestEquipment(Minecraft minecraft) {

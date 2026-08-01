@@ -22,6 +22,7 @@ public final class DropControlConfig {
 	public static final String RABBITS_AVOID_FENCES = "rabbits_avoid_fences";
 	public static final String ENDERMEN_DONT_PICK_UP_BLOCKS = "endermen_dont_pick_up_blocks";
 	public static final String CHESTPLATE_ELYTRA_SWAP = "chestplate_elytra_swap";
+	public static final String PAUSE_WHEN_MOUSE_IDLE = "pause_when_mouse_idle";
 	private static final int CURRENT_CONFIG_VERSION = 3;
 	private static final String PILLAGER_CROSSBOW = "dropcontrol:pillager_crossbow";
 	private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
@@ -44,7 +45,8 @@ public final class DropControlConfig {
 		PARKED_SADDLED_HORSES,
 		RABBITS_AVOID_FENCES,
 		ENDERMEN_DONT_PICK_UP_BLOCKS,
-		CHESTPLATE_ELYTRA_SWAP
+		CHESTPLATE_ELYTRA_SWAP,
+		PAUSE_WHEN_MOUSE_IDLE
 	);
 
 	private static volatile Set<String> selectedItems = AVAILABLE_MARKERS;
@@ -100,6 +102,7 @@ public final class DropControlConfig {
 	public static boolean rabbitsAvoidFences() { return isOptionEnabled(RABBITS_AVOID_FENCES); }
 	public static boolean endermenDontPickUpBlocks() { return isOptionEnabled(ENDERMEN_DONT_PICK_UP_BLOCKS); }
 	public static boolean chestplateElytraSwap() { return isOptionEnabled(CHESTPLATE_ELYTRA_SWAP); }
+	public static boolean pauseWhenMouseIdle() { return isOptionEnabled(PAUSE_WHEN_MOUSE_IDLE); }
 
 	public static boolean isSelected(Identifier markerId) {
 		return selectedItems.contains(markerId.toString());
