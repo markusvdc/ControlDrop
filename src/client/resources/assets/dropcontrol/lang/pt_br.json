@@ -35,7 +35,7 @@
   "dropcontrol.options.chestplate_elytra_swap": "ELYTRA RÁPIDA",
   "dropcontrol.options.chestplate_elytra_swap.description": "Alterna entre o peitoral equipado e uma elytra do inventário ao pressionar Grave Accent, a tecla antes do 1. Se uma elytra estiver equipada, troca por um peitoral. Entre vários itens do tipo necessário, usa o que tiver menos durabilidade restante.",
   "dropcontrol.options.pause_when_mouse_idle": "MODO AUSENTE",
-  "dropcontrol.options.pause_when_mouse_idle.description": "Abre o menu de pausa e interrompe o mundo após 15 segundos sem movimento do mouse. Funciona somente em mundos singleplayer que não estejam abertos para LAN e apenas enquanto a janela do Minecraft estiver em foco.",
+  "dropcontrol.options.pause_when_mouse_idle.description": "Abre o menu de pausa e interrompe o mundo após 15 segundos sem movimento do mouse; ao mover o mouse, fecha o menu e retoma o jogo automaticamente. Funciona somente em mundos singleplayer que não estejam abertos para LAN e apenas enquanto a janela do Minecraft estiver em foco.",
   "dropcontrol.options.status.applied": "Opções de interface salvas.",
   "dropcontrol.status.applied": "Seleção de interface salva.",
   "dropcontrol.status.save_failed": "Não foi possível salvar a configuração.",
