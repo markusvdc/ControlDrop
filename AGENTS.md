@@ -82,9 +82,9 @@ Nunca remova, mova ou substitua outros mods.
 
 ## Controle de versão
 
+- Faça commit somente mediante solicitação explícita do usuário.
 - Reúna implementação, correções e refinamentos da mesma entrega em um único commit coerente.
 - Finalize, valide e registre uma entrega estrutural antes de iniciar outra; não misture entregas distintas.
-- Mudanças de assunto ou arquivo não criam, por si só, novos commits. Pequenos ajustes podem permanecer acumulados até formarem um conjunto coerente, antecederem outra entrega ou o usuário solicitar um commit.
 - Escreva mensagens descritivas em inglês, com aproximadamente 45 caracteres.
 - Commit não autoriza push. Faça push somente mediante solicitação explícita.
 
