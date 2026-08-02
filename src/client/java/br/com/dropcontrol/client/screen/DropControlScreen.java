@@ -87,6 +87,7 @@ public final class DropControlScreen extends Screen {
 		graphics.text(this.font, Component.translatable("dropcontrol.list.title"), left + 4, 123, 0xFFE0E0E0, true);
 
 		super.extractRenderState(graphics, mouseX, mouseY, delta);
+		this.itemList.renderTooltip(graphics, mouseX, mouseY);
 
 		if (!this.status.getString().isEmpty()) {
 			graphics.centeredText(this.font, this.status, this.width / 2, this.height - 49, this.statusColor);

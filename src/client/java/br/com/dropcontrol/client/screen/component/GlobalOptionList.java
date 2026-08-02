@@ -5,24 +5,17 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.AbstractWidget;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
-import net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipComponent;
-import net.minecraft.client.gui.screens.inventory.tooltip.DefaultTooltipPositioner;
 import net.minecraft.client.input.MouseButtonEvent;
 import net.minecraft.network.chat.Component;
-import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.util.Mth;
 
 public final class GlobalOptionList extends AbstractWidget {
 	private static final int ROW_HEIGHT = 40;
 	private static final int SCROLLBAR_WIDTH = 6;
 	private static final int SCROLLBAR_GAP = 6;
-	private static final int VANILLA_TOOLTIP_MAX_WIDTH = 170;
-	private static final int TOOLTIP_MAX_WIDTH = VANILLA_TOOLTIP_MAX_WIDTH * 5 / 2;
-	private static final int TOOLTIP_LINE_HEIGHT = 12;
 
 	private final Minecraft minecraft;
 	private final List<Entry> entries;
@@ -72,18 +65,7 @@ public final class GlobalOptionList extends AbstractWidget {
 			return;
 		}
 
-		List<FormattedCharSequence> lines = this.minecraft.font.split(
-			this.hoveredDescription,
-			TOOLTIP_MAX_WIDTH
-		);
-		graphics.tooltip(
-			this.minecraft.font,
-			List.of(new GlobalOptionTooltip(lines)),
-			mouseX,
-			mouseY,
-			DefaultTooltipPositioner.INSTANCE,
-			null
-		);
+		DescriptionTooltip.render(this.minecraft, graphics, this.hoveredDescription, mouseX, mouseY);
 	}
 
 	@Override
@@ -228,22 +210,4 @@ public final class GlobalOptionList extends AbstractWidget {
 		}
 	}
 
-	private record GlobalOptionTooltip(List<FormattedCharSequence> lines) implements ClientTooltipComponent {
-		@Override
-		public int getHeight(Font font) {
-			return this.lines.size() * TOOLTIP_LINE_HEIGHT;
-		}
-
-		@Override
-		public int getWidth(Font font) {
-			return this.lines.stream().mapToInt(font::width).max().orElse(0);
-		}
-
-		@Override
-		public void extractText(GuiGraphicsExtractor graphics, Font font, int x, int y) {
-			for (int index = 0; index < this.lines.size(); index++) {
-				graphics.text(font, this.lines.get(index), x, y + index * TOOLTIP_LINE_HEIGHT, -1, true);
-			}
-		}
-	}
 }

@@ -119,13 +119,13 @@ Nunca remova, mova ou substitua outros mods.
 - Na revisão, remova redundâncias, explicações gerais, negativas desnecessárias, exemplos irrelevantes e detalhes internos, preservando informações e valores importantes.
 - Ao alterar uma opção, revise também as descrições relacionadas dentro do escopo autorizado.
 
-## Sincronização dos tooltips globais
+## Sincronização das opções globais e opções principais
 
-- O tooltip em português e a descrição correspondente no `README.md` devem ter o mesmo conteúdo e redação, exceto pela formatação do Markdown.
-- Mudanças em regra, valor, limite, escopo, condição ou exceção exigem a atualização conjunta do README, tooltip em português e traduções.
-- Mantenha as traduções completas e semanticamente equivalentes.
+- O tooltip em português de cada opção global ou opção principal e a descrição correspondente no `README.md` devem ter o mesmo conteúdo e redação, exceto pela formatação do Markdown.
+- Mudanças em regra, valor, limite, escopo, condição ou exceção exigem a atualização conjunta do README, do tooltip em português e das traduções correspondentes.
+- Mantenha todas as traduções completas e semanticamente equivalentes.
 - Use largura máxima de `425 px` e avanço vertical uniforme de `12 px`, sem duplicar o espaçamento vanilla após a primeira linha.
-- Aplique essas dimensões somente aos tooltips globais; preserve o comportamento vanilla nas demais interfaces.
+- Aplique essas dimensões somente aos tooltips das opções globais e das opções principais; preserve o comportamento vanilla nas demais interfaces.
 
 ## Escopo e compatibilidade
 

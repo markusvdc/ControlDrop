@@ -18,6 +18,7 @@ public final class ItemEntry {
 	private final Identifier tintedTexture;
 	private final int tintColor;
 	private final Component name;
+	private final Component description;
 	private final boolean category;
 	private boolean selected;
 
@@ -33,6 +34,7 @@ public final class ItemEntry {
 			null,
 			0xFFFFFFFF,
 			Component.translatable(translationKey),
+			Component.translatable(translationKey + ".description"),
 			false
 		);
 	}
@@ -52,6 +54,7 @@ public final class ItemEntry {
 			tintedTexture,
 			tintColor,
 			Component.translatable(translationKey),
+			Component.translatable(translationKey + ".description"),
 			false
 		);
 	}
@@ -64,6 +67,7 @@ public final class ItemEntry {
 			null,
 			0xFFFFFFFF,
 			Component.translatable(translationKey),
+			Component.translatable(translationKey + ".description"),
 			false
 		);
 	}
@@ -76,6 +80,7 @@ public final class ItemEntry {
 			null,
 			0xFFFFFFFF,
 			name,
+			Component.empty(),
 			category
 		);
 	}
@@ -87,6 +92,7 @@ public final class ItemEntry {
 		Identifier tintedTexture,
 		int tintColor,
 		Component name,
+		Component description,
 		boolean category
 	) {
 		this.minecraft = minecraft;
@@ -95,6 +101,7 @@ public final class ItemEntry {
 		this.tintedTexture = tintedTexture;
 		this.tintColor = tintColor;
 		this.name = name;
+		this.description = description;
 		this.category = category;
 		this.selected = !category && DropControlConfig.isSelected(itemId);
 	}
@@ -188,5 +195,9 @@ public final class ItemEntry {
 
 	public boolean isCategory() {
 		return this.category;
+	}
+
+	public Component description() {
+		return this.description;
 	}
 }

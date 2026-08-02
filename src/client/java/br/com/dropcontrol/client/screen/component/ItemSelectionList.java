@@ -17,13 +17,16 @@ public final class ItemSelectionList extends AbstractWidget {
 	private static final int SCROLLBAR_WIDTH = 6;
 	private static final int SCROLLBAR_GAP = 6;
 
+	private final Minecraft minecraft;
 	private final List<ItemEntry> entries;
 	private final int rowHeight;
 	private boolean draggingScrollbar;
 	private double scrollAmount;
+	private Component hoveredDescription;
 
 	public ItemSelectionList(Minecraft minecraft, int width, int height, int y, int rowHeight) {
 		super(0, y, width, height, Component.translatable("dropcontrol.list.title"));
+		this.minecraft = minecraft;
 		this.rowHeight = rowHeight;
 		this.entries = List.of(
 			ItemEntry.category(minecraft, "dropcontrol.category.add_drop"),
@@ -95,6 +98,7 @@ public final class ItemSelectionList extends AbstractWidget {
 		int y = getY();
 		int contentWidth = this.width - SCROLLBAR_WIDTH - SCROLLBAR_GAP;
 		boolean needsScrollbar = getMaxScroll() > 0;
+		this.hoveredDescription = null;
 
 		graphics.enableScissor(x, y, x + this.width, y + this.height);
 		graphics.fill(x, y, x + this.width, y + this.height, 0xB8101010);
@@ -110,6 +114,9 @@ public final class ItemSelectionList extends AbstractWidget {
 				&& mouseX < x + contentWidth
 				&& mouseY >= rowY
 				&& mouseY < rowY + this.rowHeight;
+			if (hovered) {
+				this.hoveredDescription = entry.description();
+			}
 			entry.renderBackground(graphics, x, rowY, contentWidth, this.rowHeight, hovered);
 		}
 
@@ -130,6 +137,12 @@ public final class ItemSelectionList extends AbstractWidget {
 			drawScrollbarThumb(graphics);
 		}
 		graphics.disableScissor();
+	}
+
+	public void renderTooltip(GuiGraphicsExtractor graphics, int mouseX, int mouseY) {
+		if (this.hoveredDescription != null) {
+			DescriptionTooltip.render(this.minecraft, graphics, this.hoveredDescription, mouseX, mouseY);
+		}
 	}
 
 	@Override
