@@ -12,7 +12,7 @@ public abstract class AbstractHorseMixin {
 	@Inject(method = "isImmobile", at = @At("HEAD"), cancellable = true)
 	private void dropcontrol$keepSaddledHorseStill(CallbackInfoReturnable<Boolean> callback) {
 		AbstractHorse horse = (AbstractHorse)(Object)this;
-		if (DropControlConfig.saddledHorseStaysPut() && horse.isSaddled() && !horse.isVehicle()) {
+		if (DropControlConfig.saddledHorseStaysPut() && horse.isSaddled() && !horse.isVehicle() && !horse.isInLove()) {
 			callback.setReturnValue(true);
 		}
 	}
