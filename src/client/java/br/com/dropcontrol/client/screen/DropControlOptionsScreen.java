@@ -66,6 +66,11 @@ public final class DropControlOptionsScreen extends Screen {
 					DropControlConfig.PAUSE_WHEN_MOUSE_IDLE,
 					Component.translatable("dropcontrol.options.pause_when_mouse_idle"),
 					Component.translatable("dropcontrol.options.pause_when_mouse_idle.description")
+				),
+				new GlobalOptionList.Option(
+					DropControlConfig.EXACT_HORSE_HEALTH,
+					Component.translatable("dropcontrol.options.exact_horse_health"),
+					Component.translatable("dropcontrol.options.exact_horse_health.description")
 				)
 			)
 		);

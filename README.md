@@ -19,6 +19,7 @@
 | ENDERMAN BLOQUEADO | Impede endermen de iniciar a ação de pegar blocos do mundo. Blocos que já estejam sendo carregados permanecem com o enderman e ainda podem ser colocados normalmente. |
 | ELYTRA RÁPIDA | Alterna entre o peitoral equipado e uma elytra do inventário ao pressionar Grave Accent, a tecla antes do 1. Se uma elytra estiver equipada, troca por um peitoral. Entre vários itens do tipo necessário, usa o que tiver menos durabilidade restante. |
 | MODO AUSENTE | Abre o menu de pausa e interrompe o mundo após 15 segundos sem movimento do mouse. Funciona somente em mundos singleplayer que não estejam abertos para LAN e apenas enquanto a janela do Minecraft estiver em foco. |
+| VIDA CAVALAR | Acrescenta ao tooltip do Jade, abaixo da velocidade, a vida atual e a vida máxima do cavalo em pontos de vida, arredondadas para duas casas decimais. A opção pode ser configurada sem o Jade, mas a informação só aparece quando ele estiver instalado. |
 
 ## Padrões e configurações existentes
 
