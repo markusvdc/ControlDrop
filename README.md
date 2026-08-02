@@ -18,7 +18,7 @@
 | COELHOS CERCADOS | Impede um coelho de saltar quando uma cerca da tag vanilla `#minecraft:fences` estiver à frente do movimento, até 1,35 bloco adiante e 0,8 bloco para cada lado. A busca cobre 5 × 5 blocos no plano horizontal e 2 níveis verticais, do Y atual ao bloco abaixo; ao detectar a cerca, cancela o salto e interrompe a navegação. |
 | ENDERMAN BLOQUEADO | Impede endermen de iniciar a ação de pegar blocos do mundo. Blocos que já estejam sendo carregados permanecem com o enderman e ainda podem ser colocados normalmente. |
 | ELYTRA RÁPIDA | Alterna entre o peitoral equipado e uma elytra do inventário ao pressionar Grave Accent, a tecla antes do 1. Se uma elytra estiver equipada, troca por um peitoral. Entre vários itens do tipo necessário, usa o que tiver menos durabilidade restante. |
-| MODO AUSENTE | Abre o menu de pausa e interrompe o mundo após 15 segundos sem movimento do mouse; ao mover o mouse, fecha o menu e retoma o jogo automaticamente. Funciona somente em mundos singleplayer que não estejam abertos para LAN e apenas enquanto a janela do Minecraft estiver em foco. |
+| MODO AUSENTE | Abre o menu de pausa e interrompe o mundo após 15 segundos sem movimento do mouse. Funciona somente em mundos singleplayer que não estejam abertos para LAN e apenas enquanto a janela do Minecraft estiver em foco. |
 
 ## Padrões e configurações existentes
 

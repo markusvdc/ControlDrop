@@ -5,7 +5,6 @@ import com.mojang.blaze3d.platform.InputConstants;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.screens.PauseScreen;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -24,8 +23,6 @@ public final class DropControlClient implements ClientModInitializer {
 	private static double lastMouseY;
 	private static long lastMouseMovementTime;
 	private static boolean mousePositionInitialized;
-	private static boolean pausedByMouseIdle;
-	private static boolean awaitingPausedMouseBaseline;
 
 	@Override
 	public void onInitializeClient() {
@@ -50,23 +47,6 @@ public final class DropControlClient implements ClientModInitializer {
 		lastMouseX = mouseX;
 		lastMouseY = mouseY;
 		mousePositionInitialized = true;
-
-		if (pausedByMouseIdle) {
-			if (!(minecraft.gui.screen() instanceof PauseScreen)) {
-				pausedByMouseIdle = false;
-				awaitingPausedMouseBaseline = false;
-				lastMouseMovementTime = now;
-			} else if (awaitingPausedMouseBaseline) {
-				awaitingPausedMouseBaseline = false;
-			} else if (mouseMoved && minecraft.isWindowActive()) {
-				pausedByMouseIdle = false;
-				minecraft.gui.setScreen(null);
-				minecraft.mouseHandler.grabMouse();
-				lastMouseMovementTime = now;
-			}
-			return;
-		}
-
 		if (mouseMoved) {
 			lastMouseMovementTime = now;
 		}
@@ -84,8 +64,6 @@ public final class DropControlClient implements ClientModInitializer {
 		}
 
 		if (now - lastMouseMovementTime >= MOUSE_IDLE_PAUSE_DELAY_MS) {
-			pausedByMouseIdle = true;
-			awaitingPausedMouseBaseline = true;
 			minecraft.pauseGame(false);
 			lastMouseMovementTime = now;
 		}

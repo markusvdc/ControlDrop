@@ -35,7 +35,7 @@
   "dropcontrol.options.chestplate_elytra_swap": "QUICK ELYTRA",
   "dropcontrol.options.chestplate_elytra_swap.description": "Switches between the equipped chestplate and an elytra from the inventory when Grave Accent, the key before 1, is pressed. If an elytra is equipped, it switches to a chestplate. When several items of the required type are available, it uses the one with the least remaining durability.",
   "dropcontrol.options.pause_when_mouse_idle": "AWAY MODE",
-  "dropcontrol.options.pause_when_mouse_idle.description": "Opens the pause menu and stops the world after 15 seconds without mouse movement; moving the mouse closes the menu and resumes the game automatically. Works only in singleplayer worlds that are not open to LAN and only while the Minecraft window is focused.",
+  "dropcontrol.options.pause_when_mouse_idle.description": "Opens the pause menu and stops the world after 15 seconds without mouse movement. Works only in singleplayer worlds that are not open to LAN and only while the Minecraft window is focused.",
   "dropcontrol.options.status.applied": "Interface options saved.",
   "dropcontrol.status.applied": "Interface selection saved.",
   "dropcontrol.status.save_failed": "Could not save the configuration.",
