@@ -1,7 +1,7 @@
 ## Opções principais
 | Opção | Descrição |
 | --- | --- |
-| BRUXA (POÇÕES) | Adiciona exatamente 1 recompensa a cada bruxa: Frasco Sombrio com Mau Presságio de I a V, Poção de Visão Noturna de 8 minutos, Poção de Resistência ao Fogo de 8 minutos ou Poção de Respiração Aquática de 8 minutos. Cada recompensa tem 25% de chance. A recompensa é preservada por BRUXA (TUDO). |
+| BRUXA (POÇÕES) | Adiciona exatamente 2 poções a cada bruxa. Cada poção é sorteada de forma independente, com 1/9 de chance para cada opção: Resistência ao Fogo, Agilidade, Salto, Força, Visão Noturna ou Respiração Aquática por 8 minutos; Queda Lenta por 4 minutos; Veneno ou Regeneração por 22 segundos. Os dois sorteios podem coincidir. As poções são preservadas por BRUXA (TUDO). |
 | CREEPER (TNT) | Adiciona exatamente 1 TNT a 10% dos drops de creepers. |
 | BRUXA (TUDO) | Remove todos os drops de itens das bruxas, preservando a recompensa adicionada por BRUXA (POÇÕES). |
 | ESQUELETO (ARCO) | Remove arcos dos drops de esqueletos, incluindo unidades encantadas, danificadas ou renomeadas. Equipamentos marcados pelo jogo para preservação continuam sendo soltos. |
