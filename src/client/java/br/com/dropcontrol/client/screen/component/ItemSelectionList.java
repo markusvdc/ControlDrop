@@ -49,9 +49,9 @@ public final class ItemSelectionList extends AbstractWidget {
 			),
 			new ItemEntry(
 				minecraft,
-				"dropcontrol:pillager_emeralds",
+				"dropcontrol:pillager_wealth",
 				Items.EMERALD,
-				"dropcontrol.marker.pillager_emeralds"
+				"dropcontrol.marker.pillager_wealth"
 			),
 			new ItemEntry(
 				minecraft,

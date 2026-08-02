@@ -4,7 +4,7 @@
 | BRUXA (POÇÕES) | Adiciona exatamente 2 poções a cada bruxa. Cada poção é sorteada de forma independente, com 1/9 de chance para cada opção: Resistência ao Fogo, Agilidade, Salto, Força, Visão Noturna ou Respiração Aquática por 8 minutos; Queda Lenta por 4 minutos; Veneno ou Regeneração por 22 segundos. Os dois sorteios podem coincidir. As poções são preservadas por BRUXA (TUDO). |
 | CREEPER (TNT) | Adiciona exatamente 1 TNT a 10% dos drops de creepers. |
 | ARANHA (TEIA) | Adiciona exatamente 1 teia a 15% dos drops de aranhas. |
-| SAQUEADOR (ESMERALDAS) | Adiciona exatamente 2 esmeraldas aos drops de saqueadores. |
+| SAQUEADOR (RIQUEZAS) | Adiciona exatamente 2 itens aos drops de saqueadores. Cada item é sorteado de forma independente: 50% de chance de Esmeralda, 40% de Lingote de Ouro e 10% de Diamante. Os dois sorteios podem coincidir. |
 | ESQUELETO (ESPECTRAL) | Adiciona exatamente 1 flecha espectral a 20% dos drops de esqueletos. |
 | BRUXA (TUDO) | Remove todos os drops de itens das bruxas, preservando a recompensa adicionada por BRUXA (POÇÕES). |
 | ESQUELETO (ARMADURAS) | Remove arcos e qualquer item com o componente `EQUIPPABLE` dos drops de esqueletos, incluindo unidades encantadas, danificadas ou renomeadas. Equipamentos marcados pelo jogo para preservação continuam sendo soltos. |

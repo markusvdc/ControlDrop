@@ -24,9 +24,10 @@ public final class DropControlConfig {
 	public static final String CHESTPLATE_ELYTRA_SWAP = "chestplate_elytra_swap";
 	public static final String PAUSE_WHEN_MOUSE_IDLE = "pause_when_mouse_idle";
 	public static final String EXACT_HORSE_HEALTH = "exact_horse_health";
-	private static final int CURRENT_CONFIG_VERSION = 6;
+	private static final int CURRENT_CONFIG_VERSION = 7;
 	private static final String SPIDER_COBWEB = "dropcontrol:spider_cobweb";
-	private static final String PILLAGER_EMERALDS = "dropcontrol:pillager_emeralds";
+	private static final String PILLAGER_WEALTH = "dropcontrol:pillager_wealth";
+	private static final String LEGACY_PILLAGER_EMERALDS = "dropcontrol:pillager_emeralds";
 	private static final String SKELETON_SPECTRAL_ARROW = "dropcontrol:skeleton_spectral_arrow";
 	private static final String PILLAGER_CROSSBOW = "dropcontrol:pillager_crossbow";
 	private static final String SKELETON_ARMOR = "dropcontrol:skeleton_armor";
@@ -39,7 +40,7 @@ public final class DropControlConfig {
 		"dropcontrol:witch_potions",
 		"dropcontrol:creeper_tnt",
 		SPIDER_COBWEB,
-		PILLAGER_EMERALDS,
+		PILLAGER_WEALTH,
 		SKELETON_SPECTRAL_ARROW
 	);
 	private static final Set<String> REMOVED_MARKERS = Set.of(
@@ -205,10 +206,13 @@ public final class DropControlConfig {
 		}
 		if (data.configVersion < 5) {
 			migrated.add(SPIDER_COBWEB);
-			migrated.add(PILLAGER_EMERALDS);
+			migrated.add(PILLAGER_WEALTH);
 		}
 		if (data.configVersion < 6) {
 			migrated.add(SKELETON_SPECTRAL_ARROW);
+		}
+		if (data.configVersion < 7 && data.selectedItems.contains(LEGACY_PILLAGER_EMERALDS)) {
+			migrated.add(PILLAGER_WEALTH);
 		}
 		return Set.copyOf(migrated);
 	}

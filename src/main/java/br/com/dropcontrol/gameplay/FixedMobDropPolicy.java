@@ -13,8 +13,8 @@ public final class FixedMobDropPolicy {
 	private static final float SPECTRAL_ARROW_CHANCE = 0.20F;
 	private static final Identifier SPIDER_COBWEB =
 		Identifier.fromNamespaceAndPath("dropcontrol", "spider_cobweb");
-	private static final Identifier PILLAGER_EMERALDS =
-		Identifier.fromNamespaceAndPath("dropcontrol", "pillager_emeralds");
+	private static final Identifier PILLAGER_WEALTH =
+		Identifier.fromNamespaceAndPath("dropcontrol", "pillager_wealth");
 	private static final Identifier SKELETON_SPECTRAL_ARROW =
 		Identifier.fromNamespaceAndPath("dropcontrol", "skeleton_spectral_arrow");
 
@@ -28,8 +28,16 @@ public final class FixedMobDropPolicy {
 			if (roll < COBWEB_CHANCE) {
 				spawn(level, entity, new ItemStack(Items.COBWEB));
 			}
-		} else if (entity.getType() == EntityTypes.PILLAGER && DropControlConfig.isSelected(PILLAGER_EMERALDS)) {
-			spawn(level, entity, new ItemStack(Items.EMERALD, 2));
+		} else if (entity.getType() == EntityTypes.PILLAGER && DropControlConfig.isSelected(PILLAGER_WEALTH)) {
+			for (int rollIndex = 0; rollIndex < 2; rollIndex++) {
+				float roll = entity.getRandom().nextFloat();
+				ItemStack stack = roll < 0.50F
+					? new ItemStack(Items.EMERALD)
+					: roll < 0.90F
+						? new ItemStack(Items.GOLD_INGOT)
+						: new ItemStack(Items.DIAMOND);
+				spawn(level, entity, stack);
+			}
 		} else if (entity.getType() == EntityTypes.SKELETON
 			&& DropControlConfig.isSelected(SKELETON_SPECTRAL_ARROW)) {
 			float roll = entity.getRandom().nextFloat();
