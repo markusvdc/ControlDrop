@@ -13,16 +13,12 @@ import net.minecraft.world.item.Items;
 
 public final class DropRemovalPolicy {
 	private static final ThreadLocal<Boolean> ALLOW_CONFIGURED_DROP = new ThreadLocal<>();
-	private static final Identifier SKELETON_BOW =
-		Identifier.fromNamespaceAndPath("dropcontrol", "skeleton_bow");
 	private static final Identifier SKELETON_ARMOR =
 		Identifier.fromNamespaceAndPath("dropcontrol", "skeleton_armor");
 	private static final Identifier PILLAGER_CROSSBOW =
 		Identifier.fromNamespaceAndPath("dropcontrol", "pillager_crossbow");
 	private static final Identifier ZOMBIE_ARMOR =
 		Identifier.fromNamespaceAndPath("dropcontrol", "zombie_armor");
-	private static final Identifier ZOMBIE_WEAPONS =
-		Identifier.fromNamespaceAndPath("dropcontrol", "zombie_weapons");
 	private static final Identifier WITCH_ALL =
 		Identifier.fromNamespaceAndPath("dropcontrol", "witch_all");
 
@@ -51,7 +47,7 @@ public final class DropRemovalPolicy {
 				return false;
 			}
 
-			if (DropControlConfig.isSelected(SKELETON_BOW) && stack.is(Items.BOW)) {
+			if (DropControlConfig.isSelected(SKELETON_ARMOR) && stack.is(Items.BOW)) {
 				DropDebugLog.removed(entity, "remove_bow", stack);
 				return true;
 			}
@@ -102,7 +98,7 @@ public final class DropRemovalPolicy {
 			}
 		}
 
-		boolean removeWeapon = DropControlConfig.isSelected(ZOMBIE_WEAPONS)
+		boolean removeWeapon = DropControlConfig.isSelected(ZOMBIE_ARMOR)
 			&& (stack.is(Items.IRON_SWORD)
 				|| stack.is(Items.IRON_SPEAR)
 				|| stack.is(Items.IRON_SHOVEL));

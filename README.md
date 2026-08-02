@@ -3,12 +3,13 @@
 | --- | --- |
 | BRUXA (POÇÕES) | Adiciona exatamente 2 poções a cada bruxa. Cada poção é sorteada de forma independente, com 1/9 de chance para cada opção: Resistência ao Fogo, Agilidade, Salto, Força, Visão Noturna ou Respiração Aquática por 8 minutos; Queda Lenta por 4 minutos; Veneno ou Regeneração por 22 segundos. Os dois sorteios podem coincidir. As poções são preservadas por BRUXA (TUDO). |
 | CREEPER (TNT) | Adiciona exatamente 1 TNT a 10% dos drops de creepers. |
+| ARANHA (TEIA) | Adiciona exatamente 1 teia a 15% dos drops de aranhas. |
+| SAQUEADOR (ESMERALDAS) | Adiciona exatamente 2 esmeraldas aos drops de saqueadores. |
+| ESQUELETO (ESPECTRAL) | Adiciona exatamente 1 flecha espectral a 20% dos drops de esqueletos. |
 | BRUXA (TUDO) | Remove todos os drops de itens das bruxas, preservando a recompensa adicionada por BRUXA (POÇÕES). |
-| ESQUELETO (ARCO) | Remove arcos dos drops de esqueletos, incluindo unidades encantadas, danificadas ou renomeadas. Equipamentos marcados pelo jogo para preservação continuam sendo soltos. |
-| ESQUELETO (ARMADURAS) | Remove dos drops de esqueletos qualquer item com o componente `EQUIPPABLE`, incluindo unidades encantadas, danificadas ou renomeadas. Equipamentos marcados pelo jogo para preservação continuam sendo soltos. |
+| ESQUELETO (ARMADURAS) | Remove arcos e qualquer item com o componente `EQUIPPABLE` dos drops de esqueletos, incluindo unidades encantadas, danificadas ou renomeadas. Equipamentos marcados pelo jogo para preservação continuam sendo soltos. |
 | SAQUEADOR (BESTA) | Remove bestas dos drops de saqueadores, incluindo unidades encantadas, danificadas, renomeadas ou carregadas. Equipamentos marcados pelo jogo para preservação continuam sendo soltos. |
-| ZUMBI (ARMADURAS) | Remove dos drops de zumbis qualquer item com o componente `EQUIPPABLE`, além de cenoura, batata, batata assada e lingote de ferro. Equipamentos marcados pelo jogo para preservação continuam sendo soltos. |
-| ZUMBI (ARMAS) | Remove espada de ferro, lança de ferro e pá de ferro dos drops de zumbis. Equipamentos marcados pelo jogo para preservação continuam sendo soltos. |
+| ZUMBI (ARMADURAS) | Remove dos drops de zumbis qualquer item com o componente `EQUIPPABLE`, espada de ferro, lança de ferro, pá de ferro, cenoura, batata, batata assada e lingote de ferro. Equipamentos marcados pelo jogo para preservação continuam sendo soltos. |
 
 ## Opções globais
 | Opção | Descrição |

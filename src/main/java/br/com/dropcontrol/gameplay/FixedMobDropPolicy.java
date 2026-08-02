@@ -1,0 +1,47 @@
+package br.com.dropcontrol.gameplay;
+
+import br.com.dropcontrol.config.DropControlConfig;
+import net.minecraft.resources.Identifier;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.EntityTypes;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+
+public final class FixedMobDropPolicy {
+	private static final float COBWEB_CHANCE = 0.15F;
+	private static final float SPECTRAL_ARROW_CHANCE = 0.20F;
+	private static final Identifier SPIDER_COBWEB =
+		Identifier.fromNamespaceAndPath("dropcontrol", "spider_cobweb");
+	private static final Identifier PILLAGER_EMERALDS =
+		Identifier.fromNamespaceAndPath("dropcontrol", "pillager_emeralds");
+	private static final Identifier SKELETON_SPECTRAL_ARROW =
+		Identifier.fromNamespaceAndPath("dropcontrol", "skeleton_spectral_arrow");
+
+	private FixedMobDropPolicy() {
+	}
+
+	public static void drop(ServerLevel level, LivingEntity entity) {
+		if (entity.getType() == EntityTypes.SPIDER && DropControlConfig.isSelected(SPIDER_COBWEB)) {
+			float roll = entity.getRandom().nextFloat();
+			DropDebugLog.chance(entity, "add_cobweb", roll, COBWEB_CHANCE);
+			if (roll < COBWEB_CHANCE) {
+				spawn(level, entity, new ItemStack(Items.COBWEB));
+			}
+		} else if (entity.getType() == EntityTypes.PILLAGER && DropControlConfig.isSelected(PILLAGER_EMERALDS)) {
+			spawn(level, entity, new ItemStack(Items.EMERALD, 2));
+		} else if (entity.getType() == EntityTypes.SKELETON
+			&& DropControlConfig.isSelected(SKELETON_SPECTRAL_ARROW)) {
+			float roll = entity.getRandom().nextFloat();
+			DropDebugLog.chance(entity, "add_spectral_arrow", roll, SPECTRAL_ARROW_CHANCE);
+			if (roll < SPECTRAL_ARROW_CHANCE) {
+				spawn(level, entity, new ItemStack(Items.SPECTRAL_ARROW));
+			}
+		}
+	}
+
+	private static void spawn(ServerLevel level, LivingEntity entity, ItemStack stack) {
+		DropDebugLog.added(entity, "add_fixed_drop", stack);
+		DropRemovalPolicy.spawnConfiguredDrop(level, entity, stack);
+	}
+}

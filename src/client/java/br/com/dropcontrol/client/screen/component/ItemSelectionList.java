@@ -41,6 +41,24 @@ public final class ItemSelectionList extends AbstractWidget {
 				Identifier.withDefaultNamespace("textures/block/tnt_side.png"),
 				"dropcontrol.marker.creeper_tnt"
 			),
+			new ItemEntry(
+				minecraft,
+				"dropcontrol:spider_cobweb",
+				Identifier.withDefaultNamespace("textures/block/cobweb.png"),
+				"dropcontrol.marker.spider_cobweb"
+			),
+			new ItemEntry(
+				minecraft,
+				"dropcontrol:pillager_emeralds",
+				Items.EMERALD,
+				"dropcontrol.marker.pillager_emeralds"
+			),
+			new ItemEntry(
+				minecraft,
+				"dropcontrol:skeleton_spectral_arrow",
+				Items.SPECTRAL_ARROW,
+				"dropcontrol.marker.skeleton_spectral_arrow"
+			),
 			ItemEntry.category(minecraft, "dropcontrol.category.remove_drop"),
 			new ItemEntry(
 				minecraft,
@@ -49,12 +67,6 @@ public final class ItemSelectionList extends AbstractWidget {
 				Identifier.withDefaultNamespace("textures/item/potion_overlay.png"),
 				0xFFF82423,
 				"dropcontrol.marker.witch_all"
-			),
-			new ItemEntry(
-				minecraft,
-				"dropcontrol:skeleton_bow",
-				Items.BOW,
-				"dropcontrol.marker.skeleton_bow"
 			),
 			new ItemEntry(
 				minecraft,
@@ -73,12 +85,6 @@ public final class ItemSelectionList extends AbstractWidget {
 				"dropcontrol:zombie_armor",
 				Items.IRON_CHESTPLATE,
 				"dropcontrol.marker.zombie_armor"
-			),
-			new ItemEntry(
-				minecraft,
-				"dropcontrol:zombie_weapons",
-				Items.IRON_SWORD,
-				"dropcontrol.marker.zombie_weapons"
 			)
 		);
 	}

@@ -2,6 +2,7 @@ package br.com.dropcontrol.mixin;
 
 import br.com.dropcontrol.config.DropControlConfig;
 import br.com.dropcontrol.gameplay.CreeperTntDropPolicy;
+import br.com.dropcontrol.gameplay.FixedMobDropPolicy;
 import br.com.dropcontrol.gameplay.WitchPotionDropPolicy;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.damagesource.DamageSource;
@@ -43,6 +44,7 @@ public abstract class LivingEntityMixin {
 	) {
 		LivingEntity entity = (LivingEntity)(Object)this;
 		CreeperTntDropPolicy.tryDrop(level, entity);
+		FixedMobDropPolicy.drop(level, entity);
 		WitchPotionDropPolicy.drop(level, entity);
 	}
 }

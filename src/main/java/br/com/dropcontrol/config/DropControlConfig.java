@@ -24,20 +24,28 @@ public final class DropControlConfig {
 	public static final String CHESTPLATE_ELYTRA_SWAP = "chestplate_elytra_swap";
 	public static final String PAUSE_WHEN_MOUSE_IDLE = "pause_when_mouse_idle";
 	public static final String EXACT_HORSE_HEALTH = "exact_horse_health";
-	private static final int CURRENT_CONFIG_VERSION = 3;
+	private static final int CURRENT_CONFIG_VERSION = 6;
+	private static final String SPIDER_COBWEB = "dropcontrol:spider_cobweb";
+	private static final String PILLAGER_EMERALDS = "dropcontrol:pillager_emeralds";
+	private static final String SKELETON_SPECTRAL_ARROW = "dropcontrol:skeleton_spectral_arrow";
 	private static final String PILLAGER_CROSSBOW = "dropcontrol:pillager_crossbow";
+	private static final String SKELETON_ARMOR = "dropcontrol:skeleton_armor";
+	private static final String LEGACY_SKELETON_BOW = "dropcontrol:skeleton_bow";
+	private static final String ZOMBIE_ARMOR = "dropcontrol:zombie_armor";
+	private static final String LEGACY_ZOMBIE_WEAPONS = "dropcontrol:zombie_weapons";
 	private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
 	private static final Path CONFIG_PATH = FabricLoader.getInstance().getConfigDir().resolve("dropcontrol.json");
 	private static final Set<String> ADDED_MARKERS = Set.of(
 		"dropcontrol:witch_potions",
-		"dropcontrol:creeper_tnt"
+		"dropcontrol:creeper_tnt",
+		SPIDER_COBWEB,
+		PILLAGER_EMERALDS,
+		SKELETON_SPECTRAL_ARROW
 	);
 	private static final Set<String> REMOVED_MARKERS = Set.of(
-		"dropcontrol:skeleton_bow",
-		"dropcontrol:skeleton_armor",
+		SKELETON_ARMOR,
 		PILLAGER_CROSSBOW,
-		"dropcontrol:zombie_armor",
-		"dropcontrol:zombie_weapons",
+		ZOMBIE_ARMOR,
 		"dropcontrol:witch_all"
 	);
 	private static final Set<String> AVAILABLE_MARKERS = availableMarkers();
@@ -186,6 +194,21 @@ public final class DropControlConfig {
 		LinkedHashSet<String> migrated = new LinkedHashSet<>(sanitize(data.selectedItems));
 		if (data.configVersion < 3) {
 			migrated.add(PILLAGER_CROSSBOW);
+		}
+		if (data.configVersion < 4) {
+			if (data.selectedItems.contains(SKELETON_ARMOR) || data.selectedItems.contains(LEGACY_SKELETON_BOW)) {
+				migrated.add(SKELETON_ARMOR);
+			}
+			if (data.selectedItems.contains(ZOMBIE_ARMOR) || data.selectedItems.contains(LEGACY_ZOMBIE_WEAPONS)) {
+				migrated.add(ZOMBIE_ARMOR);
+			}
+		}
+		if (data.configVersion < 5) {
+			migrated.add(SPIDER_COBWEB);
+			migrated.add(PILLAGER_EMERALDS);
+		}
+		if (data.configVersion < 6) {
+			migrated.add(SKELETON_SPECTRAL_ARROW);
 		}
 		return Set.copyOf(migrated);
 	}
