@@ -1,6 +1,7 @@
 package br.com.dropcontrol.client.screen;
 
 import br.com.dropcontrol.client.screen.component.ActionButtons;
+import br.com.dropcontrol.client.PhantomPurge;
 import br.com.dropcontrol.client.screen.component.DropBasePanel;
 import br.com.dropcontrol.client.screen.component.GlobalOptionList;
 import br.com.dropcontrol.config.DropControlConfig;
@@ -73,10 +74,16 @@ public final class DropControlOptionsScreen extends Screen {
 					Component.translatable("dropcontrol.options.exact_horse_health.description")
 				),
 				new GlobalOptionList.Option(
-					DropControlConfig.PHANTOM_PRESSURE,
-					Component.translatable("dropcontrol.options.phantom_pressure"),
-					Component.translatable("dropcontrol.options.phantom_pressure.lore"),
-					Component.translatable("dropcontrol.options.phantom_pressure.description")
+					DropControlConfig.PHANTOM_PRESSURE_ONE,
+					Component.translatable("dropcontrol.options.phantom_pressure_one"),
+					Component.translatable("dropcontrol.options.phantom_pressure_one.lore"),
+					Component.translatable("dropcontrol.options.phantom_pressure_one.description")
+				),
+				new GlobalOptionList.Option(
+					DropControlConfig.PHANTOM_PRESSURE_TWO,
+					Component.translatable("dropcontrol.options.phantom_pressure_two"),
+					Component.translatable("dropcontrol.options.phantom_pressure_two.lore"),
+					Component.translatable("dropcontrol.options.phantom_pressure_two.description")
 				)
 			)
 		);
@@ -102,7 +109,14 @@ public final class DropControlOptionsScreen extends Screen {
 	}
 
 	private void applyOptions() {
-		boolean saved = DropControlConfig.saveOptions(this.optionList.enabledIds());
+		boolean phantomPressureTwoWasEnabled = DropControlConfig.phantomPressureTwo();
+		java.util.Set<String> enabledIds = this.optionList.enabledIds();
+		boolean removesPhantomPressureTwo = phantomPressureTwoWasEnabled
+			&& !enabledIds.contains(DropControlConfig.PHANTOM_PRESSURE_TWO);
+		boolean saved = DropControlConfig.saveOptions(enabledIds);
+		if (saved && removesPhantomPressureTwo) {
+			PhantomPurge.killAllLoaded(this.minecraft);
+		}
 		this.status = Component.translatable(saved ? "dropcontrol.options.status.applied" : "dropcontrol.status.save_failed");
 		this.statusColor = saved ? 0xFF9CD67A : 0xFFFF6B6B;
 	}

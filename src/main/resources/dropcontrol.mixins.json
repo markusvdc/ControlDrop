@@ -7,7 +7,9 @@
     "EndermanTakeBlockGoalMixin",
     "EntityMixin",
     "LivingEntityMixin",
+    "MobMixin",
     "PatrolSpawnerMixin",
+    "PhantomMixin",
     "PhantomMoveControlMixin",
     "PhantomSpawnerMixin",
     "RabbitMixin"

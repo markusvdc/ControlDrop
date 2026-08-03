@@ -23,6 +23,6 @@ public abstract class PhantomMoveControlMixin {
 	}
 
 	private static float increaseByTwentyPercent(float speed) {
-		return DropControlConfig.phantomPressure() ? speed * 1.2F : speed;
+		return DropControlConfig.phantomPressureOne() ? speed * 1.2F : speed;
 	}
 }

@@ -48,11 +48,6 @@ public final class ItemSelectionList extends AbstractWidget {
 				0xFFC2FF66,
 				"dropcontrol.marker.witch_potions"
 			),
-			ItemEntry.removal(
-				minecraft,
-				"dropcontrol:witch_all",
-				"dropcontrol.marker.witch_all"
-			),
 			ItemEntry.category(minecraft, "dropcontrol.category.creeper"),
 			new ItemEntry(
 				minecraft,
@@ -61,11 +56,6 @@ public final class ItemSelectionList extends AbstractWidget {
 				"dropcontrol.marker.creeper_tnt"
 			),
 			ItemEntry.category(minecraft, "dropcontrol.category.skeleton"),
-			ItemEntry.removal(
-				minecraft,
-				"dropcontrol:skeleton_armor",
-				"dropcontrol.marker.skeleton_armor"
-			),
 			new ItemEntry(
 				minecraft,
 				"dropcontrol:skeleton_spectral_arrow",
@@ -86,22 +76,37 @@ public final class ItemSelectionList extends AbstractWidget {
 				Items.EMERALD,
 				"dropcontrol.marker.pillager_wealth"
 			),
-			ItemEntry.removal(
-				minecraft,
-				"dropcontrol:pillager_crossbow",
-				"dropcontrol.marker.pillager_crossbow"
-			),
 			ItemEntry.category(minecraft, "dropcontrol.category.zombie"),
-			ItemEntry.removal(
-				minecraft,
-				"dropcontrol:zombie_armor",
-				"dropcontrol.marker.zombie_armor"
-			),
 			new ItemEntry(
 				minecraft,
 				"dropcontrol:zombie_sulfur",
 				Identifier.withDefaultNamespace("textures/block/sulfur.png"),
 				"dropcontrol.marker.zombie_sulfur"
+			),
+			ItemEntry.category(minecraft, "dropcontrol.category.remove"),
+			ItemEntry.removal(
+				minecraft,
+				"dropcontrol:witch_all",
+				Items.REDSTONE,
+				"dropcontrol.marker.witch_all"
+			),
+			ItemEntry.removal(
+				minecraft,
+				"dropcontrol:skeleton_armor",
+				Items.BOW,
+				"dropcontrol.marker.skeleton_armor"
+			),
+			ItemEntry.removal(
+				minecraft,
+				"dropcontrol:pillager_crossbow",
+				Items.CROSSBOW,
+				"dropcontrol.marker.pillager_crossbow"
+			),
+			ItemEntry.removal(
+				minecraft,
+				"dropcontrol:zombie_armor",
+				Items.POTATO,
+				"dropcontrol.marker.zombie_armor"
 			)
 		));
 	}

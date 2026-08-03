@@ -2,6 +2,7 @@ package br.com.dropcontrol.mixin;
 
 import br.com.dropcontrol.config.DropControlConfig;
 import br.com.dropcontrol.gameplay.PhantomDebugLog;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.levelgen.PhantomSpawner;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -13,16 +14,24 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 public abstract class PhantomSpawnerMixin {
 	@ModifyConstant(method = "tick", constant = @Constant(intValue = 72000))
 	private int dropcontrol$shortenPhantomRestThreshold(int originalThreshold) {
-		return DropControlConfig.phantomPressure() ? 48000 : originalThreshold;
+		return DropControlConfig.phantomPressureOne() ? 48000 : originalThreshold;
 	}
 
 	@ModifyVariable(method = "tick", at = @At("STORE"), name = "groupSize")
-	private int dropcontrol$doublePhantomGroupSize(int originalGroupSize) {
-		if (!DropControlConfig.phantomPressure()) {
+	private int dropcontrol$doublePhantomGroupSize(
+		int originalGroupSize,
+		ServerLevel level,
+		boolean spawnEnemies
+	) {
+		if (!DropControlConfig.phantomPressureOne()) {
 			return originalGroupSize;
 		}
 		int modifiedGroupSize = originalGroupSize * 2;
-		PhantomDebugLog.spawnGroup(originalGroupSize, modifiedGroupSize);
+		PhantomDebugLog.spawnGroup(
+			originalGroupSize,
+			modifiedGroupSize,
+			DropControlConfig.phantomPressureTwo()
+		);
 		return modifiedGroupSize;
 	}
 }

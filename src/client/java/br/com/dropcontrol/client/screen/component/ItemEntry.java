@@ -143,11 +143,11 @@ public final class ItemEntry {
 		return new ItemEntry(minecraft, Items.AIR, Component.translatable(translationKey), true);
 	}
 
-	public static ItemEntry removal(Minecraft minecraft, String markerId, String translationKey) {
+	public static ItemEntry removal(Minecraft minecraft, String markerId, Item icon, String translationKey) {
 		return new ItemEntry(
 			minecraft,
 			Identifier.parse(markerId),
-			itemTexture(Items.PAPER),
+			itemTexture(icon),
 			null,
 			0xFFFFFFFF,
 			Component.translatable(translationKey),
@@ -201,6 +201,7 @@ public final class ItemEntry {
 				16,
 				this.tintColor
 			);
+			graphics.blit(RenderPipelines.GUI_TEXTURED, this.texture, x + 29, y + 7, 0, 0, 16, 16, 16, 16);
 		}
 		graphics.blit(RenderPipelines.GUI_TEXTURED, this.texture, x + 29, y + 7, 0, 0, 16, 16, 16, 16);
 		graphics.text(this.minecraft.font, this.name, x + 52, y + 11, 0xFFFFFFFF, true);
