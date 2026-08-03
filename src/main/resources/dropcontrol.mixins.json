@@ -8,6 +8,8 @@
     "EntityMixin",
     "LivingEntityMixin",
     "PatrolSpawnerMixin",
+    "PhantomMoveControlMixin",
+    "PhantomSpawnerMixin",
     "RabbitMixin"
   ],
   "injectors": {

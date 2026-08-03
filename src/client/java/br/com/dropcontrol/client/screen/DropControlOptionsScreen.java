@@ -71,6 +71,12 @@ public final class DropControlOptionsScreen extends Screen {
 					DropControlConfig.EXACT_HORSE_HEALTH,
 					Component.translatable("dropcontrol.options.exact_horse_health"),
 					Component.translatable("dropcontrol.options.exact_horse_health.description")
+				),
+				new GlobalOptionList.Option(
+					DropControlConfig.PHANTOM_PRESSURE,
+					Component.translatable("dropcontrol.options.phantom_pressure"),
+					Component.translatable("dropcontrol.options.phantom_pressure.lore"),
+					Component.translatable("dropcontrol.options.phantom_pressure.description")
 				)
 			)
 		);

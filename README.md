@@ -7,6 +7,7 @@
 | SAQUEADOR (RIQUEZA) | Adiciona exatamente 2 itens aos drops de saqueadores. Cada item é sorteado de forma independente: 50% de chance de Esmeralda, 40% de Lingote de Ouro e 10% de Diamante. Os dois sorteios podem coincidir. |
 | ESQUELETO (ESPECTRAL) | Adiciona exatamente 1 flecha espectral a 20% dos drops de esqueletos. |
 | ESQUELETO (ENCANTAMENTO) | Esse esqueleto era um arqueiro e o conhecimento dele sobre arcos pode sobreviver à morte.<br><br>Adiciona 1 livro encantado para cada encantamento natural presente no arco do esqueleto, com 25% de chance independente por livro. Cada livro contém o nível máximo do encantamento: Inquebrável III, Força V, Impacto II, Infinidade I ou Chama I. |
+| ZUMBI (ENXOFRE) | Adiciona exatamente 1 enxofre a 30% dos drops de zumbis. |
 | BRUXA (TUDO) | Remove todos os drops de itens das bruxas, preservando a recompensa adicionada por BRUXA (POÇÃO). |
 | ESQUELETO (ARMADURA) | Remove arcos e qualquer item com o componente `EQUIPPABLE` dos drops de esqueletos, incluindo unidades encantadas, danificadas ou renomeadas. Equipamentos marcados pelo jogo para preservação continuam sendo soltos. |
 | SAQUEADOR (BESTA) | Remove bestas dos drops de saqueadores, incluindo unidades encantadas, danificadas, renomeadas ou carregadas. Equipamentos marcados pelo jogo para preservação continuam sendo soltos. |
@@ -22,6 +23,7 @@
 | ELYTRA RÁPIDA | Alterna entre o peitoral equipado e uma elytra do inventário ao pressionar Grave Accent, a tecla antes do 1. Se uma elytra estiver equipada, troca por um peitoral. Entre vários itens do tipo necessário, usa o que tiver menos durabilidade restante. |
 | MODO AUSENTE | Abre o menu de pausa e interrompe o mundo após 15 segundos sem movimento do mouse. Funciona somente em mundos singleplayer que não estejam abertos para LAN e apenas enquanto a janela do Minecraft estiver em foco. |
 | VIDA CAVALAR | Acrescenta ao tooltip do Jade, abaixo da velocidade, a vida atual e a vida máxima do cavalo em pontos de vida, arredondadas para duas casas decimais. A opção pode ser configurada sem o Jade, mas a informação só aparece quando ele estiver instalado. |
+| PRESSÃO ESPECTRAL | Cada noite sem descanso fortalece os espectros e agora eles sabem que você está acordado.<br><br>Reduz de 3 para 2 dias no jogo o tempo desde o último descanso necessário para os espectros começarem a surgir. Dobra a quantidade de cada grupo gerado, aumenta em 20% a velocidade de movimento dos espectros e triplica o dano de suas mordidas, preservando as demais condições vanilla de surgimento. |
 
 ## Padrões e configurações existentes
 

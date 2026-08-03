@@ -70,6 +70,12 @@ public final class ItemSelectionList extends AbstractWidget {
 				"dropcontrol.marker.skeleton_enchantment",
 				"dropcontrol.marker.skeleton_enchantment.lore"
 			),
+			new ItemEntry(
+				minecraft,
+				"dropcontrol:zombie_sulfur",
+				Items.SULFUR,
+				"dropcontrol.marker.zombie_sulfur"
+			),
 			ItemEntry.category(minecraft, "dropcontrol.category.remove_drop"),
 			new ItemEntry(
 				minecraft,

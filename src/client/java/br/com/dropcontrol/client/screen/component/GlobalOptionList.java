@@ -21,6 +21,7 @@ public final class GlobalOptionList extends AbstractWidget {
 	private final List<Entry> entries;
 	private boolean draggingScrollbar;
 	private double scrollAmount;
+	private Component hoveredLore;
 	private Component hoveredDescription;
 
 	public GlobalOptionList(Minecraft minecraft, int width, int height, int y, List<Option> options) {
@@ -37,6 +38,7 @@ public final class GlobalOptionList extends AbstractWidget {
 		int y = getY();
 		int contentWidth = this.width - SCROLLBAR_WIDTH - SCROLLBAR_GAP;
 		boolean needsScrollbar = getMaxScroll() > 0;
+		this.hoveredLore = null;
 		this.hoveredDescription = null;
 
 		graphics.enableScissor(x, y, x + this.width, y + this.height);
@@ -50,6 +52,7 @@ public final class GlobalOptionList extends AbstractWidget {
 			boolean hovered = mouseX >= x && mouseX < x + contentWidth
 				&& mouseY >= rowY && mouseY < rowY + ROW_HEIGHT;
 			if (hovered) {
+				this.hoveredLore = entry.option.lore();
 				this.hoveredDescription = entry.option.description();
 			}
 			renderEntry(graphics, entry, x, rowY, contentWidth, hovered);
@@ -65,7 +68,7 @@ public final class GlobalOptionList extends AbstractWidget {
 			return;
 		}
 
-		DescriptionTooltip.render(this.minecraft, graphics, this.hoveredDescription, mouseX, mouseY);
+		DescriptionTooltip.render(this.minecraft, graphics, this.hoveredLore, this.hoveredDescription, mouseX, mouseY);
 	}
 
 	@Override
@@ -197,7 +200,10 @@ public final class GlobalOptionList extends AbstractWidget {
 		defaultButtonNarrationText(output);
 	}
 
-	public record Option(String id, Component label, Component description) {
+	public record Option(String id, Component label, Component lore, Component description) {
+		public Option(String id, Component label, Component description) {
+			this(id, label, Component.empty(), description);
+		}
 	}
 
 	private static final class Entry {

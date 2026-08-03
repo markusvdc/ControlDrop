@@ -3,11 +3,13 @@ package br.com.dropcontrol.mixin;
 import br.com.dropcontrol.config.DropControlConfig;
 import br.com.dropcontrol.gameplay.CreeperTntDropPolicy;
 import br.com.dropcontrol.gameplay.FixedMobDropPolicy;
+import br.com.dropcontrol.gameplay.PhantomDebugLog;
 import br.com.dropcontrol.gameplay.SkeletonEnchantmentDropPolicy;
 import br.com.dropcontrol.gameplay.WitchPotionDropPolicy;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.monster.Phantom;
 import net.minecraft.world.entity.raid.Raider;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -28,9 +30,15 @@ public abstract class LivingEntityMixin {
 		ServerLevel level,
 		DamageSource source
 	) {
-		return DropControlConfig.constantThreat() && source.getEntity() instanceof Raider
-			? amount * 2.0F
-			: amount;
+		if (DropControlConfig.constantThreat() && source.getEntity() instanceof Raider) {
+			return amount * 2.0F;
+		}
+		if (DropControlConfig.phantomPressure() && source.getEntity() instanceof Phantom) {
+			float modifiedAmount = amount * 3.0F;
+			PhantomDebugLog.bite((Phantom)source.getEntity(), (LivingEntity)(Object)this, amount, modifiedAmount);
+			return modifiedAmount;
+		}
+		return amount;
 	}
 
 	@Inject(

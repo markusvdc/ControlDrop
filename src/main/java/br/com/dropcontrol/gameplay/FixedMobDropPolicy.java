@@ -11,12 +11,15 @@ import net.minecraft.world.item.Items;
 public final class FixedMobDropPolicy {
 	private static final float COBWEB_CHANCE = 0.15F;
 	private static final float SPECTRAL_ARROW_CHANCE = 0.20F;
+	private static final float ZOMBIE_SULFUR_CHANCE = 0.30F;
 	private static final Identifier SPIDER_COBWEB =
 		Identifier.fromNamespaceAndPath("dropcontrol", "spider_cobweb");
 	private static final Identifier PILLAGER_WEALTH =
 		Identifier.fromNamespaceAndPath("dropcontrol", "pillager_wealth");
 	private static final Identifier SKELETON_SPECTRAL_ARROW =
 		Identifier.fromNamespaceAndPath("dropcontrol", "skeleton_spectral_arrow");
+	private static final Identifier ZOMBIE_SULFUR =
+		Identifier.fromNamespaceAndPath("dropcontrol", "zombie_sulfur");
 
 	private FixedMobDropPolicy() {
 	}
@@ -44,6 +47,12 @@ public final class FixedMobDropPolicy {
 			DropDebugLog.chance(entity, "add_spectral_arrow", roll, SPECTRAL_ARROW_CHANCE);
 			if (roll < SPECTRAL_ARROW_CHANCE) {
 				spawn(level, entity, new ItemStack(Items.SPECTRAL_ARROW));
+			}
+		} else if (entity.getType() == EntityTypes.ZOMBIE && DropControlConfig.isSelected(ZOMBIE_SULFUR)) {
+			float roll = entity.getRandom().nextFloat();
+			DropDebugLog.chance(entity, "add_sulfur", roll, ZOMBIE_SULFUR_CHANCE);
+			if (roll < ZOMBIE_SULFUR_CHANCE) {
+				spawn(level, entity, new ItemStack(Items.SULFUR));
 			}
 		}
 	}

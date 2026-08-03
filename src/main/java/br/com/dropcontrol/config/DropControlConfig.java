@@ -24,11 +24,13 @@ public final class DropControlConfig {
 	public static final String CHESTPLATE_ELYTRA_SWAP = "chestplate_elytra_swap";
 	public static final String PAUSE_WHEN_MOUSE_IDLE = "pause_when_mouse_idle";
 	public static final String EXACT_HORSE_HEALTH = "exact_horse_health";
-	private static final int CURRENT_CONFIG_VERSION = 8;
+	public static final String PHANTOM_PRESSURE = "phantom_pressure";
+	private static final int CURRENT_CONFIG_VERSION = 10;
 	private static final String SPIDER_COBWEB = "dropcontrol:spider_cobweb";
 	private static final String PILLAGER_WEALTH = "dropcontrol:pillager_wealth";
 	private static final String LEGACY_PILLAGER_EMERALDS = "dropcontrol:pillager_emeralds";
 	private static final String SKELETON_SPECTRAL_ARROW = "dropcontrol:skeleton_spectral_arrow";
+	private static final String ZOMBIE_SULFUR = "dropcontrol:zombie_sulfur";
 	private static final String SKELETON_ENCHANTMENT = "dropcontrol:skeleton_enchantment";
 	private static final String PILLAGER_CROSSBOW = "dropcontrol:pillager_crossbow";
 	private static final String SKELETON_ARMOR = "dropcontrol:skeleton_armor";
@@ -43,7 +45,8 @@ public final class DropControlConfig {
 		SPIDER_COBWEB,
 		PILLAGER_WEALTH,
 		SKELETON_SPECTRAL_ARROW,
-		SKELETON_ENCHANTMENT
+		SKELETON_ENCHANTMENT,
+		ZOMBIE_SULFUR
 	);
 	private static final Set<String> REMOVED_MARKERS = Set.of(
 		SKELETON_ARMOR,
@@ -59,7 +62,8 @@ public final class DropControlConfig {
 		ENDERMEN_DONT_PICK_UP_BLOCKS,
 		CHESTPLATE_ELYTRA_SWAP,
 		PAUSE_WHEN_MOUSE_IDLE,
-		EXACT_HORSE_HEALTH
+		EXACT_HORSE_HEALTH,
+		PHANTOM_PRESSURE
 	);
 
 	private static volatile Set<String> selectedItems = AVAILABLE_MARKERS;
@@ -117,6 +121,7 @@ public final class DropControlConfig {
 	public static boolean chestplateElytraSwap() { return isOptionEnabled(CHESTPLATE_ELYTRA_SWAP); }
 	public static boolean pauseWhenMouseIdle() { return isOptionEnabled(PAUSE_WHEN_MOUSE_IDLE); }
 	public static boolean exactHorseHealth() { return isOptionEnabled(EXACT_HORSE_HEALTH); }
+	public static boolean phantomPressure() { return isOptionEnabled(PHANTOM_PRESSURE); }
 
 	public static boolean isSelected(Identifier markerId) {
 		return selectedItems.contains(markerId.toString());
@@ -218,6 +223,9 @@ public final class DropControlConfig {
 		}
 		if (data.configVersion < 8) {
 			migrated.add(SKELETON_ENCHANTMENT);
+		}
+		if (data.configVersion < 10) {
+			migrated.add(ZOMBIE_SULFUR);
 		}
 		return Set.copyOf(migrated);
 	}
