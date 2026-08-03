@@ -16,6 +16,7 @@ public final class ItemEntry {
 	private final Identifier itemId;
 	private final Identifier texture;
 	private final Identifier tintedTexture;
+	private final int sourceImageSize;
 	private final int tintColor;
 	private final Component name;
 	private final Component lore;
@@ -122,10 +123,27 @@ public final class ItemEntry {
 		boolean category,
 		boolean removesDrop
 	) {
+		this(minecraft, itemId, texture, tintedTexture, tintColor, name, lore, description, category, removesDrop, 16);
+	}
+
+	private ItemEntry(
+		Minecraft minecraft,
+		Identifier itemId,
+		Identifier texture,
+		Identifier tintedTexture,
+		int tintColor,
+		Component name,
+		Component lore,
+		Component description,
+		boolean category,
+		boolean removesDrop,
+		int sourceImageSize
+	) {
 		this.minecraft = minecraft;
 		this.itemId = itemId;
 		this.texture = texture;
 		this.tintedTexture = tintedTexture;
+		this.sourceImageSize = sourceImageSize;
 		this.tintColor = tintColor;
 		this.name = name;
 		this.lore = lore;
@@ -143,11 +161,37 @@ public final class ItemEntry {
 		return new ItemEntry(minecraft, Items.AIR, Component.translatable(translationKey), true);
 	}
 
-	public static ItemEntry removal(Minecraft minecraft, String markerId, Item icon, String translationKey) {
+	public static ItemEntry preRenderedPngIcon(
+		Minecraft minecraft,
+		String markerId,
+		Identifier pngTexture,
+		int sourceImageSize,
+		String translationKey
+	) {
 		return new ItemEntry(
 			minecraft,
 			Identifier.parse(markerId),
-			itemTexture(icon),
+			pngTexture,
+			null,
+			0xFFFFFFFF,
+			Component.translatable(translationKey),
+			Component.empty(),
+			Component.translatable(translationKey + ".description"),
+			false,
+			false,
+			sourceImageSize
+		);
+	}
+
+	public static ItemEntry removal(Minecraft minecraft, String markerId, Item icon, String translationKey) {
+		return removal(minecraft, markerId, itemTexture(icon), translationKey);
+	}
+
+	public static ItemEntry removal(Minecraft minecraft, String markerId, Identifier texture, String translationKey) {
+		return new ItemEntry(
+			minecraft,
+			Identifier.parse(markerId),
+			texture,
 			null,
 			0xFFFFFFFF,
 			Component.translatable(translationKey),
@@ -202,8 +246,22 @@ public final class ItemEntry {
 				this.tintColor
 			);
 			graphics.blit(RenderPipelines.GUI_TEXTURED, this.texture, x + 29, y + 7, 0, 0, 16, 16, 16, 16);
+		} else {
+			graphics.blit(
+				RenderPipelines.GUI_TEXTURED,
+				this.texture,
+				x + 29,
+				y + 7,
+				0,
+				0,
+				16,
+				16,
+				this.sourceImageSize,
+				this.sourceImageSize,
+				this.sourceImageSize,
+				this.sourceImageSize
+			);
 		}
-		graphics.blit(RenderPipelines.GUI_TEXTURED, this.texture, x + 29, y + 7, 0, 0, 16, 16, 16, 16);
 		graphics.text(this.minecraft.font, this.name, x + 52, y + 11, 0xFFFFFFFF, true);
 	}
 

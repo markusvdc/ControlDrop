@@ -49,10 +49,11 @@ public final class ItemSelectionList extends AbstractWidget {
 				"dropcontrol.marker.witch_potions"
 			),
 			ItemEntry.category(minecraft, "dropcontrol.category.creeper"),
-			new ItemEntry(
+			ItemEntry.preRenderedPngIcon(
 				minecraft,
 				"dropcontrol:creeper_tnt",
-				Identifier.withDefaultNamespace("textures/block/tnt_side.png"),
+				Identifier.fromNamespaceAndPath("dropcontrol", "textures/gui/tnt.png"),
+				300,
 				"dropcontrol.marker.creeper_tnt"
 			),
 			ItemEntry.category(minecraft, "dropcontrol.category.skeleton"),
@@ -77,10 +78,11 @@ public final class ItemSelectionList extends AbstractWidget {
 				"dropcontrol.marker.pillager_wealth"
 			),
 			ItemEntry.category(minecraft, "dropcontrol.category.zombie"),
-			new ItemEntry(
+			ItemEntry.preRenderedPngIcon(
 				minecraft,
 				"dropcontrol:zombie_sulfur",
-				Identifier.withDefaultNamespace("textures/block/sulfur.png"),
+				Identifier.fromNamespaceAndPath("dropcontrol", "textures/gui/sulfur.png"),
+				300,
 				"dropcontrol.marker.zombie_sulfur"
 			),
 			ItemEntry.category(minecraft, "dropcontrol.category.remove"),
@@ -99,7 +101,7 @@ public final class ItemSelectionList extends AbstractWidget {
 			ItemEntry.removal(
 				minecraft,
 				"dropcontrol:pillager_crossbow",
-				Items.CROSSBOW,
+				Identifier.withDefaultNamespace("textures/item/crossbow_standby.png"),
 				"dropcontrol.marker.pillager_crossbow"
 			),
 			ItemEntry.removal(
