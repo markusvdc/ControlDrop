@@ -18,6 +18,7 @@ public final class ItemEntry {
 	private final Identifier tintedTexture;
 	private final int tintColor;
 	private final Component name;
+	private final Component lore;
 	private final Component description;
 	private final boolean category;
 	private boolean selected;
@@ -34,6 +35,7 @@ public final class ItemEntry {
 			null,
 			0xFFFFFFFF,
 			Component.translatable(translationKey),
+			Component.empty(),
 			Component.translatable(translationKey + ".description"),
 			false
 		);
@@ -54,6 +56,7 @@ public final class ItemEntry {
 			tintedTexture,
 			tintColor,
 			Component.translatable(translationKey),
+			Component.empty(),
 			Component.translatable(translationKey + ".description"),
 			false
 		);
@@ -67,6 +70,21 @@ public final class ItemEntry {
 			null,
 			0xFFFFFFFF,
 			Component.translatable(translationKey),
+			Component.empty(),
+			Component.translatable(translationKey + ".description"),
+			false
+		);
+	}
+
+	public ItemEntry(Minecraft minecraft, String markerId, Item icon, String translationKey, String loreKey) {
+		this(
+			minecraft,
+			Identifier.parse(markerId),
+			itemTexture(icon),
+			null,
+			0xFFFFFFFF,
+			Component.translatable(translationKey),
+			Component.translatable(loreKey),
 			Component.translatable(translationKey + ".description"),
 			false
 		);
@@ -81,6 +99,7 @@ public final class ItemEntry {
 			0xFFFFFFFF,
 			name,
 			Component.empty(),
+			Component.empty(),
 			category
 		);
 	}
@@ -92,6 +111,7 @@ public final class ItemEntry {
 		Identifier tintedTexture,
 		int tintColor,
 		Component name,
+		Component lore,
 		Component description,
 		boolean category
 	) {
@@ -101,6 +121,7 @@ public final class ItemEntry {
 		this.tintedTexture = tintedTexture;
 		this.tintColor = tintColor;
 		this.name = name;
+		this.lore = lore;
 		this.description = description;
 		this.category = category;
 		this.selected = !category && DropControlConfig.isSelected(itemId);
@@ -199,5 +220,9 @@ public final class ItemEntry {
 
 	public Component description() {
 		return this.description;
+	}
+
+	public Component lore() {
+		return this.lore;
 	}
 }

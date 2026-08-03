@@ -22,6 +22,7 @@ public final class ItemSelectionList extends AbstractWidget {
 	private final int rowHeight;
 	private boolean draggingScrollbar;
 	private double scrollAmount;
+	private Component hoveredLore;
 	private Component hoveredDescription;
 
 	public ItemSelectionList(Minecraft minecraft, int width, int height, int y, int rowHeight) {
@@ -62,6 +63,13 @@ public final class ItemSelectionList extends AbstractWidget {
 				Items.SPECTRAL_ARROW,
 				"dropcontrol.marker.skeleton_spectral_arrow"
 			),
+			new ItemEntry(
+				minecraft,
+				"dropcontrol:skeleton_enchantment",
+				Items.ENCHANTED_BOOK,
+				"dropcontrol.marker.skeleton_enchantment",
+				"dropcontrol.marker.skeleton_enchantment.lore"
+			),
 			ItemEntry.category(minecraft, "dropcontrol.category.remove_drop"),
 			new ItemEntry(
 				minecraft,
@@ -97,6 +105,7 @@ public final class ItemSelectionList extends AbstractWidget {
 		int contentWidth = this.width - SCROLLBAR_WIDTH - SCROLLBAR_GAP;
 		boolean needsScrollbar = getMaxScroll() > 0;
 		this.hoveredDescription = null;
+		this.hoveredLore = null;
 
 		graphics.enableScissor(x, y, x + this.width, y + this.height);
 		graphics.fill(x, y, x + this.width, y + this.height, 0xB8101010);
@@ -113,6 +122,7 @@ public final class ItemSelectionList extends AbstractWidget {
 				&& mouseY >= rowY
 				&& mouseY < rowY + this.rowHeight;
 			if (hovered) {
+				this.hoveredLore = entry.lore();
 				this.hoveredDescription = entry.description();
 			}
 			entry.renderBackground(graphics, x, rowY, contentWidth, this.rowHeight, hovered);
@@ -139,7 +149,14 @@ public final class ItemSelectionList extends AbstractWidget {
 
 	public void renderTooltip(GuiGraphicsExtractor graphics, int mouseX, int mouseY) {
 		if (this.hoveredDescription != null) {
-			DescriptionTooltip.render(this.minecraft, graphics, this.hoveredDescription, mouseX, mouseY);
+			DescriptionTooltip.render(
+				this.minecraft,
+				graphics,
+				this.hoveredLore,
+				this.hoveredDescription,
+				mouseX,
+				mouseY
+			);
 		}
 	}
 

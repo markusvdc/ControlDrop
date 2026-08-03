@@ -15,13 +15,30 @@ final class DescriptionTooltip {
 	private static final int VANILLA_TOOLTIP_MAX_WIDTH = 170;
 	private static final int MAX_WIDTH = VANILLA_TOOLTIP_MAX_WIDTH * 5 / 2;
 	private static final int LINE_HEIGHT = 12;
+	private static final int YELLOW_LORE_COLOR = 0xFDDF93;
 	private static final ClientTooltipPositioner POSITIONER = new CursorFollowingPositioner();
 
 	private DescriptionTooltip() {
 	}
 
 	static void render(Minecraft minecraft, GuiGraphicsExtractor graphics, Component description, int mouseX, int mouseY) {
-		List<FormattedCharSequence> lines = minecraft.font.split(description, MAX_WIDTH);
+		render(minecraft, graphics, Component.empty(), description, mouseX, mouseY);
+	}
+
+	static void render(
+		Minecraft minecraft,
+		GuiGraphicsExtractor graphics,
+		Component lore,
+		Component description,
+		int mouseX,
+		int mouseY
+	) {
+		List<FormattedCharSequence> lines = new java.util.ArrayList<>();
+		if (!lore.getString().isEmpty()) {
+			lines.addAll(minecraft.font.split(lore.copy().withColor(YELLOW_LORE_COLOR), MAX_WIDTH));
+			lines.add(FormattedCharSequence.EMPTY);
+		}
+		lines.addAll(minecraft.font.split(description, MAX_WIDTH));
 		graphics.tooltip(
 			minecraft.font,
 			List.of(new Content(lines)),

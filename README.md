@@ -1,15 +1,16 @@
 ## Opções principais
 | Opção | Descrição |
 | --- | --- |
-| BRUXA (POÇÕES) | Adiciona exatamente 2 poções a cada bruxa. Cada poção é sorteada de forma independente, com 1/9 de chance para cada opção: Resistência ao Fogo, Agilidade, Salto, Força, Visão Noturna ou Respiração Aquática por 8 minutos; Queda Lenta por 4 minutos; Veneno ou Regeneração por 22 segundos. Os dois sorteios podem coincidir. As poções são preservadas por BRUXA (TUDO). |
+| BRUXA (POÇÃO) | Adiciona exatamente 2 poções a cada bruxa. Cada poção é sorteada de forma independente, com 1/9 de chance para cada opção: Resistência ao Fogo, Agilidade, Salto, Força, Visão Noturna ou Respiração Aquática por 8 minutos; Queda Lenta por 4 minutos; Veneno ou Regeneração por 22 segundos. Os dois sorteios podem coincidir. As poções são preservadas por BRUXA (TUDO). |
 | CREEPER (TNT) | Adiciona exatamente 1 TNT a 10% dos drops de creepers. |
 | ARANHA (TEIA) | Adiciona exatamente 1 teia a 15% dos drops de aranhas. |
-| SAQUEADOR (RIQUEZAS) | Adiciona exatamente 2 itens aos drops de saqueadores. Cada item é sorteado de forma independente: 50% de chance de Esmeralda, 40% de Lingote de Ouro e 10% de Diamante. Os dois sorteios podem coincidir. |
+| SAQUEADOR (RIQUEZA) | Adiciona exatamente 2 itens aos drops de saqueadores. Cada item é sorteado de forma independente: 50% de chance de Esmeralda, 40% de Lingote de Ouro e 10% de Diamante. Os dois sorteios podem coincidir. |
 | ESQUELETO (ESPECTRAL) | Adiciona exatamente 1 flecha espectral a 20% dos drops de esqueletos. |
-| BRUXA (TUDO) | Remove todos os drops de itens das bruxas, preservando a recompensa adicionada por BRUXA (POÇÕES). |
-| ESQUELETO (ARMADURAS) | Remove arcos e qualquer item com o componente `EQUIPPABLE` dos drops de esqueletos, incluindo unidades encantadas, danificadas ou renomeadas. Equipamentos marcados pelo jogo para preservação continuam sendo soltos. |
+| ESQUELETO (ENCANTAMENTO) | Esse esqueleto era um arqueiro e o conhecimento dele sobre arcos pode sobreviver à morte.<br><br>Adiciona 1 livro encantado para cada encantamento natural presente no arco do esqueleto, com 25% de chance independente por livro. Cada livro contém o nível máximo do encantamento: Inquebrável III, Força V, Impacto II, Infinidade I ou Chama I. |
+| BRUXA (TUDO) | Remove todos os drops de itens das bruxas, preservando a recompensa adicionada por BRUXA (POÇÃO). |
+| ESQUELETO (ARMADURA) | Remove arcos e qualquer item com o componente `EQUIPPABLE` dos drops de esqueletos, incluindo unidades encantadas, danificadas ou renomeadas. Equipamentos marcados pelo jogo para preservação continuam sendo soltos. |
 | SAQUEADOR (BESTA) | Remove bestas dos drops de saqueadores, incluindo unidades encantadas, danificadas, renomeadas ou carregadas. Equipamentos marcados pelo jogo para preservação continuam sendo soltos. |
-| ZUMBI (ARMADURAS) | Remove dos drops de zumbis qualquer item com o componente `EQUIPPABLE`, espada de ferro, lança de ferro, pá de ferro, cenoura, batata, batata assada e lingote de ferro. Equipamentos marcados pelo jogo para preservação continuam sendo soltos. |
+| ZUMBI (ARMADURA) | Remove dos drops de zumbis qualquer item com o componente `EQUIPPABLE`, espada de ferro, lança de ferro, pá de ferro, cenoura, batata, batata assada e lingote de ferro. Equipamentos marcados pelo jogo para preservação continuam sendo soltos. |
 
 ## Opções globais
 | Opção | Descrição |
