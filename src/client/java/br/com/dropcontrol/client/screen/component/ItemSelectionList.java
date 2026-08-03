@@ -1,5 +1,7 @@
 package br.com.dropcontrol.client.screen.component;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -29,8 +31,15 @@ public final class ItemSelectionList extends AbstractWidget {
 		super(0, y, width, height, Component.translatable("dropcontrol.list.title"));
 		this.minecraft = minecraft;
 		this.rowHeight = rowHeight;
-		this.entries = List.of(
-			ItemEntry.category(minecraft, "dropcontrol.category.add_drop"),
+		this.entries = sortWithinCategories(minecraft, List.of(
+			ItemEntry.category(minecraft, "dropcontrol.category.spider"),
+			new ItemEntry(
+				minecraft,
+				"dropcontrol:spider_cobweb",
+				Identifier.withDefaultNamespace("textures/block/cobweb.png"),
+				"dropcontrol.marker.spider_cobweb"
+			),
+			ItemEntry.category(minecraft, "dropcontrol.category.witch"),
 			new ItemEntry(
 				minecraft,
 				"dropcontrol:witch_potions",
@@ -39,23 +48,23 @@ public final class ItemSelectionList extends AbstractWidget {
 				0xFFC2FF66,
 				"dropcontrol.marker.witch_potions"
 			),
+			ItemEntry.removal(
+				minecraft,
+				"dropcontrol:witch_all",
+				"dropcontrol.marker.witch_all"
+			),
+			ItemEntry.category(minecraft, "dropcontrol.category.creeper"),
 			new ItemEntry(
 				minecraft,
 				"dropcontrol:creeper_tnt",
 				Identifier.withDefaultNamespace("textures/block/tnt_side.png"),
 				"dropcontrol.marker.creeper_tnt"
 			),
-			new ItemEntry(
+			ItemEntry.category(minecraft, "dropcontrol.category.skeleton"),
+			ItemEntry.removal(
 				minecraft,
-				"dropcontrol:spider_cobweb",
-				Identifier.withDefaultNamespace("textures/block/cobweb.png"),
-				"dropcontrol.marker.spider_cobweb"
-			),
-			new ItemEntry(
-				minecraft,
-				"dropcontrol:pillager_wealth",
-				Items.EMERALD,
-				"dropcontrol.marker.pillager_wealth"
+				"dropcontrol:skeleton_armor",
+				"dropcontrol.marker.skeleton_armor"
 			),
 			new ItemEntry(
 				minecraft,
@@ -70,38 +79,48 @@ public final class ItemSelectionList extends AbstractWidget {
 				"dropcontrol.marker.skeleton_enchantment",
 				"dropcontrol.marker.skeleton_enchantment.lore"
 			),
+			ItemEntry.category(minecraft, "dropcontrol.category.pillager"),
+			new ItemEntry(
+				minecraft,
+				"dropcontrol:pillager_wealth",
+				Items.EMERALD,
+				"dropcontrol.marker.pillager_wealth"
+			),
+			ItemEntry.removal(
+				minecraft,
+				"dropcontrol:pillager_crossbow",
+				"dropcontrol.marker.pillager_crossbow"
+			),
+			ItemEntry.category(minecraft, "dropcontrol.category.zombie"),
+			ItemEntry.removal(
+				minecraft,
+				"dropcontrol:zombie_armor",
+				"dropcontrol.marker.zombie_armor"
+			),
 			new ItemEntry(
 				minecraft,
 				"dropcontrol:zombie_sulfur",
-				Items.SULFUR,
+				Identifier.withDefaultNamespace("textures/block/sulfur.png"),
 				"dropcontrol.marker.zombie_sulfur"
-			),
-			ItemEntry.category(minecraft, "dropcontrol.category.remove_drop"),
-			new ItemEntry(
-				minecraft,
-				"dropcontrol:witch_all",
-				Items.WITCH_SPAWN_EGG,
-				"dropcontrol.marker.witch_all"
-			),
-			new ItemEntry(
-				minecraft,
-				"dropcontrol:skeleton_armor",
-				Items.SKELETON_SPAWN_EGG,
-				"dropcontrol.marker.skeleton_armor"
-			),
-			new ItemEntry(
-				minecraft,
-				"dropcontrol:pillager_crossbow",
-				Items.PILLAGER_SPAWN_EGG,
-				"dropcontrol.marker.pillager_crossbow"
-			),
-			new ItemEntry(
-				minecraft,
-				"dropcontrol:zombie_armor",
-				Items.ZOMBIE_SPAWN_EGG,
-				"dropcontrol.marker.zombie_armor"
 			)
-		);
+		));
+	}
+
+	private static List<ItemEntry> sortWithinCategories(Minecraft minecraft, List<ItemEntry> entries) {
+		List<ItemEntry> sorted = new ArrayList<>(entries);
+		Comparator<ItemEntry> comparator = Comparator.comparing(ItemEntry::removesDrop)
+			.reversed()
+			.thenComparing(ItemEntry::name, AlphabeticalOrder.components(minecraft));
+		int categoryStart = 0;
+		while (categoryStart < sorted.size()) {
+			int nextCategory = categoryStart + 1;
+			while (nextCategory < sorted.size() && !sorted.get(nextCategory).isCategory()) {
+				nextCategory++;
+			}
+			sorted.subList(categoryStart + 1, nextCategory).sort(comparator);
+			categoryStart = nextCategory;
+		}
+		return List.copyOf(sorted);
 	}
 
 	@Override

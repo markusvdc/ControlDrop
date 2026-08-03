@@ -21,6 +21,7 @@ public final class ItemEntry {
 	private final Component lore;
 	private final Component description;
 	private final boolean category;
+	private final boolean removesDrop;
 	private boolean selected;
 
 	public ItemEntry(Minecraft minecraft, Item item) {
@@ -37,6 +38,7 @@ public final class ItemEntry {
 			Component.translatable(translationKey),
 			Component.empty(),
 			Component.translatable(translationKey + ".description"),
+			false,
 			false
 		);
 	}
@@ -58,6 +60,7 @@ public final class ItemEntry {
 			Component.translatable(translationKey),
 			Component.empty(),
 			Component.translatable(translationKey + ".description"),
+			false,
 			false
 		);
 	}
@@ -72,6 +75,7 @@ public final class ItemEntry {
 			Component.translatable(translationKey),
 			Component.empty(),
 			Component.translatable(translationKey + ".description"),
+			false,
 			false
 		);
 	}
@@ -86,6 +90,7 @@ public final class ItemEntry {
 			Component.translatable(translationKey),
 			Component.translatable(loreKey),
 			Component.translatable(translationKey + ".description"),
+			false,
 			false
 		);
 	}
@@ -100,7 +105,8 @@ public final class ItemEntry {
 			name,
 			Component.empty(),
 			Component.empty(),
-			category
+			category,
+			false
 		);
 	}
 
@@ -113,7 +119,8 @@ public final class ItemEntry {
 		Component name,
 		Component lore,
 		Component description,
-		boolean category
+		boolean category,
+		boolean removesDrop
 	) {
 		this.minecraft = minecraft;
 		this.itemId = itemId;
@@ -124,6 +131,7 @@ public final class ItemEntry {
 		this.lore = lore;
 		this.description = description;
 		this.category = category;
+		this.removesDrop = removesDrop;
 		this.selected = !category && DropControlConfig.isSelected(itemId);
 	}
 
@@ -133,6 +141,21 @@ public final class ItemEntry {
 
 	public static ItemEntry category(Minecraft minecraft, String translationKey) {
 		return new ItemEntry(minecraft, Items.AIR, Component.translatable(translationKey), true);
+	}
+
+	public static ItemEntry removal(Minecraft minecraft, String markerId, String translationKey) {
+		return new ItemEntry(
+			minecraft,
+			Identifier.parse(markerId),
+			itemTexture(Items.PAPER),
+			null,
+			0xFFFFFFFF,
+			Component.translatable(translationKey),
+			Component.empty(),
+			Component.translatable(translationKey + ".description"),
+			false,
+			true
+		);
 	}
 
 	private static Component uppercaseNativeName(Minecraft minecraft, Item item) {
@@ -216,6 +239,14 @@ public final class ItemEntry {
 
 	public boolean isCategory() {
 		return this.category;
+	}
+
+	public boolean removesDrop() {
+		return this.removesDrop;
+	}
+
+	public Component name() {
+		return this.name;
 	}
 
 	public Component description() {

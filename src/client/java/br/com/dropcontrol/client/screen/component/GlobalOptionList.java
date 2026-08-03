@@ -1,6 +1,7 @@
 package br.com.dropcontrol.client.screen.component;
 
 import br.com.dropcontrol.config.DropControlConfig;
+import java.util.Comparator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -27,7 +28,9 @@ public final class GlobalOptionList extends AbstractWidget {
 	public GlobalOptionList(Minecraft minecraft, int width, int height, int y, List<Option> options) {
 		super(0, y, width, height, Component.translatable("dropcontrol.options.title"));
 		this.minecraft = minecraft;
+		Comparator<Component> alphabeticalOrder = AlphabeticalOrder.components(minecraft);
 		this.entries = options.stream()
+			.sorted((first, second) -> alphabeticalOrder.compare(first.label(), second.label()))
 			.map(option -> new Entry(option, DropControlConfig.isOptionEnabled(option.id())))
 			.toList();
 	}
