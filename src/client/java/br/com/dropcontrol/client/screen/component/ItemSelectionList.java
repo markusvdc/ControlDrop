@@ -66,27 +66,25 @@ public final class ItemSelectionList extends AbstractWidget {
 			new ItemEntry(
 				minecraft,
 				"dropcontrol:witch_all",
-				Identifier.withDefaultNamespace("textures/item/potion.png"),
-				Identifier.withDefaultNamespace("textures/item/potion_overlay.png"),
-				0xFFF82423,
+				Items.WITCH_SPAWN_EGG,
 				"dropcontrol.marker.witch_all"
 			),
 			new ItemEntry(
 				minecraft,
 				"dropcontrol:skeleton_armor",
-				Items.IRON_CHESTPLATE,
+				Items.SKELETON_SPAWN_EGG,
 				"dropcontrol.marker.skeleton_armor"
 			),
 			new ItemEntry(
 				minecraft,
 				"dropcontrol:pillager_crossbow",
-				Identifier.withDefaultNamespace("textures/item/crossbow_standby.png"),
+				Items.PILLAGER_SPAWN_EGG,
 				"dropcontrol.marker.pillager_crossbow"
 			),
 			new ItemEntry(
 				minecraft,
 				"dropcontrol:zombie_armor",
-				Items.IRON_CHESTPLATE,
+				Items.ZOMBIE_SPAWN_EGG,
 				"dropcontrol.marker.zombie_armor"
 			)
 		);
