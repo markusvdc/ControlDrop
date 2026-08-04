@@ -76,6 +76,6 @@
   "dropcontrol.link.github": "GitHub",
   "dropcontrol.link.medium": "Medium",
   "dropcontrol.link.instagram": "Instagram",
-  "modmenu.summaryTranslation.dropcontrol": "Control Minecraft drops through a direct, vanilla-inspired interface.",
+  "modmenu.summaryTranslation.dropcontrol": "Customize monster drops your way with a simple, intuitive interface fully integrated with Minecraft's vanilla style.",
   "modmenu.descriptionTranslation.dropcontrol": "Development:\nRiquinho — Project concept, direction, and development.\nDekuzinho — Implementation and development support.\n\nTools:\nCodex — Development assistance and technical collaboration.\nVSCode — Source code development.\nFigma — Interface design and prototyping.\nTrello — Project organization and management.\nGitHub — Code versioning and storage."
 }
