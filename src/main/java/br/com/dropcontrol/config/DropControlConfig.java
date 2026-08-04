@@ -18,6 +18,7 @@ import net.minecraft.resources.Identifier;
 
 public final class DropControlConfig {
 	public static final String CONSTANT_THREAT = "constant_threat";
+	public static final String CONTINUOUS_DAMAGE = "continuous_damage";
 	public static final String PARKED_SADDLED_HORSES = "parked_saddled_horses";
 	public static final String RABBITS_AVOID_FENCES = "rabbits_avoid_fences";
 	public static final String ENDERMEN_DONT_PICK_UP_BLOCKS = "endermen_dont_pick_up_blocks";
@@ -27,7 +28,7 @@ public final class DropControlConfig {
 	public static final String PHANTOM_PRESSURE_ONE = "phantom_pressure_one";
 	public static final String PHANTOM_PRESSURE_TWO = "phantom_pressure_two";
 	private static final String LEGACY_PHANTOM_PRESSURE = "phantom_pressure";
-	private static final int CURRENT_CONFIG_VERSION = 11;
+	private static final int CURRENT_CONFIG_VERSION = 12;
 	private static final String SPIDER_COBWEB = "dropcontrol:spider_cobweb";
 	private static final String PILLAGER_WEALTH = "dropcontrol:pillager_wealth";
 	private static final String LEGACY_PILLAGER_EMERALDS = "dropcontrol:pillager_emeralds";
@@ -59,6 +60,7 @@ public final class DropControlConfig {
 	private static final Set<String> AVAILABLE_MARKERS = availableMarkers();
 	private static final Set<String> AVAILABLE_OPTIONS = Set.of(
 		CONSTANT_THREAT,
+		CONTINUOUS_DAMAGE,
 		PARKED_SADDLED_HORSES,
 		RABBITS_AVOID_FENCES,
 		ENDERMEN_DONT_PICK_UP_BLOCKS,
@@ -118,6 +120,7 @@ public final class DropControlConfig {
 	}
 
 	public static boolean constantThreat() { return isOptionEnabled(CONSTANT_THREAT); }
+	public static boolean continuousDamage() { return isOptionEnabled(CONTINUOUS_DAMAGE); }
 	public static boolean saddledHorseStaysPut() { return isOptionEnabled(PARKED_SADDLED_HORSES); }
 	public static boolean rabbitsAvoidFences() { return isOptionEnabled(RABBITS_AVOID_FENCES); }
 	public static boolean endermenDontPickUpBlocks() { return isOptionEnabled(ENDERMEN_DONT_PICK_UP_BLOCKS); }

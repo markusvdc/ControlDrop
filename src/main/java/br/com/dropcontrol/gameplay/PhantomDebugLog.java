@@ -16,10 +16,11 @@ public final class PhantomDebugLog {
 		boolean predatorPressure
 	) {
 		DropControl.LOGGER.info(
-			"[PHANTOM DEBUG] event=spawn_group original_group={} modified_group={} rest_threshold_ticks=48000 movement_multiplier=1.20 damage_multiplier={} sound_multiplier={} daylight_immune={}",
+			"[PHANTOM DEBUG] event=spawn_group original_group={} modified_group={} rest_threshold_ticks=48000 movement_multiplier=1.20 damage_multiplier={} ignores_armor={} sound_multiplier={} daylight_immune={}",
 			originalGroupSize,
 			modifiedGroupSize,
-			predatorPressure ? "4.00" : "1.00",
+			predatorPressure ? "3.00" : "1.00",
+			predatorPressure,
 			predatorPressure ? "1.50" : "1.00",
 			predatorPressure
 		);
@@ -50,7 +51,7 @@ public final class PhantomDebugLog {
 
 	public static void bite(Phantom phantom, LivingEntity target, float originalDamage, float modifiedDamage) {
 		DropControl.LOGGER.info(
-			"[PHANTOM DEBUG] event=bite phantom_uuid={} target={} target_uuid={} original_damage={} modified_damage={}",
+			"[PHANTOM DEBUG] event=bite phantom_uuid={} target={} target_uuid={} original_damage={} modified_damage={} ignores_armor=true",
 			phantom.getStringUUID(),
 			BuiltInRegistries.ENTITY_TYPE.getKey(target.getType()),
 			target.getStringUUID(),

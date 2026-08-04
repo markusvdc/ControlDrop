@@ -22,6 +22,21 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin {
+	@Inject(
+		method = "hurtServer(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/damagesource/DamageSource;F)Z",
+		at = @At("HEAD")
+	)
+	private void dropcontrol$removeDamageCooldown(
+		ServerLevel level,
+		DamageSource source,
+		float amount,
+		CallbackInfoReturnable<Boolean> callback
+	) {
+		if (DropControlConfig.continuousDamage()) {
+			((LivingEntity)(Object)this).invulnerableTime = 0;
+		}
+	}
+
 	@ModifyVariable(
 		method = "hurtServer(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/damagesource/DamageSource;F)Z",
 		at = @At("HEAD"),
@@ -37,11 +52,26 @@ public abstract class LivingEntityMixin {
 			return amount * 2.0F;
 		}
 		if (DropControlConfig.phantomPressureTwo() && source.getEntity() instanceof Phantom phantom) {
-			float modifiedAmount = amount * 4.0F;
+			float modifiedAmount = amount * 3.0F;
 			PhantomDebugLog.bite(phantom, (LivingEntity)(Object)this, amount, modifiedAmount);
 			return modifiedAmount;
 		}
 		return amount;
+	}
+
+	@Inject(
+		method = "getDamageAfterArmorAbsorb(Lnet/minecraft/world/damagesource/DamageSource;F)F",
+		at = @At("HEAD"),
+		cancellable = true
+	)
+	private void dropcontrol$ignoreArmorForPhantomBites(
+		DamageSource source,
+		float amount,
+		CallbackInfoReturnable<Float> callback
+	) {
+		if (DropControlConfig.phantomPressureTwo() && source.getEntity() instanceof Phantom) {
+			callback.setReturnValue(amount);
+		}
 	}
 
 	@Inject(

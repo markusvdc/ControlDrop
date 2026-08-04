@@ -14,7 +14,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.util.Mth;
 
 public final class GlobalOptionList extends AbstractWidget {
-	private static final int ROW_HEIGHT = 40;
+	private static final int ROW_HEIGHT = 30;
 	private static final int SCROLLBAR_WIDTH = 6;
 	private static final int SCROLLBAR_GAP = 6;
 
@@ -152,8 +152,8 @@ public final class GlobalOptionList extends AbstractWidget {
 		if (hovered) {
 			graphics.outline(x, y + 1, width, ROW_HEIGHT - 3, 0xFFFFFFFF);
 		}
-		drawCheckbox(graphics, x + 8, y + 14, entry.selected);
-		graphics.text(this.minecraft.font, entry.option.label(), x + 29, y + 16, 0xFFFFFFFF, true);
+		drawCheckbox(graphics, x + 8, y + 9, entry.selected);
+		graphics.text(this.minecraft.font, entry.option.label(), x + 29, y + 11, 0xFFFFFFFF, true);
 	}
 
 	private void drawCheckbox(GuiGraphicsExtractor graphics, int x, int y, boolean selected) {
