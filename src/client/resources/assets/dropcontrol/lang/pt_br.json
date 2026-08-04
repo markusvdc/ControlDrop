@@ -26,7 +26,7 @@
   "dropcontrol.marker.skeleton_spectral_arrow.description": "Adiciona exatamente 1 flecha espectral a 20% dos drops de esqueletos.",
   "dropcontrol.marker.skeleton_enchantment": "LIVRO",
   "dropcontrol.marker.skeleton_enchantment.lore": "Esse esqueleto era um arqueiro e o conhecimento dele sobre arcos pode sobreviver à morte.",
-  "dropcontrol.marker.skeleton_enchantment.description": "Adiciona 1 livro encantado para cada encantamento natural presente no arco do esqueleto, com 25% de chance independente por livro. Cada livro contém o nível máximo do encantamento: Inquebrável III, Força V, Impacto II, Infinidade I ou Chama I.",
+  "dropcontrol.marker.skeleton_enchantment.description": "Adiciona 1 livro encantado para cada encantamento natural presente no arco do esqueleto, com 25% de chance independente por livro. Cada livro contém o nível máximo do encantamento: Inquebrável III, Força V, Impacto II, Infinidade ou Chama.",
   "dropcontrol.marker.zombie_sulfur": "ENXOFRE",
   "dropcontrol.marker.zombie_sulfur.description": "Adiciona exatamente 1 enxofre a 30% dos drops de zumbis.",
   "dropcontrol.marker.skeleton_armor": "ESQUELETO",

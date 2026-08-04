@@ -4,7 +4,7 @@
 | ARANHA | TEIA | Adiciona exatamente 1 teia a 15% dos drops de aranhas. |
 | BRUXA | POÇÃO | Adiciona exatamente 2 poções a cada bruxa. Cada poção é sorteada de forma independente, com 1/9 de chance para cada opção: Resistência ao Fogo, Agilidade, Salto, Força, Visão Noturna ou Respiração Aquática por 8 minutos; Queda Lenta por 4 minutos; Veneno ou Regeneração por 22 segundos. Os dois sorteios podem coincidir. A regra BRUXA da categoria REMOVER preserva essas poções. |
 | CREEPER | TNT | Adiciona exatamente 1 TNT a 10% dos drops de creepers. |
-| ESQUELETO | LIVRO | Esse esqueleto era um arqueiro e o conhecimento dele sobre arcos pode sobreviver à morte.<br><br>Adiciona 1 livro encantado para cada encantamento natural presente no arco do esqueleto, com 25% de chance independente por livro. Cada livro contém o nível máximo do encantamento: Inquebrável III, Força V, Impacto II, Infinidade I ou Chama I. |
+| ESQUELETO | LIVRO | Esse esqueleto era um arqueiro e o conhecimento dele sobre arcos pode sobreviver à morte.<br><br>Adiciona 1 livro encantado para cada encantamento natural presente no arco do esqueleto, com 25% de chance independente por livro. Cada livro contém o nível máximo do encantamento: Inquebrável III, Força V, Impacto II, Infinidade ou Chama. |
 | ESQUELETO | ESPECTRAL | Adiciona exatamente 1 flecha espectral a 20% dos drops de esqueletos. |
 | SAQUEADOR | RIQUEZA | Adiciona exatamente 2 itens aos drops de saqueadores. Cada item é sorteado de forma independente: 50% de chance de Esmeralda, 40% de Lingote de Ouro e 10% de Diamante. Os dois sorteios podem coincidir. |
 | ZUMBI | ENXOFRE | Adiciona exatamente 1 enxofre a 30% dos drops de zumbis. |

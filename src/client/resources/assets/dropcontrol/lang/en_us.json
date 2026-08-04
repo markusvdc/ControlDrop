@@ -26,7 +26,7 @@
   "dropcontrol.marker.skeleton_spectral_arrow.description": "Adds exactly 1 spectral arrow to 20% of skeleton drops.",
   "dropcontrol.marker.skeleton_enchantment": "BOOK",
   "dropcontrol.marker.skeleton_enchantment.lore": "This skeleton was an archer, and its knowledge of bows may survive death.",
-  "dropcontrol.marker.skeleton_enchantment.description": "Adds 1 enchanted book for each natural enchantment on the skeleton's bow, with an independent 25% chance per book. Each book contains the enchantment's maximum level: Unbreaking III, Power V, Punch II, Infinity I, or Flame I.",
+  "dropcontrol.marker.skeleton_enchantment.description": "Adds 1 enchanted book for each natural enchantment on the skeleton's bow, with an independent 25% chance per book. Each book contains the enchantment's maximum level: Unbreaking III, Power V, Punch II, Infinity, or Flame.",
   "dropcontrol.marker.zombie_sulfur": "SULFUR",
   "dropcontrol.marker.zombie_sulfur.description": "Adds exactly 1 sulfur to 30% of zombie drops.",
   "dropcontrol.marker.skeleton_armor": "SKELETON",

@@ -39,13 +39,14 @@ public final class GlobalOptionList extends AbstractWidget {
 	protected void extractWidgetRenderState(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float delta) {
 		int x = getX();
 		int y = getY();
-		int contentWidth = this.width - SCROLLBAR_WIDTH - SCROLLBAR_GAP;
 		boolean needsScrollbar = getMaxScroll() > 0;
+		int contentWidth = needsScrollbar
+			? this.width - SCROLLBAR_WIDTH - SCROLLBAR_GAP
+			: this.width;
 		this.hoveredLore = null;
 		this.hoveredDescription = null;
 
 		graphics.enableScissor(x, y, x + this.width, y + this.height);
-		graphics.fill(x, y, x + this.width, y + this.height, 0xB8101010);
 		for (int index = 0; index < this.entries.size(); index++) {
 			int rowY = getRowY(index);
 			if (!isRowVisible(rowY)) {
@@ -79,9 +80,12 @@ public final class GlobalOptionList extends AbstractWidget {
 		if (event.button() != 0 || !isMouseOver(event.x(), event.y())) {
 			return false;
 		}
-		int contentWidth = this.width - SCROLLBAR_WIDTH - SCROLLBAR_GAP;
-		if (event.x() >= getX() + contentWidth) {
-			this.draggingScrollbar = getMaxScroll() > 0;
+		boolean needsScrollbar = getMaxScroll() > 0;
+		int contentWidth = needsScrollbar
+			? this.width - SCROLLBAR_WIDTH - SCROLLBAR_GAP
+			: this.width;
+		if (needsScrollbar && event.x() >= getX() + contentWidth) {
+			this.draggingScrollbar = true;
 			setScrollFromMouse(event.y());
 			return true;
 		}
