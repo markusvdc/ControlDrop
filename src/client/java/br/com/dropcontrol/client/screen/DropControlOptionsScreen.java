@@ -69,6 +69,11 @@ public final class DropControlOptionsScreen extends Screen {
 					Component.translatable("dropcontrol.options.chestplate_elytra_swap.description")
 				),
 				new GlobalOptionList.Option(
+					DropControlConfig.INVENTORY_SORTING,
+					Component.translatable("dropcontrol.options.inventory_sorting"),
+					Component.translatable("dropcontrol.options.inventory_sorting.description")
+				),
+				new GlobalOptionList.Option(
 					DropControlConfig.PAUSE_WHEN_MOUSE_IDLE,
 					Component.translatable("dropcontrol.options.pause_when_mouse_idle"),
 					Component.translatable("dropcontrol.options.pause_when_mouse_idle.description")

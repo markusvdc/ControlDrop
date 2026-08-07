@@ -56,6 +56,8 @@
   "dropcontrol.options.endermen_dont_pick_up_blocks.description": "Prevents endermen from starting the action of picking up blocks from the world. Blocks already being carried remain with the enderman and can still be placed normally.",
   "dropcontrol.options.chestplate_elytra_swap": "QUICK ELYTRA",
   "dropcontrol.options.chestplate_elytra_swap.description": "Switches between the equipped chestplate and an elytra from the inventory when Grave Accent, the key before 1, is pressed. If an elytra is equipped, it switches to a chestplate. When several items of the required type are available, it uses the one with the least remaining durability.",
+  "dropcontrol.options.inventory_sorting": "SORT INVENTORIES",
+  "dropcontrol.options.inventory_sorting.description": "Sorts inventories only when Grave Accent, shared with QUICK ELYTRA, is pressed. Requires Inventory Profiles Next. Outside interfaces or with the inventory open, it sorts the player's inventory. With a chest open, it sorts the chest first and then the player's inventory.",
   "dropcontrol.options.pause_when_mouse_idle": "AWAY MODE",
   "dropcontrol.options.pause_when_mouse_idle.description": "Opens the pause menu and stops the world after 15 seconds without mouse movement. Works only in singleplayer worlds that are not open to LAN and only while the Minecraft window is focused.",
   "dropcontrol.options.exact_horse_health": "EQUINE HEALTH",

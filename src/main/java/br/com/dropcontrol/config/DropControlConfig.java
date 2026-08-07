@@ -23,12 +23,13 @@ public final class DropControlConfig {
 	public static final String RABBITS_AVOID_FENCES = "rabbits_avoid_fences";
 	public static final String ENDERMEN_DONT_PICK_UP_BLOCKS = "endermen_dont_pick_up_blocks";
 	public static final String CHESTPLATE_ELYTRA_SWAP = "chestplate_elytra_swap";
+	public static final String INVENTORY_SORTING = "inventory_sorting";
 	public static final String PAUSE_WHEN_MOUSE_IDLE = "pause_when_mouse_idle";
 	public static final String EXACT_HORSE_HEALTH = "exact_horse_health";
 	public static final String PHANTOM_PRESSURE_ONE = "phantom_pressure_one";
 	public static final String PHANTOM_PRESSURE_TWO = "phantom_pressure_two";
 	private static final String LEGACY_PHANTOM_PRESSURE = "phantom_pressure";
-	private static final int CURRENT_CONFIG_VERSION = 12;
+	private static final int CURRENT_CONFIG_VERSION = 13;
 	private static final String SPIDER_COBWEB = "dropcontrol:spider_cobweb";
 	private static final String PILLAGER_WEALTH = "dropcontrol:pillager_wealth";
 	private static final String LEGACY_PILLAGER_EMERALDS = "dropcontrol:pillager_emeralds";
@@ -65,6 +66,7 @@ public final class DropControlConfig {
 		RABBITS_AVOID_FENCES,
 		ENDERMEN_DONT_PICK_UP_BLOCKS,
 		CHESTPLATE_ELYTRA_SWAP,
+		INVENTORY_SORTING,
 		PAUSE_WHEN_MOUSE_IDLE,
 		EXACT_HORSE_HEALTH,
 		PHANTOM_PRESSURE_ONE,
@@ -125,6 +127,7 @@ public final class DropControlConfig {
 	public static boolean rabbitsAvoidFences() { return isOptionEnabled(RABBITS_AVOID_FENCES); }
 	public static boolean endermenDontPickUpBlocks() { return isOptionEnabled(ENDERMEN_DONT_PICK_UP_BLOCKS); }
 	public static boolean chestplateElytraSwap() { return isOptionEnabled(CHESTPLATE_ELYTRA_SWAP); }
+	public static boolean inventorySorting() { return isOptionEnabled(INVENTORY_SORTING); }
 	public static boolean pauseWhenMouseIdle() { return isOptionEnabled(PAUSE_WHEN_MOUSE_IDLE); }
 	public static boolean exactHorseHealth() { return isOptionEnabled(EXACT_HORSE_HEALTH); }
 	public static boolean phantomPressureOne() { return isOptionEnabled(PHANTOM_PRESSURE_ONE); }

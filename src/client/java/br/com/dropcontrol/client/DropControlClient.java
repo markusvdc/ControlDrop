@@ -31,10 +31,24 @@ public final class DropControlClient implements ClientModInitializer {
 
 	private static void onEndClientTick(Minecraft minecraft) {
 		boolean graveAccentDown = InputConstants.isKeyDown(minecraft.getWindow(), InputConstants.KEY_GRAVE);
-		if (graveAccentDown && !graveAccentWasDown && DropControlConfig.chestplateElytraSwap()) {
-			swapChestEquipment(minecraft);
+		if (graveAccentDown && !graveAccentWasDown) {
+			boolean swapEnabled = DropControlConfig.chestplateElytraSwap();
+			boolean sortingEnabled = DropControlConfig.inventorySorting();
+			br.com.dropcontrol.DropControl.LOGGER.info(
+				"Shared Grave Accent key detected: switchElytra={}, inventorySorting={}, screen={}",
+				swapEnabled,
+				sortingEnabled,
+				minecraft.gui.screen() == null ? "none" : minecraft.gui.screen().getClass().getSimpleName()
+			);
+			if (swapEnabled) {
+				swapChestEquipment(minecraft);
+			}
+			if (sortingEnabled) {
+				InventoryProfilesIntegration.requestSort(minecraft);
+			}
 		}
 		graveAccentWasDown = graveAccentDown;
+		InventoryProfilesIntegration.tick(minecraft);
 		tickMouseIdlePause(minecraft);
 	}
 

@@ -1,8 +1,8 @@
 # Proteção deste arquivo
 
 - O Codex executado dentro dos projetos dos mods não pode alterar, formatar, mover, renomear ou excluir este `AGENTS.md`; deve apenas explicar ao desenvolvedor qualquer mudança necessária.
-- O Codex usado fora desses projetos pode manter o modelo original mediante solicitação explícita do desenvolvedor.
-- O desenvolvedor controla e replica manualmente o modelo nos três mods para evitar divergências.
+- O Codex responsável pela manutenção compartilhada dos três mods pode alterar este `AGENTS.md` mediante solicitação explícita do desenvolvedor, exclusivamente para atualizar o modelo comum. O Codex que estiver trabalhando em uma tarefa específica de apenas um dos projetos continua proibido de alterar, formatar, mover, renomear ou excluir este arquivo.
+- O Codex responsável pela manutenção compartilhada dos três mods pode replicar alterações do modelo entre os respectivos arquivos `AGENTS.md` mediante solicitação explícita do desenvolvedor, garantindo que as regras compartilhadas permaneçam idênticas. O Codex que estiver trabalhando em uma tarefa específica de apenas um dos projetos continua sem autorização para realizar essa replicação.
 
 Leia este arquivo antes de alterar, compilar, testar ou publicar o projeto. Instruções específicas prevalecem quando complementarem ou substituírem explicitamente estas regras.
 
@@ -107,20 +107,24 @@ Nunca remova, mova ou substitua outros mods.
 
 - Quando autorizado, mantenha o `README.md` sincronizado com o comportamento real do mod.
 - Antes de escrever, confira constantes, listas, condições e valores no código. Não invente comportamentos.
-- Explique claramente o que cada opção faz, o que afeta e suas condições, exceções e comportamentos especiais.
+- Estruture o `README.md` com a seção `## Visão geral`, seguida pela seção `## Opções globais`.
+- Escreva a Visão geral em uma única estrofe que combine a função técnica principal do mod com a fantasia proporcionada ao jogador.
+- Restrinja a Visão geral à funcionalidade principal; não mencione nela as opções globais.
+- Mantenha somente a tabela de opções globais. Não crie tabela ou lista detalhada para as opções principais.
+- Na tabela de opções globais, explique claramente o que cada opção faz, o que afeta e suas condições, exceções e comportamentos especiais.
 - Informe valores fixos relevantes, especialmente os não configuráveis: quantidades, multiplicadores, porcentagens, distâncias, alcances, durações, intervalos, limites, chances e tempos.
 - Não use termos vagos quando houver valor, prazo, lista ou critério exato. Defina precisamente listas e categorias indispensáveis ao escopo.
-- Informe os padrões da primeira instalação e como configurações existentes são preservadas ou migradas.
 - Não transforme descrições em tutoriais de Minecraft. Prefira afirmações positivas e diretas.
 - Não use expressões como “caso ativada”, “quando estiver ativa” ou “ao ativar esta opção”; o contexto da interface já comunica essa condição.
 - Revise obrigatoriamente descrições e tooltips acima de `300` caracteres sem espaços. Esse valor é um gatilho, não um limite rígido.
 - Na revisão, remova redundâncias, explicações gerais, negativas desnecessárias, exemplos irrelevantes e detalhes internos, preservando informações e valores importantes.
 - Ao alterar uma opção, revise também as descrições relacionadas dentro do escopo autorizado.
 
-# Sincronização das opções globais e opções principais
+# Sincronização da documentação
 
-- O tooltip em português de cada opção global ou opção principal e a descrição correspondente no `README.md` devem ter o mesmo conteúdo e redação, exceto pela formatação do Markdown.
-- Mudanças em regra, valor, limite, escopo, condição ou exceção exigem a atualização conjunta do README, do tooltip em português e das traduções correspondentes.
+- O tooltip em português de cada opção global e a descrição correspondente no `README.md` devem ter o mesmo conteúdo e redação, exceto pela formatação do Markdown.
+- Mudanças em regra, valor, limite, escopo, condição ou exceção de uma opção global exigem a atualização conjunta do README, do tooltip em português e das traduções correspondentes.
+- Mudanças nas opções principais exigem a atualização conjunta do tooltip em português e das traduções correspondentes, sem criar tabela ou lista detalhada no README.
 - Mantenha todas as traduções completas e semanticamente equivalentes.
 - Use largura máxima de `425 px` e avanço vertical uniforme de `12 px`, sem duplicar o espaçamento vanilla após a primeira linha.
 - Aplique essas dimensões somente aos tooltips das opções globais e das opções principais; preserve o comportamento vanilla nas demais interfaces.
