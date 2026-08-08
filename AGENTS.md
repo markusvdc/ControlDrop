@@ -18,7 +18,6 @@ Leia este arquivo antes de alterar, compilar, testar ou publicar o projeto. Inst
 - JAR atual: `<identificador>-*.jar`.
 - JAR da release: `<identificador>-<versão>.jar`.
 - Instâncias de teste:
-  - `D:\MARKUS\GAMES\minecraft\instances\NEBULOSA6\minecraft\mods`
   - `D:\MARKUS\GAMES\minecraft\instances\NEBULOSA7\minecraft\mods`
 
 ## Modelo técnico das releases
