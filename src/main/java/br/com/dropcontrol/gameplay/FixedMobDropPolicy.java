@@ -15,6 +15,7 @@ public final class FixedMobDropPolicy {
 	private static final float COBWEB_CHANCE = 0.15F;
 	private static final float SPECTRAL_ARROW_CHANCE = 0.20F;
 	private static final float ZOMBIE_SULFUR_CHANCE = 0.30F;
+	private static final float ZOMBIE_POISONOUS_POTATO_CHANCE = 0.35F;
 	private static final float ENDERMAN_AMETHYST_SHARD_CHANCE = 0.50F;
 	private static final Identifier SPIDER_COBWEB =
 		Identifier.fromNamespaceAndPath("dropcontrol", "spider_cobweb");
@@ -24,6 +25,8 @@ public final class FixedMobDropPolicy {
 		Identifier.fromNamespaceAndPath("dropcontrol", "skeleton_spectral_arrow");
 	private static final Identifier ZOMBIE_SULFUR =
 		Identifier.fromNamespaceAndPath("dropcontrol", "zombie_sulfur");
+	private static final Identifier ZOMBIE_POISONOUS_POTATO =
+		Identifier.fromNamespaceAndPath("dropcontrol", "zombie_poisonous_potato");
 	private static final Identifier ENDERMAN_AMETHYST_SHARD =
 		Identifier.fromNamespaceAndPath("dropcontrol", "enderman_amethyst_shard");
 	private static final Identifier WITCH_FIREWORK_ROCKET =
@@ -60,18 +63,32 @@ public final class FixedMobDropPolicy {
 			if (roll < SPECTRAL_ARROW_CHANCE) {
 				spawn(level, entity, new ItemStack(Items.SPECTRAL_ARROW));
 			}
-		} else if (entity.getType() == EntityTypes.ZOMBIE && DropControlConfig.isSelected(ZOMBIE_SULFUR)) {
-			float roll = entity.getRandom().nextFloat();
-			DropDebugLog.chance(entity, "add_sulfur", roll, ZOMBIE_SULFUR_CHANCE);
-			if (roll < ZOMBIE_SULFUR_CHANCE) {
-				spawn(level, entity, new ItemStack(Items.SULFUR));
-			}
+		} else if (entity.getType() == EntityTypes.ZOMBIE) {
+			dropZombieItems(level, entity);
 		} else if (entity.getType() == EntityTypes.ENDERMAN
 			&& DropControlConfig.isSelected(ENDERMAN_AMETHYST_SHARD)) {
 			float roll = entity.getRandom().nextFloat();
 			DropDebugLog.chance(entity, "add_amethyst_shard", roll, ENDERMAN_AMETHYST_SHARD_CHANCE);
 			if (roll < ENDERMAN_AMETHYST_SHARD_CHANCE) {
 				spawn(level, entity, new ItemStack(Items.AMETHYST_SHARD));
+			}
+		}
+	}
+
+	private static void dropZombieItems(ServerLevel level, LivingEntity entity) {
+		if (DropControlConfig.isSelected(ZOMBIE_SULFUR)) {
+			float roll = entity.getRandom().nextFloat();
+			DropDebugLog.chance(entity, "add_sulfur", roll, ZOMBIE_SULFUR_CHANCE);
+			if (roll < ZOMBIE_SULFUR_CHANCE) {
+				spawn(level, entity, new ItemStack(Items.SULFUR));
+			}
+		}
+
+		if (DropControlConfig.isSelected(ZOMBIE_POISONOUS_POTATO)) {
+			float roll = entity.getRandom().nextFloat();
+			DropDebugLog.chance(entity, "add_poisonous_potato", roll, ZOMBIE_POISONOUS_POTATO_CHANCE);
+			if (roll < ZOMBIE_POISONOUS_POTATO_CHANCE) {
+				spawn(level, entity, new ItemStack(Items.POISONOUS_POTATO, 1 + entity.getRandom().nextInt(2)));
 			}
 		}
 	}

@@ -29,12 +29,13 @@ public final class DropControlConfig {
 	public static final String PHANTOM_PRESSURE_ONE = "phantom_pressure_one";
 	public static final String PHANTOM_PRESSURE_TWO = "phantom_pressure_two";
 	private static final String LEGACY_PHANTOM_PRESSURE = "phantom_pressure";
-	private static final int CURRENT_CONFIG_VERSION = 17;
+	private static final int CURRENT_CONFIG_VERSION = 18;
 	private static final String SPIDER_COBWEB = "dropcontrol:spider_cobweb";
 	private static final String PILLAGER_WEALTH = "dropcontrol:pillager_wealth";
 	private static final String LEGACY_PILLAGER_EMERALDS = "dropcontrol:pillager_emeralds";
 	private static final String SKELETON_SPECTRAL_ARROW = "dropcontrol:skeleton_spectral_arrow";
 	private static final String ZOMBIE_SULFUR = "dropcontrol:zombie_sulfur";
+	private static final String ZOMBIE_POISONOUS_POTATO = "dropcontrol:zombie_poisonous_potato";
 	private static final String ENDERMAN_AMETHYST_SHARD = "dropcontrol:enderman_amethyst_shard";
 	private static final String WITCH_FIREWORK_ROCKET = "dropcontrol:witch_firework_rocket";
 	private static final String SKELETON_ENCHANTMENT = "dropcontrol:skeleton_enchantment";
@@ -54,6 +55,7 @@ public final class DropControlConfig {
 		SKELETON_SPECTRAL_ARROW,
 		SKELETON_ENCHANTMENT,
 		ZOMBIE_SULFUR,
+		ZOMBIE_POISONOUS_POTATO,
 		ENDERMAN_AMETHYST_SHARD
 	);
 	private static final Set<String> REMOVED_MARKERS = Set.of(
@@ -250,6 +252,9 @@ public final class DropControlConfig {
 		}
 		if (data.configVersion < 16) {
 			migrated.add(WITCH_FIREWORK_ROCKET);
+		}
+		if (data.configVersion < 18) {
+			migrated.add(ZOMBIE_POISONOUS_POTATO);
 		}
 		return Set.copyOf(migrated);
 	}

@@ -100,6 +100,13 @@ public final class ItemSelectionList extends AbstractWidget {
 				300,
 				"dropcontrol.marker.zombie_sulfur"
 			),
+			new ItemEntry(
+				minecraft,
+				"dropcontrol:zombie_poisonous_potato",
+				Items.POISONOUS_POTATO,
+				"dropcontrol.marker.zombie_poisonous_potato",
+				"dropcontrol.marker.zombie_poisonous_potato.lore"
+			),
 			ItemEntry.category(minecraft, "dropcontrol.category.remove"),
 			ItemEntry.removal(
 				minecraft,
