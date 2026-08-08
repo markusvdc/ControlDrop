@@ -41,46 +41,55 @@ public final class DropControlOptionsScreen extends Screen {
 				new GlobalOptionList.Option(
 					DropControlConfig.TRADITIONAL_MONSTER_SPAWNS,
 					Component.translatable("dropcontrol.options.traditional_monster_spawns"),
+					Component.translatable("dropcontrol.options.traditional_monster_spawns.lore"),
 					Component.translatable("dropcontrol.options.traditional_monster_spawns.description")
 				),
 				new GlobalOptionList.Option(
 					DropControlConfig.CONSTANT_THREAT,
 					Component.translatable("dropcontrol.options.constant_threat"),
+					Component.translatable("dropcontrol.options.constant_threat.lore"),
 					Component.translatable("dropcontrol.options.constant_threat.description")
 				),
 				new GlobalOptionList.Option(
 					DropControlConfig.PARKED_SADDLED_HORSES,
 					Component.translatable("dropcontrol.options.parked_saddled_horses"),
+					Component.translatable("dropcontrol.options.parked_saddled_horses.lore"),
 					Component.translatable("dropcontrol.options.parked_saddled_horses.description")
 				),
 				new GlobalOptionList.Option(
 					DropControlConfig.RABBITS_AVOID_FENCES,
 					Component.translatable("dropcontrol.options.rabbits_avoid_fences"),
+					Component.translatable("dropcontrol.options.rabbits_avoid_fences.lore"),
 					Component.translatable("dropcontrol.options.rabbits_avoid_fences.description")
 				),
 				new GlobalOptionList.Option(
 					DropControlConfig.ENDERMEN_DONT_PICK_UP_BLOCKS,
 					Component.translatable("dropcontrol.options.endermen_dont_pick_up_blocks"),
+					Component.translatable("dropcontrol.options.endermen_dont_pick_up_blocks.lore"),
 					Component.translatable("dropcontrol.options.endermen_dont_pick_up_blocks.description")
 				),
 				new GlobalOptionList.Option(
 					DropControlConfig.CHESTPLATE_ELYTRA_SWAP,
 					Component.translatable("dropcontrol.options.chestplate_elytra_swap"),
+					Component.translatable("dropcontrol.options.chestplate_elytra_swap.lore"),
 					Component.translatable("dropcontrol.options.chestplate_elytra_swap.description")
 				),
 				new GlobalOptionList.Option(
 					DropControlConfig.INVENTORY_SORTING,
 					Component.translatable("dropcontrol.options.inventory_sorting"),
+					Component.translatable("dropcontrol.options.inventory_sorting.lore"),
 					Component.translatable("dropcontrol.options.inventory_sorting.description")
 				),
 				new GlobalOptionList.Option(
 					DropControlConfig.PAUSE_WHEN_MOUSE_IDLE,
 					Component.translatable("dropcontrol.options.pause_when_mouse_idle"),
+					Component.translatable("dropcontrol.options.pause_when_mouse_idle.lore"),
 					Component.translatable("dropcontrol.options.pause_when_mouse_idle.description")
 				),
 				new GlobalOptionList.Option(
 					DropControlConfig.EXACT_HORSE_HEALTH,
 					Component.translatable("dropcontrol.options.exact_horse_health"),
+					Component.translatable("dropcontrol.options.exact_horse_health.lore"),
 					Component.translatable("dropcontrol.options.exact_horse_health.description")
 				),
 				new GlobalOptionList.Option(

@@ -37,7 +37,7 @@ public final class ItemEntry {
 			null,
 			0xFFFFFFFF,
 			Component.translatable(translationKey),
-			Component.empty(),
+			Component.translatable(translationKey + ".lore"),
 			Component.translatable(translationKey + ".description"),
 			false,
 			false
@@ -59,7 +59,7 @@ public final class ItemEntry {
 			tintedTexture,
 			tintColor,
 			Component.translatable(translationKey),
-			Component.empty(),
+			Component.translatable(translationKey + ".lore"),
 			Component.translatable(translationKey + ".description"),
 			false,
 			false
@@ -74,7 +74,7 @@ public final class ItemEntry {
 			null,
 			0xFFFFFFFF,
 			Component.translatable(translationKey),
-			Component.empty(),
+			Component.translatable(translationKey + ".lore"),
 			Component.translatable(translationKey + ".description"),
 			false,
 			false
@@ -175,7 +175,7 @@ public final class ItemEntry {
 			null,
 			0xFFFFFFFF,
 			Component.translatable(translationKey),
-			Component.empty(),
+			Component.translatable(translationKey + ".lore"),
 			Component.translatable(translationKey + ".description"),
 			false,
 			false,
@@ -195,7 +195,7 @@ public final class ItemEntry {
 			null,
 			0xFFFFFFFF,
 			Component.translatable(translationKey),
-			Component.empty(),
+			Component.translatable(translationKey + ".lore"),
 			Component.translatable(translationKey + ".description"),
 			false,
 			true

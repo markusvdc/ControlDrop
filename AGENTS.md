@@ -119,6 +119,8 @@ Nunca remova, mova ou substitua outros mods.
 - Revise obrigatoriamente descrições e tooltips acima de `300` caracteres sem espaços. Esse valor é um gatilho, não um limite rígido.
 - Na revisão, remova redundâncias, explicações gerais, negativas desnecessárias, exemplos irrelevantes e detalhes internos, preservando informações e valores importantes.
 - Ao alterar uma opção, revise também as descrições relacionadas dentro do escopo autorizado.
+- Todo tooltip de opção deve conter obrigatoriamente lore e descrição funcional separadas.
+- Escreva cada lore com `120` a `130` caracteres e tom narrativo. Compare-a com as demais lores do próprio mod para preservar uma identidade textual coerente.
 
 # Sincronização da documentação
 
