@@ -39,9 +39,9 @@ public final class DropControlOptionsScreen extends Screen {
 			OPTIONS_TOP,
 			List.of(
 				new GlobalOptionList.Option(
-					DropControlConfig.CONTINUOUS_DAMAGE,
-					Component.translatable("dropcontrol.options.continuous_damage"),
-					Component.translatable("dropcontrol.options.continuous_damage.description")
+					DropControlConfig.TRADITIONAL_MONSTER_SPAWNS,
+					Component.translatable("dropcontrol.options.traditional_monster_spawns"),
+					Component.translatable("dropcontrol.options.traditional_monster_spawns.description")
 				),
 				new GlobalOptionList.Option(
 					DropControlConfig.CONSTANT_THREAT,

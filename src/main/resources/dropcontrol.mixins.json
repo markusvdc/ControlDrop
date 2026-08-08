@@ -8,6 +8,7 @@
     "EntityMixin",
     "LivingEntityMixin",
     "MobMixin",
+    "NaturalSpawnerMixin",
     "PatrolSpawnerMixin",
     "PhantomMixin",
     "PhantomMoveControlMixin",

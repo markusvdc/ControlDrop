@@ -18,7 +18,7 @@ import net.minecraft.resources.Identifier;
 
 public final class DropControlConfig {
 	public static final String CONSTANT_THREAT = "constant_threat";
-	public static final String CONTINUOUS_DAMAGE = "continuous_damage";
+	public static final String TRADITIONAL_MONSTER_SPAWNS = "traditional_monster_spawns";
 	public static final String PARKED_SADDLED_HORSES = "parked_saddled_horses";
 	public static final String RABBITS_AVOID_FENCES = "rabbits_avoid_fences";
 	public static final String ENDERMEN_DONT_PICK_UP_BLOCKS = "endermen_dont_pick_up_blocks";
@@ -29,12 +29,14 @@ public final class DropControlConfig {
 	public static final String PHANTOM_PRESSURE_ONE = "phantom_pressure_one";
 	public static final String PHANTOM_PRESSURE_TWO = "phantom_pressure_two";
 	private static final String LEGACY_PHANTOM_PRESSURE = "phantom_pressure";
-	private static final int CURRENT_CONFIG_VERSION = 13;
+	private static final int CURRENT_CONFIG_VERSION = 17;
 	private static final String SPIDER_COBWEB = "dropcontrol:spider_cobweb";
 	private static final String PILLAGER_WEALTH = "dropcontrol:pillager_wealth";
 	private static final String LEGACY_PILLAGER_EMERALDS = "dropcontrol:pillager_emeralds";
 	private static final String SKELETON_SPECTRAL_ARROW = "dropcontrol:skeleton_spectral_arrow";
 	private static final String ZOMBIE_SULFUR = "dropcontrol:zombie_sulfur";
+	private static final String ENDERMAN_AMETHYST_SHARD = "dropcontrol:enderman_amethyst_shard";
+	private static final String WITCH_FIREWORK_ROCKET = "dropcontrol:witch_firework_rocket";
 	private static final String SKELETON_ENCHANTMENT = "dropcontrol:skeleton_enchantment";
 	private static final String PILLAGER_CROSSBOW = "dropcontrol:pillager_crossbow";
 	private static final String SKELETON_ARMOR = "dropcontrol:skeleton_armor";
@@ -45,12 +47,14 @@ public final class DropControlConfig {
 	private static final Path CONFIG_PATH = FabricLoader.getInstance().getConfigDir().resolve("dropcontrol.json");
 	private static final Set<String> ADDED_MARKERS = Set.of(
 		"dropcontrol:witch_potions",
+		WITCH_FIREWORK_ROCKET,
 		"dropcontrol:creeper_tnt",
 		SPIDER_COBWEB,
 		PILLAGER_WEALTH,
 		SKELETON_SPECTRAL_ARROW,
 		SKELETON_ENCHANTMENT,
-		ZOMBIE_SULFUR
+		ZOMBIE_SULFUR,
+		ENDERMAN_AMETHYST_SHARD
 	);
 	private static final Set<String> REMOVED_MARKERS = Set.of(
 		SKELETON_ARMOR,
@@ -61,7 +65,7 @@ public final class DropControlConfig {
 	private static final Set<String> AVAILABLE_MARKERS = availableMarkers();
 	private static final Set<String> AVAILABLE_OPTIONS = Set.of(
 		CONSTANT_THREAT,
-		CONTINUOUS_DAMAGE,
+		TRADITIONAL_MONSTER_SPAWNS,
 		PARKED_SADDLED_HORSES,
 		RABBITS_AVOID_FENCES,
 		ENDERMEN_DONT_PICK_UP_BLOCKS,
@@ -122,7 +126,7 @@ public final class DropControlConfig {
 	}
 
 	public static boolean constantThreat() { return isOptionEnabled(CONSTANT_THREAT); }
-	public static boolean continuousDamage() { return isOptionEnabled(CONTINUOUS_DAMAGE); }
+	public static boolean traditionalMonsterSpawns() { return isOptionEnabled(TRADITIONAL_MONSTER_SPAWNS); }
 	public static boolean saddledHorseStaysPut() { return isOptionEnabled(PARKED_SADDLED_HORSES); }
 	public static boolean rabbitsAvoidFences() { return isOptionEnabled(RABBITS_AVOID_FENCES); }
 	public static boolean endermenDontPickUpBlocks() { return isOptionEnabled(ENDERMEN_DONT_PICK_UP_BLOCKS); }
@@ -240,6 +244,12 @@ public final class DropControlConfig {
 		}
 		if (data.configVersion < 10) {
 			migrated.add(ZOMBIE_SULFUR);
+		}
+		if (data.configVersion < 15) {
+			migrated.add(ENDERMAN_AMETHYST_SHARD);
+		}
+		if (data.configVersion < 16) {
+			migrated.add(WITCH_FIREWORK_ROCKET);
 		}
 		return Set.copyOf(migrated);
 	}

@@ -48,6 +48,21 @@ public final class ItemSelectionList extends AbstractWidget {
 				0xFFC2FF66,
 				"dropcontrol.marker.witch_potions"
 			),
+			new ItemEntry(
+				minecraft,
+				"dropcontrol:witch_firework_rocket",
+				Items.FIREWORK_ROCKET,
+				"dropcontrol.marker.witch_firework_rocket",
+				"dropcontrol.marker.witch_firework_rocket.lore"
+			),
+			ItemEntry.category(minecraft, "dropcontrol.category.enderman"),
+			new ItemEntry(
+				minecraft,
+				"dropcontrol:enderman_amethyst_shard",
+				Items.AMETHYST_SHARD,
+				"dropcontrol.marker.enderman_amethyst_shard",
+				"dropcontrol.marker.enderman_amethyst_shard.lore"
+			),
 			ItemEntry.category(minecraft, "dropcontrol.category.creeper"),
 			ItemEntry.preRenderedPngIcon(
 				minecraft,

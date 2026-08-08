@@ -1,13 +1,13 @@
 ## Visão geral
 
-O DropControl remodela as recompensas de aranhas, bruxas, creepers, esqueletos, saqueadores e zumbis: adiciona espólios temáticos com quantidades e chances próprias e pode retirar itens vanilla indesejados de cada criatura. Com isso, derrotar um monstro conta uma pequena história — arqueiros podem deixar seu conhecimento, bruxas carregam misturas misteriosas e cada confronto guarda a possibilidade de um achado que realmente combine com o inimigo.
+O DropControl remodela as recompensas de aranhas, bruxas, creepers, endermen, esqueletos, saqueadores e zumbis: adiciona espólios temáticos com quantidades e chances próprias e pode retirar itens vanilla indesejados de cada criatura. Com isso, derrotar um monstro conta uma pequena história — arqueiros podem deixar seu conhecimento, a energia de teleporte pode se cristalizar em ametista e cada confronto guarda a possibilidade de um achado que realmente combine com o inimigo.
 
 ## Opções globais
 
 | Opção | Descrição |
 | --- | --- |
-| DANO CONTÍNUO | Remove de todas as entidades vivas o período vanilla de invulnerabilidade de 10 ticks (0,5 segundo) após cada golpe. Todo dano válido é aplicado integralmente, mesmo quando vários golpes iguais, mais fracos ou mais fortes atingem a entidade em sequência. Armadura, escudos, efeitos, encantamentos, imunidades próprias e as demais reduções de dano continuam funcionando normalmente. |
 | AMEAÇA CONSTANTE | Reduz o intervalo das patrulhas de 12.000 para 800 ticks (10 minutos para 40 segundos) e sua variação de 1.200 para 80 ticks (1 minuto para 4 segundos), mantendo as demais condições vanilla de surgimento. Dobra o dano causado diretamente por invasores. Capitães fora de invasões que já soltariam 1 Frasco Sombrio passam a soltar 2, cada um com Mau Presságio independente de I a V. |
+| PRESENÇA SOMBRIA | Multiplica por 6 o peso de seleção de bruxas e endermen no surgimento natural, aumentando a frequência dessas criaturas sem alterar o tamanho dos grupos. Preserva os limites de criaturas, as condições de cada bioma e as demais regras vanilla de surgimento. Não afeta spawners, estruturas, comandos nem outras formas especiais de invocação. |
 | CAVALO ESTACIONADO | Imobiliza montarias da família dos cavalos enquanto estiverem seladas e sem passageiro. O movimento normal retorna quando recebem um passageiro ou perdem a sela. |
 | COELHOS CERCADOS | Impede um coelho de saltar quando uma cerca da tag vanilla `#minecraft:fences` estiver à frente do movimento, até 1,35 bloco adiante e 0,8 bloco para cada lado. A busca cobre 5 × 5 blocos no plano horizontal e 2 níveis verticais, do Y atual ao bloco abaixo; ao detectar a cerca, cancela o salto e interrompe a navegação. |
 | ENDERMAN BLOQUEADO | Impede endermen de iniciar a ação de pegar blocos do mundo. Blocos que já estejam sendo carregados permanecem com o enderman e ainda podem ser colocados normalmente. |

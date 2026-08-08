@@ -22,21 +22,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin {
-	@Inject(
-		method = "hurtServer(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/damagesource/DamageSource;F)Z",
-		at = @At("HEAD")
-	)
-	private void dropcontrol$removeDamageCooldown(
-		ServerLevel level,
-		DamageSource source,
-		float amount,
-		CallbackInfoReturnable<Boolean> callback
-	) {
-		if (DropControlConfig.continuousDamage()) {
-			((LivingEntity)(Object)this).invulnerableTime = 0;
-		}
-	}
-
 	@ModifyVariable(
 		method = "hurtServer(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/damagesource/DamageSource;F)Z",
 		at = @At("HEAD"),
