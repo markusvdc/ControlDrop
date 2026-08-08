@@ -34,12 +34,6 @@ public final class DropControlClient implements ClientModInitializer {
 		if (graveAccentDown && !graveAccentWasDown) {
 			boolean swapEnabled = DropControlConfig.chestplateElytraSwap();
 			boolean sortingEnabled = DropControlConfig.inventorySorting();
-			br.com.dropcontrol.DropControl.LOGGER.info(
-				"Shared Grave Accent key detected: switchElytra={}, inventorySorting={}, screen={}",
-				swapEnabled,
-				sortingEnabled,
-				minecraft.gui.screen() == null ? "none" : minecraft.gui.screen().getClass().getSimpleName()
-			);
 			if (swapEnabled) {
 				swapChestEquipment(minecraft);
 			}

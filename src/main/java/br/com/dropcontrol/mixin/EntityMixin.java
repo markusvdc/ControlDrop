@@ -2,7 +2,6 @@ package br.com.dropcontrol.mixin;
 
 import br.com.dropcontrol.config.DropControlConfig;
 import br.com.dropcontrol.gameplay.DropRemovalPolicy;
-import br.com.dropcontrol.gameplay.PhantomDebugLog;
 import br.com.dropcontrol.access.PhantomBiteAccess;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.server.level.ServerLevel;
@@ -56,7 +55,6 @@ public abstract class EntityMixin {
 			&& (Object)this instanceof Phantom phantom
 			&& ((PhantomBiteAccess)phantom).dropcontrol$hasBittenPlayer()
 			&& stack.is(Items.PHANTOM_MEMBRANE)) {
-			PhantomDebugLog.membraneRemoved(phantom, stack.getCount());
 			callback.setReturnValue(null);
 			return;
 		}

@@ -22,13 +22,11 @@ public final class CreeperTntDropPolicy {
 		}
 
 		float roll = entity.getRandom().nextFloat();
-		DropDebugLog.chance(entity, "add_tnt", roll, DROP_CHANCE);
 		if (roll >= DROP_CHANCE) {
 			return;
 		}
 
 		ItemStack stack = new ItemStack(Items.TNT);
-		DropDebugLog.added(entity, "add_tnt", stack);
 		DropRemovalPolicy.spawnConfiguredDrop(level, entity, stack);
 	}
 }

@@ -1,6 +1,5 @@
 package br.com.dropcontrol.config;
 
-import br.com.dropcontrol.DropControl;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonParseException;
@@ -103,7 +102,6 @@ public final class DropControlConfig {
 			}
 		} catch (IOException | JsonParseException exception) {
 			applyFirstInstallDefaults();
-			DropControl.LOGGER.error("Could not load {}. Restoring UI defaults.", CONFIG_PATH, exception);
 		}
 	}
 
@@ -172,7 +170,6 @@ public final class DropControlConfig {
 			Files.move(temporaryPath, CONFIG_PATH, StandardCopyOption.REPLACE_EXISTING);
 			return true;
 		} catch (IOException exception) {
-			DropControl.LOGGER.error("Could not save {}.", CONFIG_PATH, exception);
 			return false;
 		}
 	}

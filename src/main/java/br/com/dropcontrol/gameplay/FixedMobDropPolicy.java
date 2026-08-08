@@ -42,7 +42,6 @@ public final class FixedMobDropPolicy {
 			spawn(level, entity, rocket);
 		} else if (entity.getType() == EntityTypes.SPIDER && DropControlConfig.isSelected(SPIDER_COBWEB)) {
 			float roll = entity.getRandom().nextFloat();
-			DropDebugLog.chance(entity, "add_cobweb", roll, COBWEB_CHANCE);
 			if (roll < COBWEB_CHANCE) {
 				spawn(level, entity, new ItemStack(Items.COBWEB));
 			}
@@ -59,7 +58,6 @@ public final class FixedMobDropPolicy {
 		} else if (entity.getType() == EntityTypes.SKELETON
 			&& DropControlConfig.isSelected(SKELETON_SPECTRAL_ARROW)) {
 			float roll = entity.getRandom().nextFloat();
-			DropDebugLog.chance(entity, "add_spectral_arrow", roll, SPECTRAL_ARROW_CHANCE);
 			if (roll < SPECTRAL_ARROW_CHANCE) {
 				spawn(level, entity, new ItemStack(Items.SPECTRAL_ARROW));
 			}
@@ -68,7 +66,6 @@ public final class FixedMobDropPolicy {
 		} else if (entity.getType() == EntityTypes.ENDERMAN
 			&& DropControlConfig.isSelected(ENDERMAN_AMETHYST_SHARD)) {
 			float roll = entity.getRandom().nextFloat();
-			DropDebugLog.chance(entity, "add_amethyst_shard", roll, ENDERMAN_AMETHYST_SHARD_CHANCE);
 			if (roll < ENDERMAN_AMETHYST_SHARD_CHANCE) {
 				spawn(level, entity, new ItemStack(Items.AMETHYST_SHARD));
 			}
@@ -78,7 +75,6 @@ public final class FixedMobDropPolicy {
 	private static void dropZombieItems(ServerLevel level, LivingEntity entity) {
 		if (DropControlConfig.isSelected(ZOMBIE_SULFUR)) {
 			float roll = entity.getRandom().nextFloat();
-			DropDebugLog.chance(entity, "add_sulfur", roll, ZOMBIE_SULFUR_CHANCE);
 			if (roll < ZOMBIE_SULFUR_CHANCE) {
 				spawn(level, entity, new ItemStack(Items.SULFUR));
 			}
@@ -86,7 +82,6 @@ public final class FixedMobDropPolicy {
 
 		if (DropControlConfig.isSelected(ZOMBIE_POISONOUS_POTATO)) {
 			float roll = entity.getRandom().nextFloat();
-			DropDebugLog.chance(entity, "add_poisonous_potato", roll, ZOMBIE_POISONOUS_POTATO_CHANCE);
 			if (roll < ZOMBIE_POISONOUS_POTATO_CHANCE) {
 				spawn(level, entity, new ItemStack(Items.POISONOUS_POTATO, 1 + entity.getRandom().nextInt(2)));
 			}
@@ -94,7 +89,6 @@ public final class FixedMobDropPolicy {
 	}
 
 	private static void spawn(ServerLevel level, LivingEntity entity, ItemStack stack) {
-		DropDebugLog.added(entity, "add_fixed_drop", stack);
 		DropRemovalPolicy.spawnConfiguredDrop(level, entity, stack);
 	}
 }

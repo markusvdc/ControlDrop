@@ -46,7 +46,6 @@ public final class WitchSuspiciousStewDropPolicy {
 				DataComponents.SUSPICIOUS_STEW_EFFECTS,
 				new SuspiciousStewEffects(List.of(selectedEffect.toEntry()))
 			);
-			DropDebugLog.added(entity, "add_suspicious_stew", stew);
 			DropRemovalPolicy.spawnConfiguredDrop(level, entity, stew);
 		}
 	}

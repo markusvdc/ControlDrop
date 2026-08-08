@@ -36,9 +36,6 @@ public final class DropRemovalPolicy {
 
 		if (entity.getType() == EntityTypes.WITCH) {
 			boolean remove = DropControlConfig.isSelected(WITCH_ALL);
-			if (remove) {
-				DropDebugLog.removed(entity, "remove_all", stack);
-			}
 			return remove;
 		}
 
@@ -48,15 +45,11 @@ public final class DropRemovalPolicy {
 			}
 
 			if (DropControlConfig.isSelected(SKELETON_ARMOR) && stack.is(Items.BOW)) {
-				DropDebugLog.removed(entity, "remove_bow", stack);
 				return true;
 			}
 
 			boolean removeArmor =
 				DropControlConfig.isSelected(SKELETON_ARMOR) && stack.has(DataComponents.EQUIPPABLE);
-			if (removeArmor) {
-				DropDebugLog.removed(entity, "remove_armor", stack);
-			}
 			return removeArmor;
 		}
 
@@ -67,9 +60,6 @@ public final class DropRemovalPolicy {
 
 			boolean remove =
 				DropControlConfig.isSelected(PILLAGER_CROSSBOW) && stack.is(Items.CROSSBOW);
-			if (remove) {
-				DropDebugLog.removed(entity, "remove_crossbow", stack);
-			}
 			return remove;
 		}
 
@@ -83,17 +73,14 @@ public final class DropRemovalPolicy {
 
 		if (DropControlConfig.isSelected(ZOMBIE_ARMOR)) {
 			if (stack.has(DataComponents.EQUIPPABLE)) {
-				DropDebugLog.removed(entity, "remove_armor", stack);
 				return true;
 			}
 
 			if (stack.is(Items.POTATO) || stack.is(Items.BAKED_POTATO) || stack.is(Items.CARROT)) {
-				DropDebugLog.removed(entity, "remove_vanilla_food", stack);
 				return true;
 			}
 
 			if (stack.is(Items.IRON_INGOT)) {
-				DropDebugLog.removed(entity, "remove_vanilla_iron_ingot", stack);
 				return true;
 			}
 		}
@@ -102,9 +89,6 @@ public final class DropRemovalPolicy {
 			&& (stack.is(Items.IRON_SWORD)
 				|| stack.is(Items.IRON_SPEAR)
 				|| stack.is(Items.IRON_SHOVEL));
-		if (removeWeapon) {
-			DropDebugLog.removed(entity, "remove_weapons", stack);
-		}
 		return removeWeapon;
 	}
 
@@ -115,7 +99,6 @@ public final class DropRemovalPolicy {
 
 		for (EquipmentSlot slot : EquipmentSlot.VALUES) {
 			if (mob.getItemBySlot(slot) == stack && mob.getDropChances().isPreserved(slot)) {
-				DropDebugLog.preserved(entity, slot, stack);
 				return true;
 			}
 		}

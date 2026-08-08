@@ -1,6 +1,5 @@
 package br.com.dropcontrol.mixin;
 
-import br.com.dropcontrol.gameplay.PhantomDebugLog;
 import br.com.dropcontrol.access.PhantomBiteAccess;
 import net.minecraft.world.entity.monster.Phantom;
 import net.minecraft.world.entity.player.Player;
@@ -39,7 +38,6 @@ public abstract class PhantomMixin implements PhantomBiteAccess {
 	public void dropcontrol$markPlayerBitten(Player player) {
 		if (!this.dropcontrol$bittenPlayer) {
 			this.dropcontrol$bittenPlayer = true;
-			PhantomDebugLog.playerBitten((Phantom)(Object)this, player);
 		}
 	}
 }

@@ -1,7 +1,6 @@
 package br.com.dropcontrol.mixin;
 
 import br.com.dropcontrol.config.DropControlConfig;
-import br.com.dropcontrol.gameplay.PhantomDebugLog;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.levelgen.PhantomSpawner;
 import org.spongepowered.asm.mixin.Mixin;
@@ -27,11 +26,6 @@ public abstract class PhantomSpawnerMixin {
 			return originalGroupSize;
 		}
 		int modifiedGroupSize = originalGroupSize * 2;
-		PhantomDebugLog.spawnGroup(
-			originalGroupSize,
-			modifiedGroupSize,
-			DropControlConfig.phantomPressureTwo()
-		);
 		return modifiedGroupSize;
 	}
 }

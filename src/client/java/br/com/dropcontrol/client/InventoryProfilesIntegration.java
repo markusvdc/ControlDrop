@@ -1,6 +1,5 @@
 package br.com.dropcontrol.client;
 
-import br.com.dropcontrol.DropControl;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.Set;
@@ -24,11 +23,9 @@ final class InventoryProfilesIntegration {
 	static void requestSort(Minecraft minecraft) {
 		LocalPlayer player = minecraft.player;
 		if (player == null || minecraft.gameMode == null) {
-			DropControl.LOGGER.info("Inventory sorting skipped: no active player or game mode.");
 			return;
 		}
 		if (!FabricLoader.getInstance().isModLoaded(IPN_MOD_ID)) {
-			DropControl.LOGGER.warn("Inventory sorting unavailable: Inventory Profiles Next is not installed.");
 			return;
 		}
 		ReflectionAccess ipn = access();
@@ -36,7 +33,6 @@ final class InventoryProfilesIntegration {
 			return;
 		}
 		if (pendingPlayerSort != null || Boolean.TRUE.equals(ipn.queueBusy())) {
-			DropControl.LOGGER.warn("Inventory sorting skipped: an IPN sorting sequence is already running.");
 			return;
 		}
 
@@ -47,15 +43,10 @@ final class InventoryProfilesIntegration {
 		} else if (screen instanceof AbstractContainerScreen<?> containerScreen) {
 			menu = containerScreen.getMenu();
 		} else {
-			DropControl.LOGGER.info("Inventory sorting skipped: current screen is not an inventory interface ({}).",
-				screen.getClass().getSimpleName());
 			return;
 		}
 
-		DropControl.LOGGER.info("Inventory sorting menu selected: {} (containerId={}).",
-			menu.getClass().getSimpleName(), menu.containerId);
 		if (!menu.getCarried().isEmpty()) {
-			DropControl.LOGGER.warn("Inventory sorting skipped: cursor is carrying an item.");
 			return;
 		}
 
@@ -98,7 +89,6 @@ final class InventoryProfilesIntegration {
 		pendingPlayerSort = null;
 		LocalPlayer player = minecraft.player;
 		if (player == null || minecraft.gameMode == null) {
-			DropControl.LOGGER.info("Pending player inventory sort cancelled: player is no longer available.");
 			return;
 		}
 
@@ -110,11 +100,9 @@ final class InventoryProfilesIntegration {
 			safeMenu = player.inventoryMenu;
 		}
 		if (safeMenu == null) {
-			DropControl.LOGGER.warn("Pending player inventory sort cancelled: the expected menu is no longer safely open.");
 			return;
 		}
 		if (!safeMenu.getCarried().isEmpty()) {
-			DropControl.LOGGER.warn("Pending player inventory sort cancelled: cursor is carrying an item.");
 			return;
 		}
 		ipn.deliverSort(safeMenu, true, false);
@@ -125,9 +113,7 @@ final class InventoryProfilesIntegration {
 			accessAttempted = true;
 			try {
 				access = new ReflectionAccess();
-				DropControl.LOGGER.info("Inventory Profiles Next integration initialized.");
 			} catch (ReflectiveOperationException | LinkageError exception) {
-				DropControl.LOGGER.error("Inventory Profiles Next integration failed to initialize.", exception);
 			}
 		}
 		return access;
@@ -174,9 +160,6 @@ final class InventoryProfilesIntegration {
 				Class<?> clickerClass = Class.forName("org.anti_ad.mc.ipnext.inventory.ContainerClicker");
 				signal = clickerClass.getMethod("access$getHighlights$p");
 			} catch (ReflectiveOperationException exception) {
-				DropControl.LOGGER.warn(
-					"IPN exposes no usable completion signal; using a documented 100-tick safe separation."
-				);
 			}
 			this.queueContents = signal;
 		}
@@ -192,14 +175,11 @@ final class InventoryProfilesIntegration {
 			try {
 				return !((Set<?>) this.queueContents.invoke(null)).isEmpty();
 			} catch (ReflectiveOperationException | RuntimeException exception) {
-				DropControl.LOGGER.error("Could not inspect the IPN sorting queue.", exception);
 				return null;
 			}
 		}
 
 		private boolean deliverSort(AbstractContainerMenu menu, boolean playerSide, boolean forceContainerSide) {
-			DropControl.LOGGER.info("IPN sort requested: side={}, menu={}, containerId={}.",
-				playerSide ? "player" : "container", menu.getClass().getSimpleName(), menu.containerId);
 			Boolean original = null;
 			try {
 				if (forceContainerSide) {
@@ -207,19 +187,14 @@ final class InventoryProfilesIntegration {
 					this.setValue.invoke(this.sortAtCursor, false);
 				}
 				this.doSort.invoke(this.actions, menu, true, playerSide);
-				DropControl.LOGGER.info("IPN sort call delivered: side={}, containerId={}.",
-					playerSide ? "player" : "container", menu.containerId);
 				return true;
 			} catch (ReflectiveOperationException | RuntimeException | LinkageError exception) {
-				DropControl.LOGGER.error("Inventory Profiles Next sort call failed.", exception);
 				return false;
 			} finally {
 				if (original != null) {
 					try {
 						this.setValue.invoke(this.sortAtCursor, original.booleanValue());
-						DropControl.LOGGER.info("IPN SORT_AT_CURSOR restored to {}.", original);
 					} catch (ReflectiveOperationException | RuntimeException exception) {
-						DropControl.LOGGER.error("Could not restore IPN SORT_AT_CURSOR to {}.", original, exception);
 					}
 				}
 			}

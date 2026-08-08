@@ -40,12 +40,10 @@ public final class SkeletonEnchantmentDropPolicy {
 			}
 
 			float roll = entity.getRandom().nextFloat();
-			DropDebugLog.chance(entity, "add_enchantment_book", roll, DROP_CHANCE);
 			if (roll < DROP_CHANCE) {
 				ItemStack book = EnchantmentHelper.createBook(
 					new EnchantmentInstance(enchantment, enchantment.value().getMaxLevel())
 				);
-				DropDebugLog.added(entity, "add_enchantment_book", book);
 				DropRemovalPolicy.spawnConfiguredDrop(level, entity, book);
 			}
 		}

@@ -3,7 +3,6 @@ package br.com.dropcontrol.mixin;
 import br.com.dropcontrol.config.DropControlConfig;
 import br.com.dropcontrol.gameplay.CreeperTntDropPolicy;
 import br.com.dropcontrol.gameplay.FixedMobDropPolicy;
-import br.com.dropcontrol.gameplay.PhantomDebugLog;
 import br.com.dropcontrol.gameplay.SkeletonEnchantmentDropPolicy;
 import br.com.dropcontrol.gameplay.WitchSuspiciousStewDropPolicy;
 import br.com.dropcontrol.access.PhantomBiteAccess;
@@ -38,7 +37,6 @@ public abstract class LivingEntityMixin {
 		}
 		if (DropControlConfig.phantomPressureTwo() && source.getEntity() instanceof Phantom phantom) {
 			float modifiedAmount = amount * 3.0F;
-			PhantomDebugLog.bite(phantom, (LivingEntity)(Object)this, amount, modifiedAmount);
 			return modifiedAmount;
 		}
 		return amount;
