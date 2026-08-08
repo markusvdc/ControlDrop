@@ -29,7 +29,7 @@ public final class DropControlConfig {
 	public static final String PHANTOM_PRESSURE_ONE = "phantom_pressure_one";
 	public static final String PHANTOM_PRESSURE_TWO = "phantom_pressure_two";
 	private static final String LEGACY_PHANTOM_PRESSURE = "phantom_pressure";
-	private static final int CURRENT_CONFIG_VERSION = 18;
+	private static final int CURRENT_CONFIG_VERSION = 19;
 	private static final String SPIDER_COBWEB = "dropcontrol:spider_cobweb";
 	private static final String PILLAGER_WEALTH = "dropcontrol:pillager_wealth";
 	private static final String LEGACY_PILLAGER_EMERALDS = "dropcontrol:pillager_emeralds";
@@ -38,6 +38,8 @@ public final class DropControlConfig {
 	private static final String ZOMBIE_POISONOUS_POTATO = "dropcontrol:zombie_poisonous_potato";
 	private static final String ENDERMAN_AMETHYST_SHARD = "dropcontrol:enderman_amethyst_shard";
 	private static final String WITCH_FIREWORK_ROCKET = "dropcontrol:witch_firework_rocket";
+	private static final String WITCH_SUSPICIOUS_STEW = "dropcontrol:witch_suspicious_stew";
+	private static final String LEGACY_WITCH_POTIONS = "dropcontrol:witch_potions";
 	private static final String SKELETON_ENCHANTMENT = "dropcontrol:skeleton_enchantment";
 	private static final String PILLAGER_CROSSBOW = "dropcontrol:pillager_crossbow";
 	private static final String SKELETON_ARMOR = "dropcontrol:skeleton_armor";
@@ -47,7 +49,7 @@ public final class DropControlConfig {
 	private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
 	private static final Path CONFIG_PATH = FabricLoader.getInstance().getConfigDir().resolve("dropcontrol.json");
 	private static final Set<String> ADDED_MARKERS = Set.of(
-		"dropcontrol:witch_potions",
+		WITCH_SUSPICIOUS_STEW,
 		WITCH_FIREWORK_ROCKET,
 		"dropcontrol:creeper_tnt",
 		SPIDER_COBWEB,
@@ -255,6 +257,9 @@ public final class DropControlConfig {
 		}
 		if (data.configVersion < 18) {
 			migrated.add(ZOMBIE_POISONOUS_POTATO);
+		}
+		if (data.configVersion < 19 && data.selectedItems.contains(LEGACY_WITCH_POTIONS)) {
+			migrated.add(WITCH_SUSPICIOUS_STEW);
 		}
 		return Set.copyOf(migrated);
 	}

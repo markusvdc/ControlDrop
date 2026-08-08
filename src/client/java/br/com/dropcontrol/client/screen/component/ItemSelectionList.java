@@ -42,11 +42,10 @@ public final class ItemSelectionList extends AbstractWidget {
 			ItemEntry.category(minecraft, "dropcontrol.category.witch"),
 			new ItemEntry(
 				minecraft,
-				"dropcontrol:witch_potions",
-				Identifier.withDefaultNamespace("textures/item/potion.png"),
-				Identifier.withDefaultNamespace("textures/item/potion_overlay.png"),
-				0xFFC2FF66,
-				"dropcontrol.marker.witch_potions"
+				"dropcontrol:witch_suspicious_stew",
+				Items.SUSPICIOUS_STEW,
+				"dropcontrol.marker.witch_suspicious_stew",
+				"dropcontrol.marker.witch_suspicious_stew.lore"
 			),
 			new ItemEntry(
 				minecraft,
