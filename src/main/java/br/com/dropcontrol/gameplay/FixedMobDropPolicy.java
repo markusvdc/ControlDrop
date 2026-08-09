@@ -13,17 +13,11 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.component.Fireworks;
 
 public final class FixedMobDropPolicy {
-	private static final float COBWEB_CHANCE = 0.15F;
-	private static final float SPECTRAL_ARROW_CHANCE = 0.20F;
 	private static final float ZOMBIE_SULFUR_CHANCE = 0.30F;
 	private static final float ZOMBIE_POISONOUS_POTATO_CHANCE = 0.35F;
 	private static final float ENDERMAN_AMETHYST_SHARD_CHANCE = 0.50F;
-	private static final Identifier SPIDER_COBWEB =
-		Identifier.fromNamespaceAndPath("dropcontrol", "spider_cobweb");
 	private static final Identifier PILLAGER_WEALTH =
 		Identifier.fromNamespaceAndPath("dropcontrol", "pillager_wealth");
-	private static final Identifier SKELETON_SPECTRAL_ARROW =
-		Identifier.fromNamespaceAndPath("dropcontrol", "skeleton_spectral_arrow");
 	private static final Identifier ZOMBIE_SULFUR =
 		Identifier.fromNamespaceAndPath("dropcontrol", "zombie_sulfur");
 	private static final Identifier ZOMBIE_POISONOUS_POTATO =
@@ -41,11 +35,6 @@ public final class FixedMobDropPolicy {
 	public static void drop(ServerLevel level, LivingEntity entity) {
 		if (entity.getType() == EntityTypes.WITCH) {
 			dropWitchItems(level, entity);
-		} else if (entity.getType() == EntityTypes.SPIDER && DropControlConfig.isSelected(SPIDER_COBWEB)) {
-			float roll = entity.getRandom().nextFloat();
-			if (roll < COBWEB_CHANCE) {
-				spawn(level, entity, new ItemStack(Items.COBWEB));
-			}
 		} else if (entity.getType() == EntityTypes.PILLAGER && DropControlConfig.isSelected(PILLAGER_WEALTH)) {
 			for (int rollIndex = 0; rollIndex < 2; rollIndex++) {
 				float roll = entity.getRandom().nextFloat();
@@ -55,12 +44,6 @@ public final class FixedMobDropPolicy {
 						? new ItemStack(Items.GOLD_INGOT)
 						: new ItemStack(Items.DIAMOND);
 				spawn(level, entity, stack);
-			}
-		} else if (entity.getType() == EntityTypes.SKELETON
-			&& DropControlConfig.isSelected(SKELETON_SPECTRAL_ARROW)) {
-			float roll = entity.getRandom().nextFloat();
-			if (roll < SPECTRAL_ARROW_CHANCE) {
-				spawn(level, entity, new ItemStack(Items.SPECTRAL_ARROW));
 			}
 		} else if (entity.getType() == EntityTypes.ZOMBIE) {
 			dropZombieItems(level, entity);

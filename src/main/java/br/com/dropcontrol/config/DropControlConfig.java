@@ -17,7 +17,6 @@ import net.minecraft.resources.Identifier;
 
 public final class DropControlConfig {
 	public static final String CONSTANT_THREAT = "constant_threat";
-	public static final String TRADITIONAL_MONSTER_SPAWNS = "traditional_monster_spawns";
 	public static final String PARKED_SADDLED_HORSES = "parked_saddled_horses";
 	public static final String RABBITS_AVOID_FENCES = "rabbits_avoid_fences";
 	public static final String ENDERMEN_DONT_PICK_UP_BLOCKS = "endermen_dont_pick_up_blocks";
@@ -28,19 +27,14 @@ public final class DropControlConfig {
 	public static final String PHANTOM_PRESSURE_ONE = "phantom_pressure_one";
 	public static final String PHANTOM_PRESSURE_TWO = "phantom_pressure_two";
 	private static final String LEGACY_PHANTOM_PRESSURE = "phantom_pressure";
-	private static final int CURRENT_CONFIG_VERSION = 20;
-	private static final String SPIDER_COBWEB = "dropcontrol:spider_cobweb";
+	private static final int CURRENT_CONFIG_VERSION = 23;
 	private static final String PILLAGER_WEALTH = "dropcontrol:pillager_wealth";
 	private static final String LEGACY_PILLAGER_EMERALDS = "dropcontrol:pillager_emeralds";
-	private static final String SKELETON_SPECTRAL_ARROW = "dropcontrol:skeleton_spectral_arrow";
 	private static final String ZOMBIE_SULFUR = "dropcontrol:zombie_sulfur";
 	private static final String ZOMBIE_POISONOUS_POTATO = "dropcontrol:zombie_poisonous_potato";
 	private static final String ENDERMAN_AMETHYST_SHARD = "dropcontrol:enderman_amethyst_shard";
 	private static final String WITCH_FIREWORK_ROCKET = "dropcontrol:witch_firework_rocket";
-	private static final String WITCH_SUSPICIOUS_STEW = "dropcontrol:witch_suspicious_stew";
 	private static final String WITCH_WART = "dropcontrol:witch_wart";
-	private static final String LEGACY_WITCH_POTIONS = "dropcontrol:witch_potions";
-	private static final String SKELETON_ENCHANTMENT = "dropcontrol:skeleton_enchantment";
 	private static final String PILLAGER_CROSSBOW = "dropcontrol:pillager_crossbow";
 	private static final String SKELETON_ARMOR = "dropcontrol:skeleton_armor";
 	private static final String LEGACY_SKELETON_BOW = "dropcontrol:skeleton_bow";
@@ -49,14 +43,9 @@ public final class DropControlConfig {
 	private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
 	private static final Path CONFIG_PATH = FabricLoader.getInstance().getConfigDir().resolve("dropcontrol.json");
 	private static final Set<String> ADDED_MARKERS = Set.of(
-		WITCH_SUSPICIOUS_STEW,
 		WITCH_WART,
 		WITCH_FIREWORK_ROCKET,
-		"dropcontrol:creeper_tnt",
-		SPIDER_COBWEB,
 		PILLAGER_WEALTH,
-		SKELETON_SPECTRAL_ARROW,
-		SKELETON_ENCHANTMENT,
 		ZOMBIE_SULFUR,
 		ZOMBIE_POISONOUS_POTATO,
 		ENDERMAN_AMETHYST_SHARD
@@ -70,7 +59,6 @@ public final class DropControlConfig {
 	private static final Set<String> AVAILABLE_MARKERS = availableMarkers();
 	private static final Set<String> AVAILABLE_OPTIONS = Set.of(
 		CONSTANT_THREAT,
-		TRADITIONAL_MONSTER_SPAWNS,
 		PARKED_SADDLED_HORSES,
 		RABBITS_AVOID_FENCES,
 		ENDERMEN_DONT_PICK_UP_BLOCKS,
@@ -130,7 +118,6 @@ public final class DropControlConfig {
 	}
 
 	public static boolean constantThreat() { return isOptionEnabled(CONSTANT_THREAT); }
-	public static boolean traditionalMonsterSpawns() { return isOptionEnabled(TRADITIONAL_MONSTER_SPAWNS); }
 	public static boolean saddledHorseStaysPut() { return isOptionEnabled(PARKED_SADDLED_HORSES); }
 	public static boolean rabbitsAvoidFences() { return isOptionEnabled(RABBITS_AVOID_FENCES); }
 	public static boolean endermenDontPickUpBlocks() { return isOptionEnabled(ENDERMEN_DONT_PICK_UP_BLOCKS); }
@@ -233,17 +220,10 @@ public final class DropControlConfig {
 			}
 		}
 		if (data.configVersion < 5) {
-			migrated.add(SPIDER_COBWEB);
 			migrated.add(PILLAGER_WEALTH);
-		}
-		if (data.configVersion < 6) {
-			migrated.add(SKELETON_SPECTRAL_ARROW);
 		}
 		if (data.configVersion < 7 && data.selectedItems.contains(LEGACY_PILLAGER_EMERALDS)) {
 			migrated.add(PILLAGER_WEALTH);
-		}
-		if (data.configVersion < 8) {
-			migrated.add(SKELETON_ENCHANTMENT);
 		}
 		if (data.configVersion < 10) {
 			migrated.add(ZOMBIE_SULFUR);
@@ -256,9 +236,6 @@ public final class DropControlConfig {
 		}
 		if (data.configVersion < 18) {
 			migrated.add(ZOMBIE_POISONOUS_POTATO);
-		}
-		if (data.configVersion < 19 && data.selectedItems.contains(LEGACY_WITCH_POTIONS)) {
-			migrated.add(WITCH_SUSPICIOUS_STEW);
 		}
 		if (data.configVersion < 20) {
 			migrated.add(WITCH_WART);

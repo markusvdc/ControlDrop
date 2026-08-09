@@ -33,21 +33,7 @@ public final class ItemSelectionList extends AbstractWidget {
 		this.minecraft = minecraft;
 		this.rowHeight = rowHeight;
 		this.entries = sortWithinCategories(minecraft, List.of(
-			ItemEntry.category(minecraft, "dropcontrol.category.spider"),
-			new ItemEntry(
-				minecraft,
-				"dropcontrol:spider_cobweb",
-				Identifier.withDefaultNamespace("textures/block/cobweb.png"),
-				"dropcontrol.marker.spider_cobweb"
-			),
 			ItemEntry.category(minecraft, "dropcontrol.category.witch"),
-			new ItemEntry(
-				minecraft,
-				"dropcontrol:witch_suspicious_stew",
-				Items.SUSPICIOUS_STEW,
-				"dropcontrol.marker.witch_suspicious_stew",
-				"dropcontrol.marker.witch_suspicious_stew.lore"
-			),
 			new ItemEntry(
 				minecraft,
 				"dropcontrol:witch_firework_rocket",
@@ -69,28 +55,6 @@ public final class ItemSelectionList extends AbstractWidget {
 				Items.AMETHYST_SHARD,
 				"dropcontrol.marker.enderman_amethyst_shard",
 				"dropcontrol.marker.enderman_amethyst_shard.lore"
-			),
-			ItemEntry.category(minecraft, "dropcontrol.category.creeper"),
-			ItemEntry.preRenderedPngIcon(
-				minecraft,
-				"dropcontrol:creeper_tnt",
-				Identifier.fromNamespaceAndPath("dropcontrol", "textures/gui/tnt.png"),
-				300,
-				"dropcontrol.marker.creeper_tnt"
-			),
-			ItemEntry.category(minecraft, "dropcontrol.category.skeleton"),
-			new ItemEntry(
-				minecraft,
-				"dropcontrol:skeleton_spectral_arrow",
-				Items.SPECTRAL_ARROW,
-				"dropcontrol.marker.skeleton_spectral_arrow"
-			),
-			new ItemEntry(
-				minecraft,
-				"dropcontrol:skeleton_enchantment",
-				Items.ENCHANTED_BOOK,
-				"dropcontrol.marker.skeleton_enchantment",
-				"dropcontrol.marker.skeleton_enchantment.lore"
 			),
 			ItemEntry.category(minecraft, "dropcontrol.category.pillager"),
 			new ItemEntry(

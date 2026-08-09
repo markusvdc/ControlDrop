@@ -1,10 +1,7 @@
 package br.com.dropcontrol.mixin;
 
 import br.com.dropcontrol.config.DropControlConfig;
-import br.com.dropcontrol.gameplay.CreeperTntDropPolicy;
 import br.com.dropcontrol.gameplay.FixedMobDropPolicy;
-import br.com.dropcontrol.gameplay.SkeletonEnchantmentDropPolicy;
-import br.com.dropcontrol.gameplay.WitchSuspiciousStewDropPolicy;
 import br.com.dropcontrol.access.PhantomBiteAccess;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.damagesource.DamageSource;
@@ -86,9 +83,6 @@ public abstract class LivingEntityMixin {
 		CallbackInfo callback
 	) {
 		LivingEntity entity = (LivingEntity)(Object)this;
-		CreeperTntDropPolicy.tryDrop(level, entity);
 		FixedMobDropPolicy.drop(level, entity);
-		SkeletonEnchantmentDropPolicy.drop(level, entity);
-		WitchSuspiciousStewDropPolicy.drop(level, entity);
 	}
 }
