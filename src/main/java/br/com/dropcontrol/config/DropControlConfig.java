@@ -26,8 +26,9 @@ public final class DropControlConfig {
 	public static final String EXACT_HORSE_HEALTH = "exact_horse_health";
 	public static final String PHANTOM_PRESSURE_ONE = "phantom_pressure_one";
 	public static final String PHANTOM_PRESSURE_TWO = "phantom_pressure_two";
+	public static final String AQUATIC_APOCALYPSE = "aquatic_apocalypse";
 	private static final String LEGACY_PHANTOM_PRESSURE = "phantom_pressure";
-	private static final int CURRENT_CONFIG_VERSION = 23;
+	private static final int CURRENT_CONFIG_VERSION = 24;
 	private static final String PILLAGER_WEALTH = "dropcontrol:pillager_wealth";
 	private static final String LEGACY_PILLAGER_EMERALDS = "dropcontrol:pillager_emeralds";
 	private static final String ZOMBIE_SULFUR = "dropcontrol:zombie_sulfur";
@@ -67,7 +68,8 @@ public final class DropControlConfig {
 		PAUSE_WHEN_MOUSE_IDLE,
 		EXACT_HORSE_HEALTH,
 		PHANTOM_PRESSURE_ONE,
-		PHANTOM_PRESSURE_TWO
+		PHANTOM_PRESSURE_TWO,
+		AQUATIC_APOCALYPSE
 	);
 
 	private static volatile Set<String> selectedItems = AVAILABLE_MARKERS;
@@ -127,6 +129,7 @@ public final class DropControlConfig {
 	public static boolean exactHorseHealth() { return isOptionEnabled(EXACT_HORSE_HEALTH); }
 	public static boolean phantomPressureOne() { return isOptionEnabled(PHANTOM_PRESSURE_ONE); }
 	public static boolean phantomPressureTwo() { return isOptionEnabled(PHANTOM_PRESSURE_TWO); }
+	public static boolean aquaticApocalypse() { return isOptionEnabled(AQUATIC_APOCALYPSE); }
 
 	public static boolean isSelected(Identifier markerId) {
 		return selectedItems.contains(markerId.toString());

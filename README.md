@@ -6,6 +6,7 @@ O DropControl remodela as recompensas de bruxas, endermen, esqueletos, saqueador
 
 | Opção | Descrição |
 | --- | --- |
+| APOCALIPSE AQUÁTICO | Substitui por afogados todos os zumbis que seriam gerados naturalmente enquanto estiver chovendo. Zumbis criados por outros meios não são afetados. |
 | AMEAÇA CONSTANTE | Reduz o intervalo das patrulhas de 12.000 para 800 ticks (10 minutos para 40 segundos) e sua variação de 1.200 para 80 ticks (1 minuto para 4 segundos), mantendo as demais condições vanilla de surgimento. Dobra o dano causado diretamente por invasores. Capitães fora de invasões que já soltariam 1 Frasco Sombrio passam a soltar 2, cada um com Mau Presságio independente de I a V. |
 | CAVALO ESTACIONADO | Imobiliza montarias da família dos cavalos enquanto estiverem seladas e sem passageiro. O movimento normal retorna quando recebem um passageiro ou perdem a sela. |
 | COELHOS CERCADOS | Impede um coelho de saltar quando uma cerca da tag vanilla `#minecraft:fences` estiver à frente do movimento, até 1,35 bloco adiante e 0,8 bloco para cada lado. A busca cobre 5 × 5 blocos no plano horizontal e 2 níveis verticais, do Y atual ao bloco abaixo; ao detectar a cerca, cancela o salto e interrompe a navegação. |
