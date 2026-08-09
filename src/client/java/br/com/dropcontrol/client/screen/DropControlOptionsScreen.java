@@ -38,12 +38,7 @@ public final class DropControlOptionsScreen extends Screen {
 			listBottom - OPTIONS_TOP,
 			OPTIONS_TOP,
 			List.of(
-				new GlobalOptionList.Option(
-					DropControlConfig.CONSTANT_THREAT,
-					Component.translatable("dropcontrol.options.constant_threat"),
-					Component.translatable("dropcontrol.options.constant_threat.lore"),
-					Component.translatable("dropcontrol.options.constant_threat.description")
-				),
+				GlobalOptionList.Option.category(Component.translatable("dropcontrol.options.category.quality")),
 				new GlobalOptionList.Option(
 					DropControlConfig.PARKED_SADDLED_HORSES,
 					Component.translatable("dropcontrol.options.parked_saddled_horses"),
@@ -85,6 +80,13 @@ public final class DropControlOptionsScreen extends Screen {
 					Component.translatable("dropcontrol.options.exact_horse_health"),
 					Component.translatable("dropcontrol.options.exact_horse_health.lore"),
 					Component.translatable("dropcontrol.options.exact_horse_health.description")
+				),
+				GlobalOptionList.Option.category(Component.translatable("dropcontrol.options.category.fantasy")),
+				new GlobalOptionList.Option(
+					DropControlConfig.CONSTANT_THREAT,
+					Component.translatable("dropcontrol.options.constant_threat"),
+					Component.translatable("dropcontrol.options.constant_threat.lore"),
+					Component.translatable("dropcontrol.options.constant_threat.description")
 				),
 				new GlobalOptionList.Option(
 					DropControlConfig.PHANTOM_PRESSURE_ONE,

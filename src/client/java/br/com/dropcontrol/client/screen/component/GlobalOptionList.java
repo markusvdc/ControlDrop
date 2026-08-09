@@ -2,6 +2,7 @@ package br.com.dropcontrol.client.screen.component;
 
 import br.com.dropcontrol.config.DropControlConfig;
 import java.util.Comparator;
+import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -29,9 +30,22 @@ public final class GlobalOptionList extends AbstractWidget {
 		super(0, y, width, height, Component.translatable("dropcontrol.options.title"));
 		this.minecraft = minecraft;
 		Comparator<Component> alphabeticalOrder = AlphabeticalOrder.components(minecraft);
-		this.entries = options.stream()
-			.sorted((first, second) -> alphabeticalOrder.compare(first.label(), second.label()))
-			.map(option -> new Entry(option, DropControlConfig.isOptionEnabled(option.id())))
+		List<Option> sortedOptions = new ArrayList<>();
+		List<Option> section = new ArrayList<>();
+		for (Option option : options) {
+			if (option.category()) {
+				section.sort((first, second) -> alphabeticalOrder.compare(first.label(), second.label()));
+				sortedOptions.addAll(section);
+				section.clear();
+				sortedOptions.add(option);
+			} else {
+				section.add(option);
+			}
+		}
+		section.sort((first, second) -> alphabeticalOrder.compare(first.label(), second.label()));
+		sortedOptions.addAll(section);
+		this.entries = sortedOptions.stream()
+			.map(option -> new Entry(option, !option.category() && DropControlConfig.isOptionEnabled(option.id())))
 			.toList();
 	}
 
@@ -53,7 +67,7 @@ public final class GlobalOptionList extends AbstractWidget {
 				continue;
 			}
 			Entry entry = this.entries.get(index);
-			boolean hovered = mouseX >= x && mouseX < x + contentWidth
+			boolean hovered = !entry.option.category() && mouseX >= x && mouseX < x + contentWidth
 				&& mouseY >= rowY && mouseY < rowY + ROW_HEIGHT;
 			if (hovered) {
 				this.hoveredLore = entry.option.lore();
@@ -91,7 +105,11 @@ public final class GlobalOptionList extends AbstractWidget {
 		}
 		int index = (int)((event.y() - getY() + this.scrollAmount) / ROW_HEIGHT);
 		if (index >= 0 && index < this.entries.size()) {
-			this.entries.get(index).selected = !this.entries.get(index).selected;
+			Entry entry = this.entries.get(index);
+			if (entry.option.category()) {
+				return false;
+			}
+			entry.selected = !entry.selected;
 			playDownSound(this.minecraft.getSoundManager());
 			return true;
 		}
@@ -128,7 +146,7 @@ public final class GlobalOptionList extends AbstractWidget {
 	public Set<String> enabledIds() {
 		LinkedHashSet<String> ids = new LinkedHashSet<>();
 		for (Entry entry : this.entries) {
-			if (entry.selected) {
+			if (!entry.option.category() && entry.selected) {
 				ids.add(entry.option.id());
 			}
 		}
@@ -136,11 +154,11 @@ public final class GlobalOptionList extends AbstractWidget {
 	}
 
 	public void setAllSelected(boolean selected) {
-		this.entries.forEach(entry -> entry.selected = selected);
+		this.entries.stream().filter(entry -> !entry.option.category()).forEach(entry -> entry.selected = selected);
 	}
 
 	public boolean areAllSelected() {
-		return this.entries.stream().allMatch(entry -> entry.selected);
+		return this.entries.stream().filter(entry -> !entry.option.category()).allMatch(entry -> entry.selected);
 	}
 
 	private void renderEntry(
@@ -151,6 +169,14 @@ public final class GlobalOptionList extends AbstractWidget {
 		int width,
 		boolean hovered
 	) {
+		if (entry.option.category()) {
+			int lineY = y + ROW_HEIGHT / 2;
+			graphics.fill(x, lineY, x + width, lineY + 1, 0xFF4A4A4A);
+			graphics.fill(x + 7, y + 3, x + 15 + this.minecraft.font.width(entry.option.label()), y + ROW_HEIGHT - 5,
+				0xFF101010);
+			graphics.text(this.minecraft.font, entry.option.label(), x + 11, y + 9, 0xFFFFD36A, true);
+			return;
+		}
 		graphics.fill(x, y + 1, x + width, y + ROW_HEIGHT - 2, hovered ? 0xCC333333 : 0x99202020);
 		graphics.fill(x, y + 1, x + 1, y + ROW_HEIGHT - 2, entry.selected ? 0xFF79C64A : 0xFF555555);
 		if (hovered) {
@@ -207,9 +233,17 @@ public final class GlobalOptionList extends AbstractWidget {
 		defaultButtonNarrationText(output);
 	}
 
-	public record Option(String id, Component label, Component lore, Component description) {
+	public record Option(String id, Component label, Component lore, Component description, boolean category) {
+		public Option(String id, Component label, Component lore, Component description) {
+			this(id, label, lore, description, false);
+		}
+
 		public Option(String id, Component label, Component description) {
-			this(id, label, Component.empty(), description);
+			this(id, label, Component.empty(), description, false);
+		}
+
+		public static Option category(Component label) {
+			return new Option(null, label, Component.empty(), Component.empty(), true);
 		}
 	}
 

@@ -50,6 +50,8 @@
   "dropcontrol.action.toggle_all.tooltip": "Alternar entre marcar e desmarcar todos.",
   "dropcontrol.options.title": "OPÇÕES GLOBAIS",
   "dropcontrol.options.subtitle": "Selecione as opções globais que você deseja ativar.",
+  "dropcontrol.options.category.quality": "QUALIDADE",
+  "dropcontrol.options.category.fantasy": "FANTASIA",
   "dropcontrol.options.aquatic_apocalypse": "APOCALIPSE AQUÁTICO",
   "dropcontrol.options.aquatic_apocalypse.lore": "Quando a chuva cai, os mortos esquecem a terra. O chamado das águas os ergue afogados para cobrir o mundo em uma maré sombria.",
   "dropcontrol.options.aquatic_apocalypse.description": "Substitui por afogados todos os zumbis que seriam gerados naturalmente enquanto estiver chovendo. Zumbis criados por outros meios não são afetados.",
