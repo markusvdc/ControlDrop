@@ -32,6 +32,14 @@ final class ExactHorseHealthProvider implements IEntityComponentProvider {
 			IThemeHelper.get().info(formatHealth(horse.getHealth())),
 			formatHealth(horse.getMaxHealth())
 		));
+		tooltip.add(Component.translatable(
+			"dropcontrol.jade.horse_color",
+			Component.translatable("dropcontrol.jade.horse_color." + horse.getVariant().getSerializedName())
+		));
+		tooltip.add(Component.translatable(
+			"dropcontrol.jade.horse_markings",
+			Component.translatable("dropcontrol.jade.horse_markings." + horse.getMarkings().name().toLowerCase(java.util.Locale.ROOT))
+		));
 	}
 
 	private static String formatHealth(float value) {
