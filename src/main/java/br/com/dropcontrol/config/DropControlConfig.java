@@ -28,33 +28,41 @@ public final class DropControlConfig {
 	public static final String PHANTOM_PRESSURE_TWO = "phantom_pressure_two";
 	public static final String AQUATIC_APOCALYPSE = "aquatic_apocalypse";
 	private static final String LEGACY_PHANTOM_PRESSURE = "phantom_pressure";
-	private static final int CURRENT_CONFIG_VERSION = 24;
+	private static final int CURRENT_CONFIG_VERSION = 27;
 	private static final String PILLAGER_WEALTH = "dropcontrol:pillager_wealth";
 	private static final String LEGACY_PILLAGER_EMERALDS = "dropcontrol:pillager_emeralds";
 	private static final String ZOMBIE_SULFUR = "dropcontrol:zombie_sulfur";
 	private static final String ZOMBIE_POISONOUS_POTATO = "dropcontrol:zombie_poisonous_potato";
+	private static final String DROWNED_TROPICAL_FISH = "dropcontrol:drowned_tropical_fish";
+	private static final String DROWNED_KELP = "dropcontrol:drowned_kelp";
 	private static final String ENDERMAN_AMETHYST_SHARD = "dropcontrol:enderman_amethyst_shard";
-	private static final String WITCH_FIREWORK_ROCKET = "dropcontrol:witch_firework_rocket";
 	private static final String WITCH_WART = "dropcontrol:witch_wart";
+	private static final String PILLAGER_APPLE = "dropcontrol:pillager_apple";
+	private static final String PHANTOM_GLOW_INK_SAC = "dropcontrol:phantom_glow_ink_sac";
 	private static final String PILLAGER_CROSSBOW = "dropcontrol:pillager_crossbow";
 	private static final String SKELETON_ARMOR = "dropcontrol:skeleton_armor";
 	private static final String LEGACY_SKELETON_BOW = "dropcontrol:skeleton_bow";
 	private static final String ZOMBIE_ARMOR = "dropcontrol:zombie_armor";
+	private static final String DROWNED_COPPER = "dropcontrol:drowned_copper";
 	private static final String LEGACY_ZOMBIE_WEAPONS = "dropcontrol:zombie_weapons";
 	private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
 	private static final Path CONFIG_PATH = FabricLoader.getInstance().getConfigDir().resolve("dropcontrol.json");
 	private static final Set<String> ADDED_MARKERS = Set.of(
 		WITCH_WART,
-		WITCH_FIREWORK_ROCKET,
 		PILLAGER_WEALTH,
+		PILLAGER_APPLE,
 		ZOMBIE_SULFUR,
 		ZOMBIE_POISONOUS_POTATO,
-		ENDERMAN_AMETHYST_SHARD
+		DROWNED_TROPICAL_FISH,
+		DROWNED_KELP,
+		ENDERMAN_AMETHYST_SHARD,
+		PHANTOM_GLOW_INK_SAC
 	);
 	private static final Set<String> REMOVED_MARKERS = Set.of(
 		SKELETON_ARMOR,
 		PILLAGER_CROSSBOW,
 		ZOMBIE_ARMOR,
+		DROWNED_COPPER,
 		"dropcontrol:witch_all"
 	);
 	private static final Set<String> AVAILABLE_MARKERS = availableMarkers();
@@ -234,14 +242,22 @@ public final class DropControlConfig {
 		if (data.configVersion < 15) {
 			migrated.add(ENDERMAN_AMETHYST_SHARD);
 		}
-		if (data.configVersion < 16) {
-			migrated.add(WITCH_FIREWORK_ROCKET);
-		}
 		if (data.configVersion < 18) {
 			migrated.add(ZOMBIE_POISONOUS_POTATO);
 		}
 		if (data.configVersion < 20) {
 			migrated.add(WITCH_WART);
+		}
+		if (data.configVersion < 25) {
+			migrated.add(DROWNED_COPPER);
+		}
+		if (data.configVersion < 26) {
+			migrated.add(DROWNED_TROPICAL_FISH);
+		}
+		if (data.configVersion < 27) {
+			migrated.add(DROWNED_KELP);
+			migrated.add(PILLAGER_APPLE);
+			migrated.add(PHANTOM_GLOW_INK_SAC);
 		}
 		return Set.copyOf(migrated);
 	}

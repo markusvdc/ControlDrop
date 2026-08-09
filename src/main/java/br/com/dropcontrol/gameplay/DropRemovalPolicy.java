@@ -19,6 +19,8 @@ public final class DropRemovalPolicy {
 		Identifier.fromNamespaceAndPath("dropcontrol", "pillager_crossbow");
 	private static final Identifier ZOMBIE_ARMOR =
 		Identifier.fromNamespaceAndPath("dropcontrol", "zombie_armor");
+	private static final Identifier DROWNED_COPPER =
+		Identifier.fromNamespaceAndPath("dropcontrol", "drowned_copper");
 	private static final Identifier WITCH_ALL =
 		Identifier.fromNamespaceAndPath("dropcontrol", "witch_all");
 
@@ -61,6 +63,10 @@ public final class DropRemovalPolicy {
 			boolean remove =
 				DropControlConfig.isSelected(PILLAGER_CROSSBOW) && stack.is(Items.CROSSBOW);
 			return remove;
+		}
+
+		if (entity.getType() == EntityTypes.DROWNED) {
+			return DropControlConfig.isSelected(DROWNED_COPPER) && stack.is(Items.COPPER_INGOT);
 		}
 
 		if (entity.getType() != EntityTypes.ZOMBIE) {

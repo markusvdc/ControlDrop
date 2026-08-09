@@ -33,14 +33,22 @@ public final class ItemSelectionList extends AbstractWidget {
 		this.minecraft = minecraft;
 		this.rowHeight = rowHeight;
 		this.entries = sortWithinCategories(minecraft, List.of(
-			ItemEntry.category(minecraft, "dropcontrol.category.witch"),
+			ItemEntry.category(minecraft, "dropcontrol.category.drowned"),
 			new ItemEntry(
 				minecraft,
-				"dropcontrol:witch_firework_rocket",
-				Items.FIREWORK_ROCKET,
-				"dropcontrol.marker.witch_firework_rocket",
-				"dropcontrol.marker.witch_firework_rocket.lore"
+				"dropcontrol:drowned_tropical_fish",
+				Items.TROPICAL_FISH,
+				"dropcontrol.marker.drowned_tropical_fish",
+				"dropcontrol.marker.drowned_tropical_fish.lore"
 			),
+			new ItemEntry(
+				minecraft,
+				"dropcontrol:drowned_kelp",
+				Items.KELP,
+				"dropcontrol.marker.drowned_kelp",
+				"dropcontrol.marker.drowned_kelp.lore"
+			),
+			ItemEntry.category(minecraft, "dropcontrol.category.witch"),
 			new ItemEntry(
 				minecraft,
 				"dropcontrol:witch_wart",
@@ -63,6 +71,21 @@ public final class ItemSelectionList extends AbstractWidget {
 				Items.EMERALD,
 				"dropcontrol.marker.pillager_wealth"
 			),
+			new ItemEntry(
+				minecraft,
+				"dropcontrol:pillager_apple",
+				Items.APPLE,
+				"dropcontrol.marker.pillager_apple",
+				"dropcontrol.marker.pillager_apple.lore"
+			),
+			ItemEntry.category(minecraft, "dropcontrol.category.phantom"),
+			new ItemEntry(
+				minecraft,
+				"dropcontrol:phantom_glow_ink_sac",
+				Items.GLOW_INK_SAC,
+				"dropcontrol.marker.phantom_glow_ink_sac",
+				"dropcontrol.marker.phantom_glow_ink_sac.lore"
+			),
 			ItemEntry.category(minecraft, "dropcontrol.category.zombie"),
 			ItemEntry.preRenderedPngIcon(
 				minecraft,
@@ -84,6 +107,12 @@ public final class ItemSelectionList extends AbstractWidget {
 				"dropcontrol:witch_all",
 				Items.REDSTONE,
 				"dropcontrol.marker.witch_all"
+			),
+			ItemEntry.removal(
+				minecraft,
+				"dropcontrol:drowned_copper",
+				Items.COPPER_INGOT,
+				"dropcontrol.marker.drowned_copper"
 			),
 			ItemEntry.removal(
 				minecraft,

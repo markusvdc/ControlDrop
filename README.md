@@ -1,6 +1,6 @@
 ## Visão geral
 
-O DropControl remodela as recompensas de bruxas, endermen, esqueletos, saqueadores e zumbis: adiciona espólios temáticos com quantidades e chances próprias e pode retirar itens vanilla indesejados dessas criaturas. Com isso, derrotar um monstro conta uma pequena história — a energia de teleporte pode se cristalizar em ametista, saqueadores carregam riquezas e cada confronto guarda a possibilidade de um achado que realmente combine com o inimigo.
+O DropControl remodela as recompensas de afogados, bruxas, endermen, esqueletos, espectros, saqueadores e zumbis: adiciona espólios temáticos com quantidades e chances próprias e pode retirar itens vanilla indesejados dessas criaturas. Com isso, derrotar um monstro conta uma pequena história — a energia de teleporte pode se cristalizar em ametista, saqueadores carregam provisões roubadas e cada confronto guarda a possibilidade de um achado que realmente combine com o inimigo.
 
 ## Opções globais
 
