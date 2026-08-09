@@ -1,5 +1,6 @@
 package br.com.dropcontrol.client.screen.component;
 
+import br.com.dropcontrol.item.DropControlItems;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -53,6 +54,13 @@ public final class ItemSelectionList extends AbstractWidget {
 				Items.FIREWORK_ROCKET,
 				"dropcontrol.marker.witch_firework_rocket",
 				"dropcontrol.marker.witch_firework_rocket.lore"
+			),
+			new ItemEntry(
+				minecraft,
+				"dropcontrol:witch_wart",
+				DropControlItems.WITCH_WART,
+				"dropcontrol.marker.witch_wart",
+				"dropcontrol.marker.witch_wart.lore"
 			),
 			ItemEntry.category(minecraft, "dropcontrol.category.enderman"),
 			new ItemEntry(

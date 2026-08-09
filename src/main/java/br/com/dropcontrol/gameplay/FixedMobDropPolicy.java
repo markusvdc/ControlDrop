@@ -1,6 +1,7 @@
 package br.com.dropcontrol.gameplay;
 
 import br.com.dropcontrol.config.DropControlConfig;
+import br.com.dropcontrol.item.DropControlItems;
 import java.util.List;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.resources.Identifier;
@@ -31,15 +32,15 @@ public final class FixedMobDropPolicy {
 		Identifier.fromNamespaceAndPath("dropcontrol", "enderman_amethyst_shard");
 	private static final Identifier WITCH_FIREWORK_ROCKET =
 		Identifier.fromNamespaceAndPath("dropcontrol", "witch_firework_rocket");
+	private static final Identifier WITCH_WART =
+		Identifier.fromNamespaceAndPath("dropcontrol", "witch_wart");
 
 	private FixedMobDropPolicy() {
 	}
 
 	public static void drop(ServerLevel level, LivingEntity entity) {
-		if (entity.getType() == EntityTypes.WITCH && DropControlConfig.isSelected(WITCH_FIREWORK_ROCKET)) {
-			ItemStack rocket = new ItemStack(Items.FIREWORK_ROCKET);
-			rocket.set(DataComponents.FIREWORKS, new Fireworks(1, List.of()));
-			spawn(level, entity, rocket);
+		if (entity.getType() == EntityTypes.WITCH) {
+			dropWitchItems(level, entity);
 		} else if (entity.getType() == EntityTypes.SPIDER && DropControlConfig.isSelected(SPIDER_COBWEB)) {
 			float roll = entity.getRandom().nextFloat();
 			if (roll < COBWEB_CHANCE) {
@@ -69,6 +70,18 @@ public final class FixedMobDropPolicy {
 			if (roll < ENDERMAN_AMETHYST_SHARD_CHANCE) {
 				spawn(level, entity, new ItemStack(Items.AMETHYST_SHARD));
 			}
+		}
+	}
+
+	private static void dropWitchItems(ServerLevel level, LivingEntity entity) {
+		if (DropControlConfig.isSelected(WITCH_FIREWORK_ROCKET)) {
+			ItemStack rocket = new ItemStack(Items.FIREWORK_ROCKET);
+			rocket.set(DataComponents.FIREWORKS, new Fireworks(1, List.of()));
+			spawn(level, entity, rocket);
+		}
+
+		if (DropControlConfig.isSelected(WITCH_WART)) {
+			spawn(level, entity, new ItemStack(DropControlItems.WITCH_WART));
 		}
 	}
 

@@ -1,6 +1,7 @@
 package br.com.dropcontrol;
 
 import br.com.dropcontrol.config.DropControlConfig;
+import br.com.dropcontrol.item.DropControlItems;
 import net.fabricmc.api.ModInitializer;
 
 public final class DropControl implements ModInitializer {
@@ -8,6 +9,7 @@ public final class DropControl implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+		DropControlItems.initialize();
 		DropControlConfig.load();
 	}
 }

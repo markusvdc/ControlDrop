@@ -28,7 +28,7 @@ public final class DropControlConfig {
 	public static final String PHANTOM_PRESSURE_ONE = "phantom_pressure_one";
 	public static final String PHANTOM_PRESSURE_TWO = "phantom_pressure_two";
 	private static final String LEGACY_PHANTOM_PRESSURE = "phantom_pressure";
-	private static final int CURRENT_CONFIG_VERSION = 19;
+	private static final int CURRENT_CONFIG_VERSION = 20;
 	private static final String SPIDER_COBWEB = "dropcontrol:spider_cobweb";
 	private static final String PILLAGER_WEALTH = "dropcontrol:pillager_wealth";
 	private static final String LEGACY_PILLAGER_EMERALDS = "dropcontrol:pillager_emeralds";
@@ -38,6 +38,7 @@ public final class DropControlConfig {
 	private static final String ENDERMAN_AMETHYST_SHARD = "dropcontrol:enderman_amethyst_shard";
 	private static final String WITCH_FIREWORK_ROCKET = "dropcontrol:witch_firework_rocket";
 	private static final String WITCH_SUSPICIOUS_STEW = "dropcontrol:witch_suspicious_stew";
+	private static final String WITCH_WART = "dropcontrol:witch_wart";
 	private static final String LEGACY_WITCH_POTIONS = "dropcontrol:witch_potions";
 	private static final String SKELETON_ENCHANTMENT = "dropcontrol:skeleton_enchantment";
 	private static final String PILLAGER_CROSSBOW = "dropcontrol:pillager_crossbow";
@@ -49,6 +50,7 @@ public final class DropControlConfig {
 	private static final Path CONFIG_PATH = FabricLoader.getInstance().getConfigDir().resolve("dropcontrol.json");
 	private static final Set<String> ADDED_MARKERS = Set.of(
 		WITCH_SUSPICIOUS_STEW,
+		WITCH_WART,
 		WITCH_FIREWORK_ROCKET,
 		"dropcontrol:creeper_tnt",
 		SPIDER_COBWEB,
@@ -257,6 +259,9 @@ public final class DropControlConfig {
 		}
 		if (data.configVersion < 19 && data.selectedItems.contains(LEGACY_WITCH_POTIONS)) {
 			migrated.add(WITCH_SUSPICIOUS_STEW);
+		}
+		if (data.configVersion < 20) {
+			migrated.add(WITCH_WART);
 		}
 		return Set.copyOf(migrated);
 	}
