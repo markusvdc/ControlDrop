@@ -107,6 +107,7 @@ Nunca remova, mova ou substitua outros mods.
 - Quando autorizado, mantenha o `README.md` sincronizado com o comportamento real do mod.
 - Antes de escrever, confira constantes, listas, condições e valores no código. Não invente comportamentos.
 - Estruture o `README.md` com a seção `## Visão geral`, seguida pela seção `## Opções globais`.
+- Escreva o nome de cada opção global com exatamente duas palavras.
 - Escreva a Visão geral em uma única estrofe que combine a função técnica principal do mod com a fantasia proporcionada ao jogador.
 - Restrinja a Visão geral à funcionalidade principal; não mencione nela as opções globais.
 - Mantenha somente a tabela de opções globais. Não crie tabela ou lista detalhada para as opções principais.
@@ -120,6 +121,8 @@ Nunca remova, mova ou substitua outros mods.
 - Ao alterar uma opção, revise também as descrições relacionadas dentro do escopo autorizado.
 - Todo tooltip de opção deve conter obrigatoriamente lore e descrição funcional separadas.
 - Escreva cada lore com `120` a `130` caracteres e tom narrativo. Compare-a com as demais lores do próprio mod para preservar uma identidade textual coerente.
+- Escreva os nomes das opções globais e todas as lores como proclamações grandiosas que pareçam concebidas por Arthur Boyle, de Fire Force: lógica cavaleiresca delirante, certeza absoluta e referências recorrentes ao Cavaleiro Rei, à coroa, ao reino, a Excalibur, a dragões, a magia e a feitos heroicos.
+- Nas traduções em inglês, preserve o sentido e a identidade cavaleiresca, mas use deliberadamente um inglês “imbromation”: confiante, compreensível e gramaticalmente suspeito, como se o próprio Cavaleiro Rei o tivesse traduzido.
 
 # Sincronização da documentação
 
