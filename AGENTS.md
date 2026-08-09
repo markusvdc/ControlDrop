@@ -13,7 +13,7 @@ Leia este arquivo antes de alterar, compilar, testar ou publicar o projeto. Inst
 - Fabric API: `0.155.0+26.2`.
 - Mod Menu: `20.0.1`.
 - Java/JDK: Temurin `25.0.3 LTS`, build `25.0.3+9`.
-- Localização do JDK: `D:\MARKUS\GAMES\minecraft\java`.
+- Localização do JDK: `D:\MARKUS\GAMES\minecraft\java\jdk-25.0.3`.
 - Identificador do projeto: nome do projeto em lowercase, sem espaços nem hífens.
 - JAR atual: `<identificador>-*.jar`.
 - JAR da release: `<identificador>-<versão>.jar`.
