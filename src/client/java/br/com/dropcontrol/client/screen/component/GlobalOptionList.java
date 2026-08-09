@@ -15,20 +15,21 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.util.Mth;
 
 public final class GlobalOptionList extends AbstractWidget {
-	private static final int ROW_HEIGHT = 30;
 	private static final int SCROLLBAR_WIDTH = 6;
 	private static final int SCROLLBAR_GAP = 6;
 
 	private final Minecraft minecraft;
 	private final List<Entry> entries;
+	private final int rowHeight;
 	private boolean draggingScrollbar;
 	private double scrollAmount;
 	private Component hoveredLore;
 	private Component hoveredDescription;
 
-	public GlobalOptionList(Minecraft minecraft, int width, int height, int y, List<Option> options) {
+	public GlobalOptionList(Minecraft minecraft, int width, int height, int y, int rowHeight, List<Option> options) {
 		super(0, y, width, height, Component.translatable("dropcontrol.options.title"));
 		this.minecraft = minecraft;
+		this.rowHeight = rowHeight;
 		Comparator<Component> alphabeticalOrder = AlphabeticalOrder.components(minecraft);
 		List<Option> sortedOptions = new ArrayList<>();
 		List<Option> section = new ArrayList<>();
@@ -54,9 +55,7 @@ public final class GlobalOptionList extends AbstractWidget {
 		int x = getX();
 		int y = getY();
 		boolean needsScrollbar = getMaxScroll() > 0;
-		int contentWidth = needsScrollbar
-			? this.width - SCROLLBAR_WIDTH - SCROLLBAR_GAP
-			: this.width;
+		int contentWidth = this.width - SCROLLBAR_WIDTH - SCROLLBAR_GAP;
 		this.hoveredLore = null;
 		this.hoveredDescription = null;
 
@@ -68,16 +67,14 @@ public final class GlobalOptionList extends AbstractWidget {
 			}
 			Entry entry = this.entries.get(index);
 			boolean hovered = !entry.option.category() && mouseX >= x && mouseX < x + contentWidth
-				&& mouseY >= rowY && mouseY < rowY + ROW_HEIGHT;
+				&& mouseY >= rowY && mouseY < rowY + this.rowHeight;
 			if (hovered) {
 				this.hoveredLore = entry.option.lore();
 				this.hoveredDescription = entry.option.description();
 			}
 			renderEntry(graphics, entry, x, rowY, contentWidth, hovered);
 		}
-		if (needsScrollbar) {
-			drawScrollbar(graphics);
-		}
+		drawScrollbar(graphics, needsScrollbar);
 		graphics.disableScissor();
 	}
 
@@ -95,15 +92,13 @@ public final class GlobalOptionList extends AbstractWidget {
 			return false;
 		}
 		boolean needsScrollbar = getMaxScroll() > 0;
-		int contentWidth = needsScrollbar
-			? this.width - SCROLLBAR_WIDTH - SCROLLBAR_GAP
-			: this.width;
+		int contentWidth = this.width - SCROLLBAR_WIDTH - SCROLLBAR_GAP;
 		if (needsScrollbar && event.x() >= getX() + contentWidth) {
 			this.draggingScrollbar = true;
 			setScrollFromMouse(event.y());
 			return true;
 		}
-		int index = (int)((event.y() - getY() + this.scrollAmount) / ROW_HEIGHT);
+		int index = (int)((event.y() - getY() + this.scrollAmount) / this.rowHeight);
 		if (index >= 0 && index < this.entries.size()) {
 			Entry entry = this.entries.get(index);
 			if (entry.option.category()) {
@@ -139,7 +134,7 @@ public final class GlobalOptionList extends AbstractWidget {
 		if (!isMouseOver(mouseX, mouseY)) {
 			return false;
 		}
-		this.scrollAmount = Mth.clamp(this.scrollAmount - verticalAmount * ROW_HEIGHT, 0.0, getMaxScroll());
+		this.scrollAmount = Mth.clamp(this.scrollAmount - verticalAmount * this.rowHeight, 0.0, getMaxScroll());
 		return true;
 	}
 
@@ -170,20 +165,21 @@ public final class GlobalOptionList extends AbstractWidget {
 		boolean hovered
 	) {
 		if (entry.option.category()) {
-			int lineY = y + ROW_HEIGHT / 2;
+			int lineY = y + this.rowHeight / 2;
+			int labelY = y + (this.rowHeight - 9) / 2;
 			graphics.fill(x, lineY, x + width, lineY + 1, 0xFF4A4A4A);
-			graphics.fill(x + 7, y + 3, x + 15 + this.minecraft.font.width(entry.option.label()), y + ROW_HEIGHT - 5,
+			graphics.fill(x + 7, labelY - 6, x + 15 + this.minecraft.font.width(entry.option.label()), labelY + 11,
 				0xFF101010);
-			graphics.text(this.minecraft.font, entry.option.label(), x + 11, y + 9, 0xFFFFD36A, true);
+			graphics.text(this.minecraft.font, entry.option.label(), x + 11, labelY, 0xFFFFD36A, true);
 			return;
 		}
-		graphics.fill(x, y + 1, x + width, y + ROW_HEIGHT - 2, hovered ? 0xCC333333 : 0x99202020);
-		graphics.fill(x, y + 1, x + 1, y + ROW_HEIGHT - 2, entry.selected ? 0xFF79C64A : 0xFF555555);
+		graphics.fill(x, y + 1, x + width, y + this.rowHeight - 2, hovered ? 0xCC333333 : 0x99202020);
+		graphics.fill(x, y + 1, x + 1, y + this.rowHeight - 2, entry.selected ? 0xFF79C64A : 0xFF555555);
 		if (hovered) {
-			graphics.outline(x, y + 1, width, ROW_HEIGHT - 3, 0xFFFFFFFF);
+			graphics.outline(x, y + 1, width, this.rowHeight - 3, 0xFFFFFFFF);
 		}
-		drawCheckbox(graphics, x + 8, y + 9, entry.selected);
-		graphics.text(this.minecraft.font, entry.option.label(), x + 29, y + 11, 0xFFFFFFFF, true);
+		drawCheckbox(graphics, x + 8, y + (this.rowHeight - 11) / 2, entry.selected);
+		graphics.text(this.minecraft.font, entry.option.label(), x + 29, y + (this.rowHeight - 9) / 2, 0xFFFFFFFF, true);
 	}
 
 	private void drawCheckbox(GuiGraphicsExtractor graphics, int x, int y, boolean selected) {
@@ -198,19 +194,19 @@ public final class GlobalOptionList extends AbstractWidget {
 	}
 
 	private int getRowY(int index) {
-		return getY() + index * ROW_HEIGHT - (int)this.scrollAmount;
+		return getY() + index * this.rowHeight - (int)this.scrollAmount;
 	}
 
 	private boolean isRowVisible(int rowY) {
-		return rowY + ROW_HEIGHT > getY() && rowY < getY() + this.height;
+		return rowY + this.rowHeight > getY() && rowY < getY() + this.height;
 	}
 
 	private int getMaxScroll() {
-		return Math.max(0, this.entries.size() * ROW_HEIGHT - this.height);
+		return Math.max(0, this.entries.size() * this.rowHeight - this.height);
 	}
 
 	private int getThumbHeight() {
-		return Math.max(24, this.height * this.height / (this.entries.size() * ROW_HEIGHT));
+		return Math.max(24, this.height * this.height / (this.entries.size() * this.rowHeight));
 	}
 
 	private void setScrollFromMouse(double mouseY) {
@@ -219,12 +215,18 @@ public final class GlobalOptionList extends AbstractWidget {
 		this.scrollAmount = relative * getMaxScroll();
 	}
 
-	private void drawScrollbar(GuiGraphicsExtractor graphics) {
+	private void drawScrollbar(GuiGraphicsExtractor graphics, boolean active) {
 		int x = getX() + this.width - SCROLLBAR_WIDTH;
+		graphics.fill(x, getY(), x + SCROLLBAR_WIDTH, getY() + this.height, 0xFF080808);
+		if (!active) {
+			graphics.fill(x, getY(), x + SCROLLBAR_WIDTH, getY() + this.height, 0xFF555555);
+			graphics.fill(x, getY(), x + 1, getY() + this.height, 0xFF707070);
+			graphics.fill(x + SCROLLBAR_WIDTH - 1, getY(), x + SCROLLBAR_WIDTH, getY() + this.height, 0xFF303030);
+			return;
+		}
 		int thumbHeight = getThumbHeight();
 		int travel = this.height - thumbHeight;
 		int thumbY = getY() + (getMaxScroll() == 0 ? 0 : (int)(travel * this.scrollAmount / getMaxScroll()));
-		graphics.fill(x, getY(), x + SCROLLBAR_WIDTH, getY() + this.height, 0xFF080808);
 		graphics.fill(x, thumbY, x + SCROLLBAR_WIDTH, thumbY + thumbHeight, 0xFFC0C0C0);
 	}
 

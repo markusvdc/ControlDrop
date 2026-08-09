@@ -14,6 +14,9 @@ public final class DropControlOptionsScreen extends Screen {
 	private static final int MAX_CONTENT_WIDTH = 540;
 	private static final int SIDE_MARGIN = 16;
 	private static final int OPTIONS_TOP = 137;
+	private static final int OPTION_HEIGHT = 30;
+	private static final int VISIBLE_ROW_COUNT = 13;
+	private static final int SCROLLBAR_OVERFLOW = 12;
 
 	private final Screen parent;
 	private final DropBasePanel basePanel = new DropBasePanel();
@@ -31,12 +34,14 @@ public final class DropControlOptionsScreen extends Screen {
 		int contentWidth = Math.min(MAX_CONTENT_WIDTH, this.width - SIDE_MARGIN * 2);
 		int left = (this.width - contentWidth) / 2;
 		int buttonY = this.height - 36;
-		int listBottom = Math.max(OPTIONS_TOP + 56, buttonY - 12);
+		int listBottom = buttonY - 12;
+		int rowHeight = Math.min(OPTION_HEIGHT, (listBottom - OPTIONS_TOP) / VISIBLE_ROW_COUNT);
 		this.optionList = new GlobalOptionList(
 			this.minecraft,
-			contentWidth,
+			contentWidth + SCROLLBAR_OVERFLOW,
 			listBottom - OPTIONS_TOP,
 			OPTIONS_TOP,
+			rowHeight,
 			List.of(
 				GlobalOptionList.Option.category(Component.translatable("dropcontrol.options.category.quality")),
 				new GlobalOptionList.Option(

@@ -11,6 +11,9 @@ import net.minecraft.network.chat.Component;
 public final class DropControlScreen extends Screen {
 	private static final int MAX_CONTENT_WIDTH = 540;
 	private static final int SIDE_MARGIN = 16;
+	private static final int SCROLLBAR_OVERFLOW = 12;
+	private static final int LIST_TOP = 137;
+	private static final int ROW_HEIGHT = 30;
 
 	private final Screen parent;
 	private final DropBasePanel basePanel = new DropBasePanel();
@@ -27,11 +30,16 @@ public final class DropControlScreen extends Screen {
 	protected void init() {
 		int contentWidth = Math.min(MAX_CONTENT_WIDTH, this.width - SIDE_MARGIN * 2);
 		int left = (this.width - contentWidth) / 2;
-		int listTop = 137;
 		int buttonY = this.height - 36;
-		int listBottom = Math.max(listTop + 56, buttonY - 12);
+		int listBottom = Math.max(LIST_TOP + 56, buttonY - 12);
 
-		this.itemList = new ItemSelectionList(this.minecraft, contentWidth, listBottom - listTop, listTop, 30);
+		this.itemList = new ItemSelectionList(
+			this.minecraft,
+			contentWidth + SCROLLBAR_OVERFLOW,
+			listBottom - LIST_TOP,
+			LIST_TOP,
+			ROW_HEIGHT
+		);
 		this.itemList.setX(left);
 		this.addRenderableWidget(this.itemList);
 

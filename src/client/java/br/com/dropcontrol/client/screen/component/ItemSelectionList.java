@@ -153,9 +153,7 @@ public final class ItemSelectionList extends AbstractWidget {
 			entry.renderBackground(graphics, x, rowY, contentWidth, this.rowHeight, hovered);
 		}
 
-		if (needsScrollbar) {
-			drawScrollbarTrack(graphics);
-		}
+		drawScrollbarTrack(graphics);
 		graphics.disableScissor();
 
 		graphics.nextStratum();
@@ -168,6 +166,8 @@ public final class ItemSelectionList extends AbstractWidget {
 		}
 		if (needsScrollbar) {
 			drawScrollbarThumb(graphics);
+		} else {
+			drawInactiveScrollbarThumb(graphics);
 		}
 		graphics.disableScissor();
 	}
@@ -296,6 +296,14 @@ public final class ItemSelectionList extends AbstractWidget {
 		graphics.fill(scrollbarX, thumbY, scrollbarX + SCROLLBAR_WIDTH, thumbY + getThumbHeight(), 0xFFC0C0C0);
 		graphics.fill(scrollbarX, thumbY, scrollbarX + 1, thumbY + getThumbHeight(), 0xFFFFFFFF);
 		graphics.fill(scrollbarX + SCROLLBAR_WIDTH - 1, thumbY, scrollbarX + SCROLLBAR_WIDTH, thumbY + getThumbHeight(), 0xFF707070);
+	}
+
+	private void drawInactiveScrollbarThumb(GuiGraphicsExtractor graphics) {
+		int scrollbarX = getX() + this.width - SCROLLBAR_WIDTH;
+		graphics.fill(scrollbarX, getY(), scrollbarX + SCROLLBAR_WIDTH, getY() + this.height, 0xFF555555);
+		graphics.fill(scrollbarX, getY(), scrollbarX + 1, getY() + this.height, 0xFF707070);
+		graphics.fill(scrollbarX + SCROLLBAR_WIDTH - 1, getY(), scrollbarX + SCROLLBAR_WIDTH, getY() + this.height,
+			0xFF303030);
 	}
 
 	@Override

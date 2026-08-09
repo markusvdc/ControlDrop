@@ -16,7 +16,7 @@ public abstract class NaturalSpawnerMixin {
 		at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/NaturalSpawner;getMobForSpawn(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/entity/EntityType;)Lnet/minecraft/world/entity/Mob;"),
 		index = 1
 	)
-	private static EntityType<?> dropcontrol$replaceZombieDuringRain(EntityType<?> type, ServerLevel level) {
+	private static EntityType<?> dropcontrol$replaceZombieDuringRain(ServerLevel level, EntityType<?> type) {
 		if (DropControlConfig.aquaticApocalypse() && level.isRaining() && type == EntityTypes.ZOMBIE) {
 			return EntityTypes.DROWNED;
 		}
