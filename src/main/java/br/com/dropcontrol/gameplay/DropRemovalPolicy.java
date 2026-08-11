@@ -51,7 +51,9 @@ public final class DropRemovalPolicy {
 			}
 
 			boolean removeArmor =
-				DropControlConfig.isSelected(SKELETON_ARMOR) && stack.has(DataComponents.EQUIPPABLE);
+				DropControlConfig.isSelected(SKELETON_ARMOR)
+					&& stack.has(DataComponents.EQUIPPABLE)
+					&& !stack.is(Items.SKELETON_SKULL);
 			return removeArmor;
 		}
 
@@ -78,7 +80,7 @@ public final class DropRemovalPolicy {
 		}
 
 		if (DropControlConfig.isSelected(ZOMBIE_ARMOR)) {
-			if (stack.has(DataComponents.EQUIPPABLE)) {
+			if (stack.has(DataComponents.EQUIPPABLE) && !stack.is(Items.ZOMBIE_HEAD)) {
 				return true;
 			}
 

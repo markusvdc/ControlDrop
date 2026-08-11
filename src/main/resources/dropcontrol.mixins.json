@@ -7,13 +7,15 @@
     "EndermanTakeBlockGoalMixin",
     "EntityMixin",
     "LivingEntityMixin",
-    "MobMixin",
     "NaturalSpawnerMixin",
     "PatrolSpawnerMixin",
     "PhantomMixin",
     "PhantomMoveControlMixin",
     "PhantomSpawnerMixin",
     "RabbitMixin"
+  ],
+  "client": [
+    "client.AbstractContainerScreenAccessor"
   ],
   "injectors": {
     "defaultRequire": 1

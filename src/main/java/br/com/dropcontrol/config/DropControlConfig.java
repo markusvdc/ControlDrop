@@ -24,11 +24,11 @@ public final class DropControlConfig {
 	public static final String INVENTORY_SORTING = "inventory_sorting";
 	public static final String PAUSE_WHEN_MOUSE_IDLE = "pause_when_mouse_idle";
 	public static final String EXACT_HORSE_HEALTH = "exact_horse_health";
-	public static final String PHANTOM_PRESSURE_ONE = "phantom_pressure_one";
+	public static final String SOVEREIGN_VOID = "sovereign_void";
 	public static final String PHANTOM_PRESSURE_TWO = "phantom_pressure_two";
 	public static final String AQUATIC_APOCALYPSE = "aquatic_apocalypse";
 	private static final String LEGACY_PHANTOM_PRESSURE = "phantom_pressure";
-	private static final int CURRENT_CONFIG_VERSION = 27;
+	private static final int CURRENT_CONFIG_VERSION = 29;
 	private static final String PILLAGER_WEALTH = "dropcontrol:pillager_wealth";
 	private static final String LEGACY_PILLAGER_EMERALDS = "dropcontrol:pillager_emeralds";
 	private static final String ZOMBIE_SULFUR = "dropcontrol:zombie_sulfur";
@@ -75,7 +75,7 @@ public final class DropControlConfig {
 		INVENTORY_SORTING,
 		PAUSE_WHEN_MOUSE_IDLE,
 		EXACT_HORSE_HEALTH,
-		PHANTOM_PRESSURE_ONE,
+		SOVEREIGN_VOID,
 		PHANTOM_PRESSURE_TWO,
 		AQUATIC_APOCALYPSE
 	);
@@ -135,7 +135,7 @@ public final class DropControlConfig {
 	public static boolean inventorySorting() { return isOptionEnabled(INVENTORY_SORTING); }
 	public static boolean pauseWhenMouseIdle() { return isOptionEnabled(PAUSE_WHEN_MOUSE_IDLE); }
 	public static boolean exactHorseHealth() { return isOptionEnabled(EXACT_HORSE_HEALTH); }
-	public static boolean phantomPressureOne() { return isOptionEnabled(PHANTOM_PRESSURE_ONE); }
+	public static boolean sovereignVoid() { return isOptionEnabled(SOVEREIGN_VOID); }
 	public static boolean phantomPressureTwo() { return isOptionEnabled(PHANTOM_PRESSURE_TWO); }
 	public static boolean aquaticApocalypse() { return isOptionEnabled(AQUATIC_APOCALYPSE); }
 
@@ -207,7 +207,6 @@ public final class DropControlConfig {
 			migrated.add(PARKED_SADDLED_HORSES);
 		}
 		if (data.enabledOptions != null && data.enabledOptions.contains(LEGACY_PHANTOM_PRESSURE)) {
-			migrated.add(PHANTOM_PRESSURE_ONE);
 			migrated.add(PHANTOM_PRESSURE_TWO);
 		}
 		return Set.copyOf(migrated);

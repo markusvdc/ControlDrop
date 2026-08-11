@@ -30,28 +30,13 @@ public abstract class LivingEntityMixin {
 		DamageSource source
 	) {
 		if (DropControlConfig.constantThreat() && source.getEntity() instanceof Raider) {
-			return amount * 2.0F;
+			return amount * 1.5F;
 		}
 		if (DropControlConfig.phantomPressureTwo() && source.getEntity() instanceof Phantom phantom) {
-			float modifiedAmount = amount * 3.0F;
+			float modifiedAmount = amount * 2.0F;
 			return modifiedAmount;
 		}
 		return amount;
-	}
-
-	@Inject(
-		method = "getDamageAfterArmorAbsorb(Lnet/minecraft/world/damagesource/DamageSource;F)F",
-		at = @At("HEAD"),
-		cancellable = true
-	)
-	private void dropcontrol$ignoreArmorForPhantomBites(
-		DamageSource source,
-		float amount,
-		CallbackInfoReturnable<Float> callback
-	) {
-		if (DropControlConfig.phantomPressureTwo() && source.getEntity() instanceof Phantom) {
-			callback.setReturnValue(amount);
-		}
 	}
 
 	@Inject(

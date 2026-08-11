@@ -5,8 +5,6 @@ import br.com.dropcontrol.gameplay.DropRemovalPolicy;
 import br.com.dropcontrol.access.PhantomBiteAccess;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -19,26 +17,11 @@ import net.minecraft.world.phys.Vec3;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(Entity.class)
 public abstract class EntityMixin {
 	private static final ThreadLocal<Boolean> SPAWNING_BONUS_BOTTLE = new ThreadLocal<>();
-
-	@ModifyVariable(
-		method = "playSound(Lnet/minecraft/sounds/SoundEvent;FF)V",
-		at = @At("HEAD"),
-		argsOnly = true,
-		ordinal = 0
-	)
-	private float dropcontrol$increasePhantomVocalVolume(float volume, SoundEvent sound) {
-		return DropControlConfig.phantomPressureTwo()
-			&& (Object)this instanceof Phantom
-			&& isPhantomVocalSound(sound)
-			? volume * 1.5F
-			: volume;
-	}
 
 	@Inject(
 		method = "spawnAtLocation(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/phys/Vec3;)Lnet/minecraft/world/entity/item/ItemEntity;",
@@ -91,13 +74,5 @@ public abstract class EntityMixin {
 	private static void randomizeOminousLevel(Raider raider, ItemStack bottle) {
 		int amplifier = raider.getRandom().nextInt(5);
 		bottle.set(DataComponents.OMINOUS_BOTTLE_AMPLIFIER, new OminousBottleAmplifier(amplifier));
-	}
-
-	private static boolean isPhantomVocalSound(SoundEvent sound) {
-		return sound == SoundEvents.PHANTOM_AMBIENT
-			|| sound == SoundEvents.PHANTOM_BITE
-			|| sound == SoundEvents.PHANTOM_DEATH
-			|| sound == SoundEvents.PHANTOM_HURT
-			|| sound == SoundEvents.PHANTOM_SWOOP;
 	}
 }

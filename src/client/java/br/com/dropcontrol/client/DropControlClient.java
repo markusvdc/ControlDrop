@@ -1,16 +1,19 @@
 package br.com.dropcontrol.client;
 
 import br.com.dropcontrol.config.DropControlConfig;
+import br.com.dropcontrol.mixin.client.AbstractContainerScreenAccessor;
 import com.mojang.blaze3d.platform.InputConstants;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.ContainerInput;
 import net.minecraft.world.inventory.InventoryMenu;
+import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.equipment.Equippable;
@@ -19,6 +22,7 @@ public final class DropControlClient implements ClientModInitializer {
 	private static final int CHEST_ARMOR_MENU_SLOT = 6;
 	private static final long MOUSE_IDLE_PAUSE_DELAY_MS = 15_000L;
 	private static boolean graveAccentWasDown;
+	private static boolean gWasDown;
 	private static double lastMouseX;
 	private static double lastMouseY;
 	private static long lastMouseMovementTime;
@@ -42,8 +46,42 @@ public final class DropControlClient implements ClientModInitializer {
 			}
 		}
 		graveAccentWasDown = graveAccentDown;
+		tickSovereignVoid(minecraft);
 		InventoryProfilesIntegration.tick(minecraft);
 		tickMouseIdlePause(minecraft);
+	}
+
+	private static void tickSovereignVoid(Minecraft minecraft) {
+		boolean gDown = InputConstants.isKeyDown(minecraft.getWindow(), InputConstants.KEY_G);
+		if (gDown && !gWasDown && DropControlConfig.sovereignVoid()) {
+			if (minecraft.hasControlDown() && !minecraft.hasShiftDown()) {
+				deleteHoveredStack(minecraft);
+			} else if (minecraft.hasShiftDown()
+				&& !minecraft.hasControlDown()
+				&& minecraft.gui.screen() instanceof AbstractContainerScreen<?>) {
+				SovereignVoid.undo(minecraft);
+			}
+		}
+		gWasDown = gDown;
+	}
+
+	private static void deleteHoveredStack(Minecraft minecraft) {
+		LocalPlayer player = minecraft.player;
+		if (player == null
+			|| !(minecraft.gui.screen() instanceof AbstractContainerScreen<?> screen)
+			|| !screen.getMenu().getCarried().isEmpty()) {
+			return;
+		}
+
+		Slot slot = ((AbstractContainerScreenAccessor)screen).dropcontrol$getHoveredSlot();
+		if (slot == null || slot.container != player.getInventory()) {
+			return;
+		}
+		int inventorySlot = slot.getContainerSlot();
+		if (inventorySlot < 0 || inventorySlot >= Inventory.INVENTORY_SIZE || !slot.hasItem()) {
+			return;
+		}
+		SovereignVoid.delete(minecraft, inventorySlot, slot.getItem());
 	}
 
 	private static void tickMouseIdlePause(Minecraft minecraft) {

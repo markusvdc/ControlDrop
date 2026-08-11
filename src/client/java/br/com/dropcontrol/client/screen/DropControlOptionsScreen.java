@@ -1,7 +1,6 @@
 package br.com.dropcontrol.client.screen;
 
 import br.com.dropcontrol.client.screen.component.ActionButtons;
-import br.com.dropcontrol.client.PhantomPurge;
 import br.com.dropcontrol.client.screen.component.DropBasePanel;
 import br.com.dropcontrol.client.screen.component.GlobalOptionList;
 import br.com.dropcontrol.config.DropControlConfig;
@@ -86,18 +85,18 @@ public final class DropControlOptionsScreen extends Screen {
 					Component.translatable("dropcontrol.options.exact_horse_health.lore"),
 					Component.translatable("dropcontrol.options.exact_horse_health.description")
 				),
+				new GlobalOptionList.Option(
+					DropControlConfig.SOVEREIGN_VOID,
+					Component.translatable("dropcontrol.options.sovereign_void"),
+					Component.translatable("dropcontrol.options.sovereign_void.lore"),
+					Component.translatable("dropcontrol.options.sovereign_void.description")
+				),
 				GlobalOptionList.Option.category(Component.translatable("dropcontrol.options.category.fantasy")),
 				new GlobalOptionList.Option(
 					DropControlConfig.CONSTANT_THREAT,
 					Component.translatable("dropcontrol.options.constant_threat"),
 					Component.translatable("dropcontrol.options.constant_threat.lore"),
 					Component.translatable("dropcontrol.options.constant_threat.description")
-				),
-				new GlobalOptionList.Option(
-					DropControlConfig.PHANTOM_PRESSURE_ONE,
-					Component.translatable("dropcontrol.options.phantom_pressure_one"),
-					Component.translatable("dropcontrol.options.phantom_pressure_one.lore"),
-					Component.translatable("dropcontrol.options.phantom_pressure_one.description")
 				),
 				new GlobalOptionList.Option(
 					DropControlConfig.PHANTOM_PRESSURE_TWO,
@@ -135,14 +134,8 @@ public final class DropControlOptionsScreen extends Screen {
 	}
 
 	private void applyOptions() {
-		boolean phantomPressureTwoWasEnabled = DropControlConfig.phantomPressureTwo();
 		java.util.Set<String> enabledIds = this.optionList.enabledIds();
-		boolean removesPhantomPressureTwo = phantomPressureTwoWasEnabled
-			&& !enabledIds.contains(DropControlConfig.PHANTOM_PRESSURE_TWO);
 		boolean saved = DropControlConfig.saveOptions(enabledIds);
-		if (saved && removesPhantomPressureTwo) {
-			PhantomPurge.killAllLoaded(this.minecraft);
-		}
 		this.status = Component.translatable(saved ? "dropcontrol.options.status.applied" : "dropcontrol.status.save_failed");
 		this.statusColor = saved ? 0xFF9CD67A : 0xFFFF6B6B;
 	}
