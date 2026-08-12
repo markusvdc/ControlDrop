@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "dropcontrol",
   "version": "${version}",
-  "name": "DROP CONTROL",
+  "name": "CONTROL DROP",
   "description": "Development:\nRiquinho — Project concept, direction, and development.\nDekuzinho — Implementation and development support.\n\nTools:\nCodex — Development assistance and technical collaboration.\nVSCode — Source code development.\nFigma — Interface design and prototyping.\nTrello — Project organization and management.\nGitHub — Code versioning and storage.",
   "authors": ["markusvdc"],
   "contact": {

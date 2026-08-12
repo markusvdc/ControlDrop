@@ -13,6 +13,7 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.ContainerInput;
 import net.minecraft.world.inventory.InventoryMenu;
+import net.minecraft.world.inventory.ShulkerBoxMenu;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -74,14 +75,20 @@ public final class DropControlClient implements ClientModInitializer {
 		}
 
 		Slot slot = ((AbstractContainerScreenAccessor)screen).dropcontrol$getHoveredSlot();
-		if (slot == null || slot.container != player.getInventory()) {
+		if (slot == null || !slot.hasItem()) {
 			return;
 		}
-		int inventorySlot = slot.getContainerSlot();
-		if (inventorySlot < 0 || inventorySlot >= Inventory.INVENTORY_SIZE || !slot.hasItem()) {
+		if (slot.container == player.getInventory()) {
+			int inventorySlot = slot.getContainerSlot();
+			if (inventorySlot < 0 || inventorySlot >= Inventory.INVENTORY_SIZE) {
+				return;
+			}
+			SovereignVoid.deleteInventoryStack(minecraft, inventorySlot, slot.getItem());
 			return;
 		}
-		SovereignVoid.delete(minecraft, inventorySlot, slot.getItem());
+		if (screen.getMenu() instanceof ShulkerBoxMenu) {
+			SovereignVoid.deleteShulkerStack(minecraft, screen.getMenu().containerId, slot.index, slot.getItem());
+		}
 	}
 
 	private static void tickMouseIdlePause(Minecraft minecraft) {

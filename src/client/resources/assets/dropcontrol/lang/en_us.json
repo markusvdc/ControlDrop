@@ -1,5 +1,5 @@
 {
-  "dropcontrol.title": "DROP CONTROL",
+  "dropcontrol.title": "CONTROL DROP",
   "dropcontrol.subtitle": "Select the drops you want to add or remove.",
   "dropcontrol.base.label": "REFERENCE DROP",
   "dropcontrol.base.name": "RULES",
@@ -95,7 +95,7 @@
   "dropcontrol.options.exact_horse_health.description": "Adds the horse's color, markings, and current and maximum health in health points to the Jade tooltip below its speed, rounded to two decimal places. The option can be configured without Jade, but the information only appears when Jade is installed.",
 	"dropcontrol.options.sovereign_void": "SOVEREIGN VOID",
 	"dropcontrol.options.sovereign_void.lore": "Excalibur open sovereign void, condemn unworthy treasures and permit Knight King ordering their most triumphant return forever.",
-	"dropcontrol.options.sovereign_void.description": "Deletes the entire stack from the player inventory slot under the cursor when Ctrl + G is pressed. Shift + G restores only the last deleted stack: it tries the original slot first, then the other inventory slots, and drops only what does not fit. A new deletion permanently replaces the previous history. It does not affect container, armor, or offhand slots. Works only in singleplayer worlds.",
+	"dropcontrol.options.sovereign_void.description": "When pressing Ctrl + G, deletes the entire stack under cursor from player inventory or a shulker box. Shift + G restores only the last deleted stack: it tries the original slot first, then the other inventory slots, and drops only what does not fit. A new deletion permanently replaces the previous deletion.",
   "dropcontrol.options.phantom_pressure_two": "NIGHT DRAGONS",
   "dropcontrol.options.phantom_pressure_two.lore": "After two nights, spectral dragons hunt kingdom with faster wings; every bite proclaim the unbeatable hunger of the crown forever.",
   "dropcontrol.options.phantom_pressure_two.description": "Reduces the time since last rest required for phantoms to begin spawning from 3 to 2 in-game days, increases their movement speed by 20%, and doubles bite damage while preserving all other vanilla conditions. A phantom that successfully bites a player has a 0% chance to drop a phantom membrane, even after the world is reloaded.",

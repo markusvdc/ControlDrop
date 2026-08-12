@@ -1,5 +1,5 @@
 {
-  "dropcontrol.title": "DROP CONTROL",
+  "dropcontrol.title": "CONTROL DROP",
   "dropcontrol.subtitle": "Marque os drops que você deseja adicionar ou remover.",
   "dropcontrol.base.label": "DROP DE REFERÊNCIA",
   "dropcontrol.base.name": "REGRAS",
@@ -95,7 +95,7 @@
   "dropcontrol.options.exact_horse_health.description": "Acrescenta ao tooltip do Jade, abaixo da velocidade, a cor, a marcação, a vida atual e a vida máxima do cavalo em pontos de vida, arredondadas para duas casas decimais. A opção pode ser configurada sem o Jade, mas as informações só aparecem quando ele estiver instalado.",
 	"dropcontrol.options.sovereign_void": "VAZIO SOBERANO",
 	"dropcontrol.options.sovereign_void.lore": "Excalibur abre o vazio soberano, condena tesouros indignos e permite ao Cavaleiro Rei ordenar seu retorno triunfal eterno.",
-	"dropcontrol.options.sovereign_void.description": "Apaga a pilha inteira do slot do inventário do jogador sob o cursor ao pressionar Ctrl + G. Shift + G restaura somente a última pilha apagada: tenta primeiro o slot original, depois os demais slots do inventário e joga no chão apenas o que não couber. Uma nova exclusão substitui definitivamente o histórico anterior. Não afeta slots de recipientes, armadura ou mão secundária. Funciona somente em mundos singleplayer.",
+	"dropcontrol.options.sovereign_void.description": "Ao pressionar Ctrl + G, apaga a pilha inteira sob o cursor no inventário do jogador ou em uma shulker box. Shift + G restaura somente a última pilha apagada: tenta primeiro o slot original, depois os demais slots do inventário e joga no chão apenas o que não couber. Uma nova exclusão substitui definitivamente a exclusão anterior.",
   "dropcontrol.options.phantom_pressure_two": "DRAGÕES NOTURNOS",
   "dropcontrol.options.phantom_pressure_two.lore": "Após duas noites, dragões espectrais caçam o reino com asas velozes; cada mordida proclama a fome invencível da coroa real.",
   "dropcontrol.options.phantom_pressure_two.description": "Reduz de 3 para 2 dias no jogo o tempo desde o último descanso necessário para os espectros começarem a surgir, aumenta em 20% sua velocidade de movimento e duplica o dano das mordidas, preservando as demais condições vanilla. Um espectro que conseguir morder um jogador passa a ter 0% de chance de soltar membrana, mesmo após o mundo ser recarregado.",

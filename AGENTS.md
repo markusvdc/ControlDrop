@@ -14,11 +14,13 @@ Leia este arquivo antes de alterar, compilar, testar ou publicar o projeto. Inst
 - Mod Menu: `20.0.1`.
 - Java/JDK: Temurin `25.0.3 LTS`, build `25.0.3+9`.
 - Localização do JDK: `D:\GAMES\minecraft\java\jdk-25.0.3`.
-- Identificador do projeto: nome do projeto em lowercase, sem espaços nem hífens.
+- Identificador do projeto: nome do projeto em PascalCase, sem espaços nem hífens, preservando a separação semântica das palavras. Exemplo: `controlfood` → `ControlFood`.
+- Versão do projeto: use exatamente dois componentes numéricos no formato `<principal>.<decimal>`, com apenas um número após o ponto. Exemplo: `1.0`.
 - JAR atual: `<identificador>-*.jar`.
 - JAR da release: `<identificador>-<versão>.jar`.
-- Instâncias de teste:
+- Instância principal de jogo e testes:
   - `D:\GAMES\minecraft\instances\NEBULOSA\minecraft\mods`
+  - A NEBULOSA é a instância em que o desenvolvedor joga habitualmente e também realiza os testes manuais dos mods. Ela possui backups regulares, portanto pode receber builds destinadas a testes.
 
 ## Modelo técnico das releases
 
@@ -59,7 +61,7 @@ Configure o JDK indicado e use o Gradle Wrapper:
 - Alterações somente em arquivos informativos, como `AGENTS.md` e `README.md`, não exigem build nem instalação.
 - Se o conjunto também alterar código, recursos, dependências ou configuração, execute normalmente o build e a instalação.
 
-# Instalação nas instâncias de teste
+# Instalação na instância de jogo e testes
 
 Depois de cada build bem-sucedido:
 

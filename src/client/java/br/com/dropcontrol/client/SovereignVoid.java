@@ -5,6 +5,9 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.server.IntegratedServer;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.ShulkerBoxMenu;
+import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 
 final class SovereignVoid {
@@ -14,7 +17,7 @@ final class SovereignVoid {
 	private SovereignVoid() {
 	}
 
-	static void delete(Minecraft minecraft, int inventorySlot, ItemStack expectedStack) {
+	static void deleteInventoryStack(Minecraft minecraft, int inventorySlot, ItemStack expectedStack) {
 		IntegratedServer server = minecraft.getSingleplayerServer();
 		if (server == null || minecraft.player == null) {
 			return;
@@ -33,8 +36,37 @@ final class SovereignVoid {
 				return;
 			}
 
-			history = new DeletedStack(playerId, inventorySlot, current.copy());
+			history = new DeletedStack(playerId, inventorySlot, -1, -1, current.copy());
 			inventory.setItem(inventorySlot, ItemStack.EMPTY);
+			synchronize(player);
+		});
+	}
+
+	static void deleteShulkerStack(Minecraft minecraft, int containerId, int menuSlot, ItemStack expectedStack) {
+		IntegratedServer server = minecraft.getSingleplayerServer();
+		if (server == null || minecraft.player == null) {
+			return;
+		}
+		UUID playerId = minecraft.player.getUUID();
+		ItemStack expected = expectedStack.copy();
+		server.execute(() -> {
+			resetFor(server);
+			ServerPlayer player = server.getPlayerList().getPlayer(playerId);
+			AbstractContainerMenu menu = player == null ? null : player.containerMenu;
+			if (!(menu instanceof ShulkerBoxMenu)
+				|| menu.containerId != containerId
+				|| menuSlot < 0
+				|| menuSlot >= menu.slots.size()) {
+				return;
+			}
+			Slot slot = menu.getSlot(menuSlot);
+			if (slot.container == player.getInventory() || !ItemStack.matches(slot.getItem(), expected)) {
+				return;
+			}
+
+			history = new DeletedStack(playerId, -1, containerId, menuSlot, slot.getItem().copy());
+			slot.set(ItemStack.EMPTY);
+			slot.setChanged();
 			synchronize(player);
 		});
 	}
@@ -59,7 +91,7 @@ final class SovereignVoid {
 			history = null;
 			Inventory inventory = player.getInventory();
 			ItemStack remaining = deleted.stack().copy();
-			restoreToOriginalSlot(inventory, deleted.inventorySlot(), remaining);
+			restoreToOriginalSlot(player, deleted, remaining);
 			if (!remaining.isEmpty()) {
 				inventory.add(remaining);
 			}
@@ -70,10 +102,32 @@ final class SovereignVoid {
 		});
 	}
 
-	private static void restoreToOriginalSlot(Inventory inventory, int slot, ItemStack remaining) {
-		ItemStack current = inventory.getItem(slot);
+	private static void restoreToOriginalSlot(ServerPlayer player, DeletedStack deleted, ItemStack remaining) {
+		if (deleted.inventorySlot() >= 0) {
+			restoreToSlot(player.getInventory().getItem(deleted.inventorySlot()), remaining,
+				stack -> player.getInventory().setItem(deleted.inventorySlot(), stack));
+			return;
+		}
+		AbstractContainerMenu menu = player.containerMenu;
+		if (!(menu instanceof ShulkerBoxMenu)
+			|| menu.containerId != deleted.containerId()
+			|| deleted.menuSlot() < 0
+			|| deleted.menuSlot() >= menu.slots.size()) {
+			return;
+		}
+		Slot slot = menu.getSlot(deleted.menuSlot());
+		if (slot.container == player.getInventory()) {
+			return;
+		}
+		restoreToSlot(slot.getItem(), remaining, stack -> {
+			slot.set(stack);
+			slot.setChanged();
+		});
+	}
+
+	private static void restoreToSlot(ItemStack current, ItemStack remaining, java.util.function.Consumer<ItemStack> setStack) {
 		if (current.isEmpty()) {
-			inventory.setItem(slot, remaining.copy());
+			setStack.accept(remaining.copy());
 			remaining.setCount(0);
 			return;
 		}
@@ -102,6 +156,6 @@ final class SovereignVoid {
 		}
 	}
 
-	private record DeletedStack(UUID playerId, int inventorySlot, ItemStack stack) {
+	private record DeletedStack(UUID playerId, int inventorySlot, int containerId, int menuSlot, ItemStack stack) {
 	}
 }
