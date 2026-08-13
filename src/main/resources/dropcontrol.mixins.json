@@ -6,6 +6,7 @@
     "AbstractHorseMixin",
     "EndermanTakeBlockGoalMixin",
     "EntityMixin",
+    "ItemStackMixin",
     "LivingEntityMixin",
     "NaturalSpawnerMixin",
     "PatrolSpawnerMixin",

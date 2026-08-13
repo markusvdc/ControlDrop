@@ -20,6 +20,7 @@ public final class DropControlConfig {
 	public static final String PARKED_SADDLED_HORSES = "parked_saddled_horses";
 	public static final String RABBITS_AVOID_FENCES = "rabbits_avoid_fences";
 	public static final String ENDERMEN_DONT_PICK_UP_BLOCKS = "endermen_dont_pick_up_blocks";
+	public static final String ETERNAL_RELICS = "eternal_relics";
 	public static final String CHESTPLATE_ELYTRA_SWAP = "chestplate_elytra_swap";
 	public static final String INVENTORY_SORTING = "inventory_sorting";
 	public static final String PAUSE_WHEN_MOUSE_IDLE = "pause_when_mouse_idle";
@@ -28,7 +29,7 @@ public final class DropControlConfig {
 	public static final String PHANTOM_PRESSURE_TWO = "phantom_pressure_two";
 	public static final String AQUATIC_APOCALYPSE = "aquatic_apocalypse";
 	private static final String LEGACY_PHANTOM_PRESSURE = "phantom_pressure";
-	private static final int CURRENT_CONFIG_VERSION = 29;
+	private static final int CURRENT_CONFIG_VERSION = 30;
 	private static final String PILLAGER_WEALTH = "dropcontrol:pillager_wealth";
 	private static final String LEGACY_PILLAGER_EMERALDS = "dropcontrol:pillager_emeralds";
 	private static final String ZOMBIE_SULFUR = "dropcontrol:zombie_sulfur";
@@ -71,6 +72,7 @@ public final class DropControlConfig {
 		PARKED_SADDLED_HORSES,
 		RABBITS_AVOID_FENCES,
 		ENDERMEN_DONT_PICK_UP_BLOCKS,
+		ETERNAL_RELICS,
 		CHESTPLATE_ELYTRA_SWAP,
 		INVENTORY_SORTING,
 		PAUSE_WHEN_MOUSE_IDLE,
@@ -131,6 +133,7 @@ public final class DropControlConfig {
 	public static boolean saddledHorseStaysPut() { return isOptionEnabled(PARKED_SADDLED_HORSES); }
 	public static boolean rabbitsAvoidFences() { return isOptionEnabled(RABBITS_AVOID_FENCES); }
 	public static boolean endermenDontPickUpBlocks() { return isOptionEnabled(ENDERMEN_DONT_PICK_UP_BLOCKS); }
+	public static boolean eternalRelics() { return isOptionEnabled(ETERNAL_RELICS); }
 	public static boolean chestplateElytraSwap() { return isOptionEnabled(CHESTPLATE_ELYTRA_SWAP); }
 	public static boolean inventorySorting() { return isOptionEnabled(INVENTORY_SORTING); }
 	public static boolean pauseWhenMouseIdle() { return isOptionEnabled(PAUSE_WHEN_MOUSE_IDLE); }
