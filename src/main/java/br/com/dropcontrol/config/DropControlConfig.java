@@ -23,13 +23,14 @@ public final class DropControlConfig {
 	public static final String ETERNAL_RELICS = "eternal_relics";
 	public static final String CHESTPLATE_ELYTRA_SWAP = "chestplate_elytra_swap";
 	public static final String INVENTORY_SORTING = "inventory_sorting";
+	public static final String ASCENDING_TREASURE = "ascending_treasure";
 	public static final String PAUSE_WHEN_MOUSE_IDLE = "pause_when_mouse_idle";
 	public static final String EXACT_HORSE_HEALTH = "exact_horse_health";
 	public static final String SOVEREIGN_VOID = "sovereign_void";
 	public static final String PHANTOM_PRESSURE_TWO = "phantom_pressure_two";
 	public static final String AQUATIC_APOCALYPSE = "aquatic_apocalypse";
 	private static final String LEGACY_PHANTOM_PRESSURE = "phantom_pressure";
-	private static final int CURRENT_CONFIG_VERSION = 30;
+	private static final int CURRENT_CONFIG_VERSION = 31;
 	private static final String PILLAGER_WEALTH = "dropcontrol:pillager_wealth";
 	private static final String LEGACY_PILLAGER_EMERALDS = "dropcontrol:pillager_emeralds";
 	private static final String ZOMBIE_SULFUR = "dropcontrol:zombie_sulfur";
@@ -75,6 +76,7 @@ public final class DropControlConfig {
 		ETERNAL_RELICS,
 		CHESTPLATE_ELYTRA_SWAP,
 		INVENTORY_SORTING,
+		ASCENDING_TREASURE,
 		PAUSE_WHEN_MOUSE_IDLE,
 		EXACT_HORSE_HEALTH,
 		SOVEREIGN_VOID,
@@ -136,6 +138,7 @@ public final class DropControlConfig {
 	public static boolean eternalRelics() { return isOptionEnabled(ETERNAL_RELICS); }
 	public static boolean chestplateElytraSwap() { return isOptionEnabled(CHESTPLATE_ELYTRA_SWAP); }
 	public static boolean inventorySorting() { return isOptionEnabled(INVENTORY_SORTING); }
+	public static boolean ascendingTreasure() { return isOptionEnabled(ASCENDING_TREASURE); }
 	public static boolean pauseWhenMouseIdle() { return isOptionEnabled(PAUSE_WHEN_MOUSE_IDLE); }
 	public static boolean exactHorseHealth() { return isOptionEnabled(EXACT_HORSE_HEALTH); }
 	public static boolean sovereignVoid() { return isOptionEnabled(SOVEREIGN_VOID); }

@@ -80,6 +80,12 @@ public final class DropControlOptionsScreen extends Screen {
 					Component.translatable("dropcontrol.options.inventory_sorting.description")
 				),
 				new GlobalOptionList.Option(
+					DropControlConfig.ASCENDING_TREASURE,
+					Component.translatable("dropcontrol.options.ascending_treasure"),
+					Component.translatable("dropcontrol.options.ascending_treasure.lore"),
+					Component.translatable("dropcontrol.options.ascending_treasure.description")
+				),
+				new GlobalOptionList.Option(
 					DropControlConfig.PAUSE_WHEN_MOUSE_IDLE,
 					Component.translatable("dropcontrol.options.pause_when_mouse_idle"),
 					Component.translatable("dropcontrol.options.pause_when_mouse_idle.lore"),
