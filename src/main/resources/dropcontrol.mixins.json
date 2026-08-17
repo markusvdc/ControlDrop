@@ -7,6 +7,7 @@
     "AbstractContainerMenuMixin",
     "EndermanTakeBlockGoalMixin",
     "EntityMixin",
+    "GlowInkSacItemMixin",
     "ItemStackMixin",
     "ItemEntityMixin",
     "InventoryMixin",
@@ -16,10 +17,17 @@
     "PhantomMixin",
     "PhantomMoveControlMixin",
     "PhantomSpawnerMixin",
-    "RabbitMixin"
+    "RabbitMixin",
+    "RedStoneWireBlockMixin",
+    "RedstoneTorchBlockMixin",
+    "RedstoneWallTorchBlockMixin",
+    "SwellGoalMixin"
   ],
   "client": [
-    "client.AbstractContainerScreenAccessor"
+    "client.AbstractContainerScreenAccessor",
+    "client.BlockStateBaseMixin",
+    "client.RedstoneTorchParticlesMixin",
+    "client.RedstoneWallTorchParticlesMixin"
   ],
   "injectors": {
     "defaultRequire": 1

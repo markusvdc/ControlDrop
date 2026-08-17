@@ -1,6 +1,7 @@
 package br.com.dropcontrol.client;
 
 import br.com.dropcontrol.config.DropControlConfig;
+import br.com.dropcontrol.gameplay.RedstoneConcealment;
 import br.com.dropcontrol.mixin.client.AbstractContainerScreenAccessor;
 import com.mojang.blaze3d.platform.InputConstants;
 import net.fabricmc.api.ClientModInitializer;
@@ -9,6 +10,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.ContainerInput;
@@ -18,6 +20,8 @@ import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.equipment.Equippable;
+import net.minecraft.world.level.chunk.LevelChunk;
+import net.minecraft.world.level.chunk.LevelChunkSection;
 
 public final class DropControlClient implements ClientModInitializer {
 	private static final int CHEST_ARMOR_MENU_SLOT = 6;
@@ -28,6 +32,9 @@ public final class DropControlClient implements ClientModInitializer {
 	private static double lastMouseY;
 	private static long lastMouseMovementTime;
 	private static boolean mousePositionInitialized;
+	private static boolean redstoneVisibilityInitialized;
+	private static boolean lastArcaneRedstoneEnabled;
+	private static boolean lastNightVisionActive;
 
 	@Override
 	public void onInitializeClient() {
@@ -50,6 +57,54 @@ public final class DropControlClient implements ClientModInitializer {
 		tickSovereignVoid(minecraft);
 		InventoryProfilesIntegration.tick(minecraft);
 		tickMouseIdlePause(minecraft);
+		tickArcaneRedstoneVisibility(minecraft);
+	}
+
+	private static void tickArcaneRedstoneVisibility(Minecraft minecraft) {
+		boolean enabled = DropControlConfig.arcaneRedstone();
+		boolean nightVision = minecraft.player != null && minecraft.player.hasEffect(MobEffects.NIGHT_VISION);
+		if (redstoneVisibilityInitialized
+			&& enabled == lastArcaneRedstoneEnabled
+			&& nightVision == lastNightVisionActive) {
+			return;
+		}
+
+		lastArcaneRedstoneEnabled = enabled;
+		lastNightVisionActive = nightVision;
+		redstoneVisibilityInitialized = true;
+		if (minecraft.level != null) {
+			markConcealedRedstoneSectionsDirty(minecraft);
+		}
+	}
+
+	private static void markConcealedRedstoneSectionsDirty(Minecraft minecraft) {
+		LocalPlayer player = minecraft.player;
+		if (player == null) {
+			return;
+		}
+
+		int centerChunkX = player.blockPosition().getX() >> 4;
+		int centerChunkZ = player.blockPosition().getZ() >> 4;
+		int radius = minecraft.options.getEffectiveRenderDistance();
+		for (int chunkX = centerChunkX - radius; chunkX <= centerChunkX + radius; chunkX++) {
+			for (int chunkZ = centerChunkZ - radius; chunkZ <= centerChunkZ + radius; chunkZ++) {
+				if (!minecraft.level.getChunkSource().hasChunk(chunkX, chunkZ)) {
+					continue;
+				}
+
+				LevelChunk chunk = minecraft.level.getChunk(chunkX, chunkZ);
+				LevelChunkSection[] sections = chunk.getSections();
+				for (int sectionIndex = 0; sectionIndex < sections.length; sectionIndex++) {
+					if (sections[sectionIndex].maybeHas(RedstoneConcealment::isConcealed)) {
+						minecraft.level.setSectionDirtyWithNeighbors(
+							chunkX,
+							minecraft.level.getMinSectionY() + sectionIndex,
+							chunkZ
+						);
+					}
+				}
+			}
+		}
 	}
 
 	private static void tickSovereignVoid(Minecraft minecraft) {
