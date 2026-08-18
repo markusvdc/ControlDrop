@@ -14,14 +14,10 @@
     "LivingEntityMixin",
     "NaturalSpawnerMixin",
     "PatrolSpawnerMixin",
-    "PhantomMixin",
-    "PhantomMoveControlMixin",
-    "PhantomSpawnerMixin",
     "RabbitMixin",
     "RedStoneWireBlockMixin",
     "RedstoneTorchBlockMixin",
-    "RedstoneWallTorchBlockMixin",
-    "SwellGoalMixin"
+    "RedstoneWallTorchBlockMixin"
   ],
   "client": [
     "client.AbstractContainerScreenAccessor",

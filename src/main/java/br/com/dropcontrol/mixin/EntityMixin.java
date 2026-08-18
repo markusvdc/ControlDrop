@@ -2,13 +2,11 @@ package br.com.dropcontrol.mixin;
 
 import br.com.dropcontrol.config.DropControlConfig;
 import br.com.dropcontrol.gameplay.DropRemovalPolicy;
-import br.com.dropcontrol.access.PhantomBiteAccess;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.entity.monster.Phantom;
 import net.minecraft.world.entity.raid.Raider;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -34,14 +32,6 @@ public abstract class EntityMixin {
 		Vec3 offset,
 		CallbackInfoReturnable<ItemEntity> callback
 	) {
-		if (DropControlConfig.phantomPressureTwo()
-			&& (Object)this instanceof Phantom phantom
-			&& ((PhantomBiteAccess)phantom).dropcontrol$hasBittenPlayer()
-			&& stack.is(Items.PHANTOM_MEMBRANE)) {
-			callback.setReturnValue(null);
-			return;
-		}
-
 		if (!Boolean.TRUE.equals(SPAWNING_BONUS_BOTTLE.get())
 			&& DropControlConfig.constantThreat()
 			&& (Object)this instanceof Raider raider

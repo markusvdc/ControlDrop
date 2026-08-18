@@ -1,8 +1,8 @@
 # Proteção deste arquivo
 
 - O Codex executado dentro dos projetos dos mods não pode alterar, formatar, mover, renomear ou excluir este `AGENTS.md`; deve apenas explicar ao desenvolvedor qualquer mudança necessária.
-- O Codex responsável pela manutenção compartilhada dos três mods pode alterar este `AGENTS.md` mediante solicitação explícita do desenvolvedor, exclusivamente para atualizar o modelo comum. O Codex que estiver trabalhando em uma tarefa específica de apenas um dos projetos continua proibido de alterar, formatar, mover, renomear ou excluir este arquivo.
-- O Codex responsável pela manutenção compartilhada dos três mods pode replicar alterações do modelo entre os respectivos arquivos `AGENTS.md` mediante solicitação explícita do desenvolvedor, garantindo que as regras compartilhadas permaneçam idênticas. O Codex que estiver trabalhando em uma tarefa específica de apenas um dos projetos continua sem autorização para realizar essa replicação.
+- O Codex responsável pela manutenção compartilhada dos quatro mods pode alterar este `AGENTS.md` mediante solicitação explícita do desenvolvedor, exclusivamente para atualizar o modelo comum. O Codex que estiver trabalhando em uma tarefa específica de apenas um dos projetos continua proibido de alterar, formatar, mover, renomear ou excluir este arquivo.
+- O Codex responsável pela manutenção compartilhada dos quatro mods pode replicar alterações do modelo entre os respectivos arquivos `AGENTS.md` mediante solicitação explícita do desenvolvedor, garantindo que as regras compartilhadas permaneçam idênticas. O Codex que estiver trabalhando em uma tarefa específica de apenas um dos projetos continua sem autorização para realizar essa replicação.
 
 Leia este arquivo antes de alterar, compilar, testar ou publicar o projeto. Instruções específicas prevalecem quando complementarem ou substituírem explicitamente estas regras.
 
@@ -108,8 +108,9 @@ Nunca remova, mova ou substitua outros mods.
 
 - Quando autorizado, mantenha o `README.md` sincronizado com o comportamento real do mod.
 - Antes de escrever, confira constantes, listas, condições e valores no código. Não invente comportamentos.
+- As regras de nome, lore e descrição funcional desta seção aplicam-se igualmente às opções da tela principal e às opções da tela de opções globais.
 - Estruture o `README.md` com a seção `## Visão geral`, seguida pela seção `## Opções globais`.
-- Escreva o nome de cada opção global com exatamente duas palavras.
+- Escreva o nome de cada opção, principal ou global, com exatamente duas palavras.
 - Escreva a Visão geral em uma única estrofe que combine a função técnica principal do mod com a fantasia proporcionada ao jogador.
 - Restrinja a Visão geral à funcionalidade principal; não mencione nela as opções globais.
 - Mantenha somente a tabela de opções globais. Não crie tabela ou lista detalhada para as opções principais.
@@ -121,9 +122,10 @@ Nunca remova, mova ou substitua outros mods.
 - Revise obrigatoriamente descrições e tooltips acima de `300` caracteres sem espaços. Esse valor é um gatilho, não um limite rígido.
 - Na revisão, remova redundâncias, explicações gerais, negativas desnecessárias, exemplos irrelevantes e detalhes internos, preservando informações e valores importantes.
 - Ao alterar uma opção, revise também as descrições relacionadas dentro do escopo autorizado.
-- Todo tooltip de opção deve conter obrigatoriamente lore e descrição funcional separadas.
+- Todo tooltip de opção, principal ou global, deve conter obrigatoriamente lore e descrição funcional separadas.
+- Escreva a descrição funcional de cada opção, principal ou global, com precisão sobre o que ela faz, o que afeta e suas condições, exceções e comportamentos especiais.
 - Escreva cada lore com `120` a `130` caracteres e tom narrativo. Compare-a com as demais lores do próprio mod para preservar uma identidade textual coerente.
-- Escreva os nomes das opções globais e todas as lores como proclamações grandiosas que pareçam concebidas por Arthur Boyle, de Fire Force: lógica cavaleiresca delirante, certeza absoluta e referências recorrentes ao Cavaleiro Rei, à coroa, ao reino, a Excalibur, a dragões, a magia e a feitos heroicos.
+- Escreva os nomes de todas as opções, principais e globais, e todas as lores como proclamações grandiosas que pareçam concebidas por Arthur Boyle, de Fire Force: lógica cavaleiresca delirante, certeza absoluta e referências recorrentes ao Cavaleiro Rei, à coroa, ao reino, a Excalibur, a dragões, a magia e a feitos heroicos.
 - Nas traduções em inglês, preserve o sentido e a identidade cavaleiresca, mas use deliberadamente um inglês “imbromation”: confiante, compreensível e gramaticalmente suspeito, como se o próprio Cavaleiro Rei o tivesse traduzido.
 
 # Sincronização da documentação

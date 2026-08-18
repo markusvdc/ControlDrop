@@ -27,12 +27,9 @@ public final class DropControlConfig {
 	public static final String PAUSE_WHEN_MOUSE_IDLE = "pause_when_mouse_idle";
 	public static final String EXACT_HORSE_HEALTH = "exact_horse_health";
 	public static final String SOVEREIGN_VOID = "sovereign_void";
-	public static final String PHANTOM_PRESSURE_TWO = "phantom_pressure_two";
 	public static final String AQUATIC_APOCALYPSE = "aquatic_apocalypse";
-	public static final String INEVITABLE_EXPLOSION = "inevitable_explosion";
 	public static final String ARCANE_REDSTONE = "arcane_redstone";
-	private static final String LEGACY_PHANTOM_PRESSURE = "phantom_pressure";
-	private static final int CURRENT_CONFIG_VERSION = 33;
+	private static final int CURRENT_CONFIG_VERSION = 35;
 	private static final String PILLAGER_WEALTH = "dropcontrol:pillager_wealth";
 	private static final String LEGACY_PILLAGER_EMERALDS = "dropcontrol:pillager_emeralds";
 	private static final String ZOMBIE_SULFUR = "dropcontrol:zombie_sulfur";
@@ -82,9 +79,7 @@ public final class DropControlConfig {
 		PAUSE_WHEN_MOUSE_IDLE,
 		EXACT_HORSE_HEALTH,
 		SOVEREIGN_VOID,
-		PHANTOM_PRESSURE_TWO,
 		AQUATIC_APOCALYPSE,
-		INEVITABLE_EXPLOSION,
 		ARCANE_REDSTONE
 	);
 
@@ -146,9 +141,7 @@ public final class DropControlConfig {
 	public static boolean pauseWhenMouseIdle() { return isOptionEnabled(PAUSE_WHEN_MOUSE_IDLE); }
 	public static boolean exactHorseHealth() { return isOptionEnabled(EXACT_HORSE_HEALTH); }
 	public static boolean sovereignVoid() { return isOptionEnabled(SOVEREIGN_VOID); }
-	public static boolean phantomPressureTwo() { return isOptionEnabled(PHANTOM_PRESSURE_TWO); }
 	public static boolean aquaticApocalypse() { return isOptionEnabled(AQUATIC_APOCALYPSE); }
-	public static boolean inevitableExplosion() { return isOptionEnabled(INEVITABLE_EXPLOSION); }
 	public static boolean arcaneRedstone() { return isOptionEnabled(ARCANE_REDSTONE); }
 
 	public static boolean isSelected(Identifier markerId) {
@@ -217,9 +210,6 @@ public final class DropControlConfig {
 		}
 		if (Boolean.TRUE.equals(data.optionTwo)) {
 			migrated.add(PARKED_SADDLED_HORSES);
-		}
-		if (data.enabledOptions != null && data.enabledOptions.contains(LEGACY_PHANTOM_PRESSURE)) {
-			migrated.add(PHANTOM_PRESSURE_TWO);
 		}
 		return Set.copyOf(migrated);
 	}

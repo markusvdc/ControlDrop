@@ -111,22 +111,10 @@ public final class DropControlOptionsScreen extends Screen {
 					Component.translatable("dropcontrol.options.constant_threat.description")
 				),
 				new GlobalOptionList.Option(
-					DropControlConfig.PHANTOM_PRESSURE_TWO,
-					Component.translatable("dropcontrol.options.phantom_pressure_two"),
-					Component.translatable("dropcontrol.options.phantom_pressure_two.lore"),
-					Component.translatable("dropcontrol.options.phantom_pressure_two.description")
-				),
-				new GlobalOptionList.Option(
 					DropControlConfig.AQUATIC_APOCALYPSE,
 					Component.translatable("dropcontrol.options.aquatic_apocalypse"),
 					Component.translatable("dropcontrol.options.aquatic_apocalypse.lore"),
 					Component.translatable("dropcontrol.options.aquatic_apocalypse.description")
-				),
-				new GlobalOptionList.Option(
-					DropControlConfig.INEVITABLE_EXPLOSION,
-					Component.translatable("dropcontrol.options.inevitable_explosion"),
-					Component.translatable("dropcontrol.options.inevitable_explosion.lore"),
-					Component.translatable("dropcontrol.options.inevitable_explosion.description")
 				),
 				new GlobalOptionList.Option(
 					DropControlConfig.ARCANE_REDSTONE,
