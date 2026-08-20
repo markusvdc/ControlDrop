@@ -13,6 +13,7 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.inventory.ChestMenu;
 import net.minecraft.world.inventory.ContainerInput;
 import net.minecraft.world.inventory.InventoryMenu;
 import net.minecraft.world.inventory.ShulkerBoxMenu;
@@ -141,8 +142,8 @@ public final class DropControlClient implements ClientModInitializer {
 			SovereignVoid.deleteInventoryStack(minecraft, inventorySlot, slot.getItem());
 			return;
 		}
-		if (screen.getMenu() instanceof ShulkerBoxMenu) {
-			SovereignVoid.deleteShulkerStack(minecraft, screen.getMenu().containerId, slot.index, slot.getItem());
+		if (screen.getMenu() instanceof ChestMenu || screen.getMenu() instanceof ShulkerBoxMenu) {
+			SovereignVoid.deleteContainerStack(minecraft, screen.getMenu().containerId, slot.index, slot.getItem());
 		}
 	}
 

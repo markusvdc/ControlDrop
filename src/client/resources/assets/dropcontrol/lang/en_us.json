@@ -104,7 +104,7 @@
   "dropcontrol.options.exact_horse_health.description": "Adds the horse's color, markings, and current and maximum health in health points to the Jade tooltip below its speed, rounded to two decimal places. The option can be configured without Jade, but the information only appears when Jade is installed.",
 	"dropcontrol.options.sovereign_void": "SOVEREIGN VOID",
 	"dropcontrol.options.sovereign_void.lore": "Excalibur open sovereign void, condemn unworthy treasures and permit Knight King ordering their most triumphant return forever.",
-	"dropcontrol.options.sovereign_void.description": "When pressing Ctrl + G, deletes the entire stack under cursor from player inventory or a shulker box. Shift + G restores only the last deleted stack: it tries the original slot first, then the other inventory slots, and drops only what does not fit. A new deletion permanently replaces the previous deletion.",
+	"dropcontrol.options.sovereign_void.description": "When pressing Ctrl + G, deletes the entire stack under cursor from player inventory, normal or trapped chests, single or large, barrels, shulker boxes of any color, and Ender Chest. Shift + G restores only the last deleted stack: it tries the original slot first, then the other inventory slots, and drops only what does not fit. A new deletion permanently replaces the previous deletion.",
   "dropcontrol.jade.horse_color": "Color: %s",
   "dropcontrol.jade.horse_color.white": "White",
   "dropcontrol.jade.horse_color.creamy": "Creamy",

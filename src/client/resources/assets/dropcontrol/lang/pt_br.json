@@ -104,7 +104,7 @@
   "dropcontrol.options.exact_horse_health.description": "Acrescenta ao tooltip do Jade, abaixo da velocidade, a cor, a marcação, a vida atual e a vida máxima do cavalo em pontos de vida, arredondadas para duas casas decimais. A opção pode ser configurada sem o Jade, mas as informações só aparecem quando ele estiver instalado.",
 	"dropcontrol.options.sovereign_void": "VAZIO SOBERANO",
 	"dropcontrol.options.sovereign_void.lore": "Excalibur abre o vazio soberano, condena tesouros indignos e permite ao Cavaleiro Rei ordenar seu retorno triunfal eterno.",
-	"dropcontrol.options.sovereign_void.description": "Ao pressionar Ctrl + G, apaga a pilha inteira sob o cursor no inventário do jogador ou em uma shulker box. Shift + G restaura somente a última pilha apagada: tenta primeiro o slot original, depois os demais slots do inventário e joga no chão apenas o que não couber. Uma nova exclusão substitui definitivamente a exclusão anterior.",
+	"dropcontrol.options.sovereign_void.description": "Ao pressionar Ctrl + G, apaga a pilha inteira sob o cursor no inventário do jogador, em baús comuns ou com armadilha, simples ou grandes, barris, caixas de shulker de qualquer cor e Baú do Ender. Shift + G restaura somente a última pilha apagada: tenta primeiro o slot original, depois os demais slots do inventário e joga no chão apenas o que não couber. Uma nova exclusão substitui definitivamente a exclusão anterior.",
   "dropcontrol.jade.horse_color": "Cor: %s",
   "dropcontrol.jade.horse_color.white": "Branco",
   "dropcontrol.jade.horse_color.creamy": "Creme",

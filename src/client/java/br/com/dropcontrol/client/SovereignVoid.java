@@ -6,6 +6,7 @@ import net.minecraft.client.server.IntegratedServer;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.ChestMenu;
 import net.minecraft.world.inventory.ShulkerBoxMenu;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
@@ -42,7 +43,7 @@ final class SovereignVoid {
 		});
 	}
 
-	static void deleteShulkerStack(Minecraft minecraft, int containerId, int menuSlot, ItemStack expectedStack) {
+	static void deleteContainerStack(Minecraft minecraft, int containerId, int menuSlot, ItemStack expectedStack) {
 		IntegratedServer server = minecraft.getSingleplayerServer();
 		if (server == null || minecraft.player == null) {
 			return;
@@ -53,7 +54,7 @@ final class SovereignVoid {
 			resetFor(server);
 			ServerPlayer player = server.getPlayerList().getPlayer(playerId);
 			AbstractContainerMenu menu = player == null ? null : player.containerMenu;
-			if (!(menu instanceof ShulkerBoxMenu)
+			if (!isSupportedStorageMenu(menu)
 				|| menu.containerId != containerId
 				|| menuSlot < 0
 				|| menuSlot >= menu.slots.size()) {
@@ -109,7 +110,7 @@ final class SovereignVoid {
 			return;
 		}
 		AbstractContainerMenu menu = player.containerMenu;
-		if (!(menu instanceof ShulkerBoxMenu)
+		if (!isSupportedStorageMenu(menu)
 			|| menu.containerId != deleted.containerId()
 			|| deleted.menuSlot() < 0
 			|| deleted.menuSlot() >= menu.slots.size()) {
@@ -139,6 +140,10 @@ final class SovereignVoid {
 			current.grow(transferable);
 			remaining.shrink(transferable);
 		}
+	}
+
+	private static boolean isSupportedStorageMenu(AbstractContainerMenu menu) {
+		return menu instanceof ChestMenu || menu instanceof ShulkerBoxMenu;
 	}
 
 	private static void synchronize(ServerPlayer player) {
