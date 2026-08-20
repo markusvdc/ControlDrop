@@ -62,6 +62,14 @@ public abstract class ItemStackMixin {
 		}
 	}
 
+	@Inject(method = "onUseTick", at = @At("HEAD"), cancellable = true)
+	private void dropcontrol$stopContinuousUse(Level level, LivingEntity entity, int remainingUseTicks, CallbackInfo ci) {
+		if (this.dropcontrol$isProtectedBroken()) {
+			entity.releaseUsingItem();
+			ci.cancel();
+		}
+	}
+
 	@Inject(method = "interactLivingEntity", at = @At("HEAD"), cancellable = true)
 	private void dropcontrol$disableEntityInteraction(
 		Player player,
@@ -77,7 +85,7 @@ public abstract class ItemStackMixin {
 	@Inject(method = "getDestroySpeed", at = @At("HEAD"), cancellable = true)
 	private void dropcontrol$disableMiningSpeed(BlockState state, CallbackInfoReturnable<Float> cir) {
 		if (this.dropcontrol$isProtectedBroken()) {
-			cir.setReturnValue(1.0F);
+			cir.setReturnValue(0.0F);
 		}
 	}
 

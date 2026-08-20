@@ -3,8 +3,10 @@
   "package": "br.com.dropcontrol.mixin",
   "compatibilityLevel": "JAVA_25",
   "mixins": [
+    "ArmadilloMixin",
     "AbstractHorseMixin",
     "AbstractContainerMenuMixin",
+    "BrushItemMixin",
     "EndermanTakeBlockGoalMixin",
     "EntityMixin",
     "GlowInkSacItemMixin",
