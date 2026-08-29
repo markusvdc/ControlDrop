@@ -27,9 +27,8 @@ public final class DropControlConfig {
 	public static final String PAUSE_WHEN_MOUSE_IDLE = "pause_when_mouse_idle";
 	public static final String EXACT_HORSE_HEALTH = "exact_horse_health";
 	public static final String SOVEREIGN_VOID = "sovereign_void";
-	public static final String AQUATIC_APOCALYPSE = "aquatic_apocalypse";
 	public static final String ARCANE_REDSTONE = "arcane_redstone";
-	private static final int CURRENT_CONFIG_VERSION = 37;
+	private static final int CURRENT_CONFIG_VERSION = 41;
 	private static final String PILLAGER_WEALTH = "dropcontrol:pillager_wealth";
 	private static final String LEGACY_PILLAGER_EMERALDS = "dropcontrol:pillager_emeralds";
 	private static final String ZOMBIE_SULFUR = "dropcontrol:zombie_sulfur";
@@ -46,28 +45,17 @@ public final class DropControlConfig {
 	private static final String SKELETON_ARMOR = "dropcontrol:skeleton_armor";
 	private static final String LEGACY_SKELETON_BOW = "dropcontrol:skeleton_bow";
 	private static final String ZOMBIE_ARMOR = "dropcontrol:zombie_armor";
-	private static final String DROWNED_COPPER = "dropcontrol:drowned_copper";
 	private static final String LEGACY_ZOMBIE_WEAPONS = "dropcontrol:zombie_weapons";
 	private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
 	private static final Path CONFIG_PATH = FabricLoader.getInstance().getConfigDir().resolve("dropcontrol.json");
 	private static final Set<String> ADDED_MARKERS = Set.of(
 		WITCH_WART,
-		WARDEN_HORN,
-		PILLAGER_WEALTH,
-		PILLAGER_APPLE,
-		ZOMBIE_SULFUR,
-		ZOMBIE_POISONOUS_POTATO,
-		DROWNED_TROPICAL_FISH,
-		DROWNED_KELP,
-		ENDERMAN_AMETHYST_SHARD,
-		ENDERMAN_PARTICLES,
-		PHANTOM_GLOW_INK_SAC
+		WARDEN_HORN
 	);
 	private static final Set<String> REMOVED_MARKERS = Set.of(
 		SKELETON_ARMOR,
 		PILLAGER_CROSSBOW,
 		ZOMBIE_ARMOR,
-		DROWNED_COPPER,
 		"dropcontrol:witch_all"
 	);
 	private static final Set<String> AVAILABLE_MARKERS = availableMarkers();
@@ -83,7 +71,6 @@ public final class DropControlConfig {
 		PAUSE_WHEN_MOUSE_IDLE,
 		EXACT_HORSE_HEALTH,
 		SOVEREIGN_VOID,
-		AQUATIC_APOCALYPSE,
 		ARCANE_REDSTONE
 	);
 
@@ -145,7 +132,6 @@ public final class DropControlConfig {
 	public static boolean pauseWhenMouseIdle() { return isOptionEnabled(PAUSE_WHEN_MOUSE_IDLE); }
 	public static boolean exactHorseHealth() { return isOptionEnabled(EXACT_HORSE_HEALTH); }
 	public static boolean sovereignVoid() { return isOptionEnabled(SOVEREIGN_VOID); }
-	public static boolean aquaticApocalypse() { return isOptionEnabled(AQUATIC_APOCALYPSE); }
 	public static boolean arcaneRedstone() { return isOptionEnabled(ARCANE_REDSTONE); }
 
 	public static boolean isSelected(Identifier markerId) {
@@ -253,9 +239,6 @@ public final class DropControlConfig {
 		if (data.configVersion < 20) {
 			migrated.add(WITCH_WART);
 		}
-		if (data.configVersion < 25) {
-			migrated.add(DROWNED_COPPER);
-		}
 		if (data.configVersion < 26) {
 			migrated.add(DROWNED_TROPICAL_FISH);
 		}
@@ -270,7 +253,13 @@ public final class DropControlConfig {
 		if (data.configVersion < 37) {
 			migrated.add(ENDERMAN_PARTICLES);
 		}
-		return Set.copyOf(migrated);
+		if (data.configVersion >= 38 && data.configVersion < 40) {
+			migrated.add(SKELETON_ARMOR);
+			migrated.add(PILLAGER_CROSSBOW);
+			migrated.add(ZOMBIE_ARMOR);
+			migrated.add("dropcontrol:witch_all");
+		}
+		return sanitize(migrated);
 	}
 
 	private static int selectedCount(Set<String> markers) {

@@ -10,11 +10,11 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 public abstract class PatrolSpawnerMixin {
 	@ModifyConstant(method = "tick", constant = @Constant(intValue = 12000))
 	private int dropcontrol$shortenPatrolInterval(int originalInterval) {
-		return DropControlConfig.constantThreat() ? 800 : originalInterval;
+		return DropControlConfig.constantThreat() ? 6000 : originalInterval;
 	}
 
 	@ModifyConstant(method = "tick", constant = @Constant(intValue = 1200))
 	private int dropcontrol$shortenPatrolIntervalVariation(int originalVariation) {
-		return DropControlConfig.constantThreat() ? 80 : originalVariation;
+		return DropControlConfig.constantThreat() ? 600 : originalVariation;
 	}
 }

@@ -16,7 +16,6 @@
     "ItemEntityMixin",
     "InventoryMixin",
     "LivingEntityMixin",
-    "NaturalSpawnerMixin",
     "PatrolSpawnerMixin",
     "RabbitMixin",
     "RedStoneWireBlockMixin",

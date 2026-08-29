@@ -1,14 +1,13 @@
 ## Visão geral
 
-O ControlDrop remodela as recompensas de afogados, aranhas, bruxas, defensores, endermen, esqueletos, espectros, saqueadores e zumbis: adiciona espólios temáticos com quantidades e chances próprias e pode retirar itens vanilla indesejados dessas criaturas. Com isso, derrotar um monstro conta uma pequena história — a energia de teleporte pode se cristalizar em ametista, defensores deixam seus chifres como troféus e aranhas abatidas por Creepers Elétricos podem perder a cabeça.
+O ControlDrop remodela as recompensas de bruxas e defensores com a Verruga de Bruxa e o Chifre do Defensor como troféus temáticos, além de permitir a remoção de drops indesejados de bruxas, esqueletos, saqueadores e zumbis. Aranhas abatidas por Creepers Elétricos também podem perder a cabeça.
 
 ## Opções globais
 
 | Opção | Descrição |
 | --- | --- |
-| MARÉ IMPERIAL | Substitui por afogados todos os zumbis que seriam gerados naturalmente enquanto estiver chovendo. Zumbis criados por outros meios não são afetados. |
 | REDSTONE ARCANA | Permite aplicar 1 Bolsa de Tinta Brilhante com o botão direito em pó de redstone e tochas de redstone no chão ou na parede, tornando o bloco invisível sem alterar seu funcionamento. A bolsa é consumida no modo Sobrevivência. Visão Noturna revela esses blocos somente para o jogador sob o efeito. Funciona somente em singleplayer. |
-| CERCO ETERNO | Reduz o intervalo das patrulhas de 12.000 para 800 ticks (10 minutos para 40 segundos) e sua variação de 1.200 para 80 ticks (1 minuto para 4 segundos), mantendo as demais condições vanilla de surgimento. Multiplica por 1,5 o dano causado diretamente por invasores. Capitães fora de invasões que já soltariam 1 Frasco Sombrio passam a soltar 2, cada um com Mau Presságio independente de I a V. |
+| CERCO ETERNO | Reduz à metade o intervalo das patrulhas, de 12.000 para 6.000 ticks (10 para 5 minutos), e sua variação, de 1.200 para 600 ticks (1 minuto para 30 segundos). Capitães que já soltariam 1 Frasco Sombrio passam a soltar 2, cada um com Mau Presságio independente de I a V. |
 | MONTARIA SENTINELA | Imobiliza montarias da família dos cavalos enquanto estiverem seladas e sem passageiro. O movimento normal retorna quando recebem um passageiro ou perdem a sela. |
 | RECUO ESPERTO | Impede o salto de um coelho quando uma cerca da tag vanilla `#minecraft:fences` estiver até 1,35 bloco à frente e 0,8 bloco para cada lado. A busca cobre 5 × 5 blocos e 2 níveis verticais, do Y atual ao bloco abaixo. O coelho pode se aproximar normalmente; após 3 tentativas bloqueadas em até 40 ticks sem avançar 0,25 bloco, o bloqueio é suspenso por 30 ticks para permitir sua fuga, inclusive através da cerca. |
 | MÃOS SELADAS | Impede endermen de iniciar a ação de pegar blocos do mundo. Blocos que já estejam sendo carregados permanecem com o enderman e ainda podem ser colocados normalmente. |

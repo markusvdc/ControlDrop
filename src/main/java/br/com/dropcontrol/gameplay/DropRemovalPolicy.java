@@ -1,9 +1,9 @@
 package br.com.dropcontrol.gameplay;
 
 import br.com.dropcontrol.config.DropControlConfig;
-import net.minecraft.core.component.DataComponents;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.EntityTypes;
 import net.minecraft.world.entity.LivingEntity;
@@ -19,8 +19,6 @@ public final class DropRemovalPolicy {
 		Identifier.fromNamespaceAndPath("dropcontrol", "pillager_crossbow");
 	private static final Identifier ZOMBIE_ARMOR =
 		Identifier.fromNamespaceAndPath("dropcontrol", "zombie_armor");
-	private static final Identifier DROWNED_COPPER =
-		Identifier.fromNamespaceAndPath("dropcontrol", "drowned_copper");
 	private static final Identifier WITCH_ALL =
 		Identifier.fromNamespaceAndPath("dropcontrol", "witch_all");
 
@@ -50,10 +48,11 @@ public final class DropRemovalPolicy {
 				return true;
 			}
 
-			boolean removeArmor =
-				DropControlConfig.isSelected(SKELETON_ARMOR)
-					&& stack.has(DataComponents.EQUIPPABLE)
-					&& !stack.is(Items.SKELETON_SKULL);
+			boolean removeArmor = DropControlConfig.isSelected(SKELETON_ARMOR)
+				&& (stack.is(ItemTags.HEAD_ARMOR)
+					|| stack.is(ItemTags.CHEST_ARMOR)
+					|| stack.is(ItemTags.LEG_ARMOR)
+					|| stack.is(ItemTags.FOOT_ARMOR));
 			return removeArmor;
 		}
 
@@ -62,13 +61,9 @@ public final class DropRemovalPolicy {
 				return false;
 			}
 
-			boolean remove =
-				DropControlConfig.isSelected(PILLAGER_CROSSBOW) && stack.is(Items.CROSSBOW);
+			boolean remove = DropControlConfig.isSelected(PILLAGER_CROSSBOW)
+				&& (stack.is(Items.CROSSBOW) || stack.is(ItemTags.ARROWS));
 			return remove;
-		}
-
-		if (entity.getType() == EntityTypes.DROWNED) {
-			return DropControlConfig.isSelected(DROWNED_COPPER) && stack.is(Items.COPPER_INGOT);
 		}
 
 		if (entity.getType() != EntityTypes.ZOMBIE) {
@@ -80,11 +75,17 @@ public final class DropRemovalPolicy {
 		}
 
 		if (DropControlConfig.isSelected(ZOMBIE_ARMOR)) {
-			if (stack.has(DataComponents.EQUIPPABLE) && !stack.is(Items.ZOMBIE_HEAD)) {
+			if (stack.is(ItemTags.HEAD_ARMOR)
+				|| stack.is(ItemTags.CHEST_ARMOR)
+				|| stack.is(ItemTags.LEG_ARMOR)
+				|| stack.is(ItemTags.FOOT_ARMOR)) {
 				return true;
 			}
 
-			if (stack.is(Items.POTATO) || stack.is(Items.BAKED_POTATO) || stack.is(Items.CARROT)) {
+			if (stack.is(Items.POTATO)
+				|| stack.is(Items.BAKED_POTATO)
+				|| stack.is(Items.CARROT)
+				|| stack.is(Items.RED_MUSHROOM)) {
 				return true;
 			}
 

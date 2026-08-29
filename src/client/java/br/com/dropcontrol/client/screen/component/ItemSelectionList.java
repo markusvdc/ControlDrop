@@ -33,21 +33,6 @@ public final class ItemSelectionList extends AbstractWidget {
 		this.minecraft = minecraft;
 		this.rowHeight = rowHeight;
 		this.entries = sortWithinCategories(minecraft, List.of(
-			ItemEntry.category(minecraft, "dropcontrol.category.drowned"),
-			new ItemEntry(
-				minecraft,
-				"dropcontrol:drowned_tropical_fish",
-				Items.TROPICAL_FISH,
-				"dropcontrol.marker.drowned_tropical_fish",
-				"dropcontrol.marker.drowned_tropical_fish.lore"
-			),
-			new ItemEntry(
-				minecraft,
-				"dropcontrol:drowned_kelp",
-				Items.KELP,
-				"dropcontrol.marker.drowned_kelp",
-				"dropcontrol.marker.drowned_kelp.lore"
-			),
 			ItemEntry.category(minecraft, "dropcontrol.category.witch"),
 			new ItemEntry(
 				minecraft,
@@ -64,70 +49,12 @@ public final class ItemSelectionList extends AbstractWidget {
 				"dropcontrol.marker.warden_horn",
 				"dropcontrol.marker.warden_horn.lore"
 			),
-			ItemEntry.category(minecraft, "dropcontrol.category.enderman"),
-			new ItemEntry(
-				minecraft,
-				"dropcontrol:enderman_particles",
-				DropControlItems.ENDERMAN_PARTICLES,
-				"dropcontrol.marker.enderman_particles",
-				"dropcontrol.marker.enderman_particles.lore"
-			),
-			new ItemEntry(
-				minecraft,
-				"dropcontrol:enderman_amethyst_shard",
-				Items.AMETHYST_SHARD,
-				"dropcontrol.marker.enderman_amethyst_shard",
-				"dropcontrol.marker.enderman_amethyst_shard.lore"
-			),
-			ItemEntry.category(minecraft, "dropcontrol.category.pillager"),
-			new ItemEntry(
-				minecraft,
-				"dropcontrol:pillager_wealth",
-				Items.EMERALD,
-				"dropcontrol.marker.pillager_wealth"
-			),
-			new ItemEntry(
-				minecraft,
-				"dropcontrol:pillager_apple",
-				Items.APPLE,
-				"dropcontrol.marker.pillager_apple",
-				"dropcontrol.marker.pillager_apple.lore"
-			),
-			ItemEntry.category(minecraft, "dropcontrol.category.phantom"),
-			new ItemEntry(
-				minecraft,
-				"dropcontrol:phantom_glow_ink_sac",
-				Items.GLOW_INK_SAC,
-				"dropcontrol.marker.phantom_glow_ink_sac",
-				"dropcontrol.marker.phantom_glow_ink_sac.lore"
-			),
-			ItemEntry.category(minecraft, "dropcontrol.category.zombie"),
-			ItemEntry.preRenderedPngIcon(
-				minecraft,
-				"dropcontrol:zombie_sulfur",
-				Identifier.fromNamespaceAndPath("dropcontrol", "textures/gui/sulfur.png"),
-				300,
-				"dropcontrol.marker.zombie_sulfur"
-			),
-			new ItemEntry(
-				minecraft,
-				"dropcontrol:zombie_poisonous_potato",
-				Items.POISONOUS_POTATO,
-				"dropcontrol.marker.zombie_poisonous_potato",
-				"dropcontrol.marker.zombie_poisonous_potato.lore"
-			),
 			ItemEntry.category(minecraft, "dropcontrol.category.remove"),
 			ItemEntry.removal(
 				minecraft,
 				"dropcontrol:witch_all",
 				Items.REDSTONE,
 				"dropcontrol.marker.witch_all"
-			),
-			ItemEntry.removal(
-				minecraft,
-				"dropcontrol:drowned_copper",
-				Items.COPPER_INGOT,
-				"dropcontrol.marker.drowned_copper"
 			),
 			ItemEntry.removal(
 				minecraft,
