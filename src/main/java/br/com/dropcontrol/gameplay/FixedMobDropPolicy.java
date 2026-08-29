@@ -27,6 +27,8 @@ public final class FixedMobDropPolicy {
 		Identifier.fromNamespaceAndPath("dropcontrol", "drowned_kelp");
 	private static final Identifier ENDERMAN_AMETHYST_SHARD =
 		Identifier.fromNamespaceAndPath("dropcontrol", "enderman_amethyst_shard");
+	private static final Identifier ENDERMAN_PARTICLES =
+		Identifier.fromNamespaceAndPath("dropcontrol", "enderman_particles");
 	private static final Identifier WITCH_WART =
 		Identifier.fromNamespaceAndPath("dropcontrol", "witch_wart");
 	private static final Identifier WARDEN_HORN =
@@ -51,16 +53,23 @@ public final class FixedMobDropPolicy {
 			dropZombieItems(level, entity);
 		} else if (entity.getType() == EntityTypes.DROWNED) {
 			dropDrownedItems(level, entity);
-		} else if (entity.getType() == EntityTypes.ENDERMAN
-			&& DropControlConfig.isSelected(ENDERMAN_AMETHYST_SHARD)) {
-			float roll = entity.getRandom().nextFloat();
-			if (roll < ENDERMAN_AMETHYST_SHARD_CHANCE) {
-				spawn(level, entity, new ItemStack(Items.AMETHYST_SHARD));
-			}
+		} else if (entity.getType() == EntityTypes.ENDERMAN) {
+			dropEndermanItems(level, entity);
 		} else if (entity.getType() == EntityTypes.PHANTOM
 			&& DropControlConfig.isSelected(PHANTOM_GLOW_INK_SAC)
 			&& entity.getRandom().nextFloat() < PHANTOM_GLOW_INK_SAC_CHANCE) {
 			spawn(level, entity, new ItemStack(Items.GLOW_INK_SAC));
+		}
+	}
+
+	private static void dropEndermanItems(ServerLevel level, LivingEntity entity) {
+		if (DropControlConfig.isSelected(ENDERMAN_PARTICLES)) {
+			spawn(level, entity, new ItemStack(DropControlItems.ENDERMAN_PARTICLES));
+		}
+
+		if (DropControlConfig.isSelected(ENDERMAN_AMETHYST_SHARD)
+			&& entity.getRandom().nextFloat() < ENDERMAN_AMETHYST_SHARD_CHANCE) {
+			spawn(level, entity, new ItemStack(Items.AMETHYST_SHARD));
 		}
 	}
 

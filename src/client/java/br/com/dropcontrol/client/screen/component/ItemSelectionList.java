@@ -67,6 +67,13 @@ public final class ItemSelectionList extends AbstractWidget {
 			ItemEntry.category(minecraft, "dropcontrol.category.enderman"),
 			new ItemEntry(
 				minecraft,
+				"dropcontrol:enderman_particles",
+				DropControlItems.ENDERMAN_PARTICLES,
+				"dropcontrol.marker.enderman_particles",
+				"dropcontrol.marker.enderman_particles.lore"
+			),
+			new ItemEntry(
+				minecraft,
 				"dropcontrol:enderman_amethyst_shard",
 				Items.AMETHYST_SHARD,
 				"dropcontrol.marker.enderman_amethyst_shard",

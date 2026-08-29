@@ -29,7 +29,7 @@ public final class DropControlConfig {
 	public static final String SOVEREIGN_VOID = "sovereign_void";
 	public static final String AQUATIC_APOCALYPSE = "aquatic_apocalypse";
 	public static final String ARCANE_REDSTONE = "arcane_redstone";
-	private static final int CURRENT_CONFIG_VERSION = 36;
+	private static final int CURRENT_CONFIG_VERSION = 37;
 	private static final String PILLAGER_WEALTH = "dropcontrol:pillager_wealth";
 	private static final String LEGACY_PILLAGER_EMERALDS = "dropcontrol:pillager_emeralds";
 	private static final String ZOMBIE_SULFUR = "dropcontrol:zombie_sulfur";
@@ -37,6 +37,7 @@ public final class DropControlConfig {
 	private static final String DROWNED_TROPICAL_FISH = "dropcontrol:drowned_tropical_fish";
 	private static final String DROWNED_KELP = "dropcontrol:drowned_kelp";
 	private static final String ENDERMAN_AMETHYST_SHARD = "dropcontrol:enderman_amethyst_shard";
+	private static final String ENDERMAN_PARTICLES = "dropcontrol:enderman_particles";
 	private static final String WITCH_WART = "dropcontrol:witch_wart";
 	private static final String WARDEN_HORN = "dropcontrol:warden_horn";
 	private static final String PILLAGER_APPLE = "dropcontrol:pillager_apple";
@@ -59,6 +60,7 @@ public final class DropControlConfig {
 		DROWNED_TROPICAL_FISH,
 		DROWNED_KELP,
 		ENDERMAN_AMETHYST_SHARD,
+		ENDERMAN_PARTICLES,
 		PHANTOM_GLOW_INK_SAC
 	);
 	private static final Set<String> REMOVED_MARKERS = Set.of(
@@ -264,6 +266,9 @@ public final class DropControlConfig {
 		}
 		if (data.configVersion < 36) {
 			migrated.add(WARDEN_HORN);
+		}
+		if (data.configVersion < 37) {
+			migrated.add(ENDERMAN_PARTICLES);
 		}
 		return Set.copyOf(migrated);
 	}
