@@ -7,6 +7,8 @@
     "AbstractHorseMixin",
     "AbstractContainerMenuMixin",
     "BrushItemMixin",
+    "BlockEntityTypeAccessor",
+    "CreeperMixin",
     "EndermanTakeBlockGoalMixin",
     "EntityMixin",
     "GlowInkSacItemMixin",
@@ -25,7 +27,8 @@
     "client.AbstractContainerScreenAccessor",
     "client.BlockStateBaseMixin",
     "client.RedstoneTorchParticlesMixin",
-    "client.RedstoneWallTorchParticlesMixin"
+    "client.RedstoneWallTorchParticlesMixin",
+    "client.SkullBlockRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1

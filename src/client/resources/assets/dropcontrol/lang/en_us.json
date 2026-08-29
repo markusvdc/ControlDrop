@@ -21,6 +21,7 @@
   "dropcontrol.marker.witch_wart.description": "Adds exactly 1 Witch Wart to 100% of witch drops. The Looting enchantment does not change the quantity.",
   "dropcontrol.marker.warden_horn": "SOVEREIGN HORN",
   "item.dropcontrol.warden_horn": "Warden Horn",
+  "item.dropcontrol.spider_head": "Spider Head",
   "dropcontrol.marker.warden_horn.lore": "Guardian from deepest dark fallen before Excalibur; its glowing horn now proclaim absolute winning of the very Knight Prince.",
   "dropcontrol.marker.warden_horn.description": "Adds exactly 1 Warden Horn to 100% of warden drops. The Looting enchantment does not change the quantity.",
   "dropcontrol.marker.enderman_amethyst_shard": "AMETHYST",

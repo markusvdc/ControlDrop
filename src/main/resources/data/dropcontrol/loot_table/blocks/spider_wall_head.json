@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "dropcontrol:spider_head"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "dropcontrol:blocks/spider_wall_head"
+}
