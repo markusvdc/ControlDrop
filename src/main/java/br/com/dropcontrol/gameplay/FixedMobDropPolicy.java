@@ -29,6 +29,8 @@ public final class FixedMobDropPolicy {
 		Identifier.fromNamespaceAndPath("dropcontrol", "enderman_amethyst_shard");
 	private static final Identifier WITCH_WART =
 		Identifier.fromNamespaceAndPath("dropcontrol", "witch_wart");
+	private static final Identifier WARDEN_HORN =
+		Identifier.fromNamespaceAndPath("dropcontrol", "warden_horn");
 	private static final Identifier PILLAGER_APPLE =
 		Identifier.fromNamespaceAndPath("dropcontrol", "pillager_apple");
 	private static final Identifier PHANTOM_GLOW_INK_SAC =
@@ -40,6 +42,9 @@ public final class FixedMobDropPolicy {
 	public static void drop(ServerLevel level, LivingEntity entity) {
 		if (entity.getType() == EntityTypes.WITCH) {
 			dropWitchItems(level, entity);
+		} else if (entity.getType() == EntityTypes.WARDEN
+			&& DropControlConfig.isSelected(WARDEN_HORN)) {
+			spawn(level, entity, new ItemStack(DropControlItems.WARDEN_HORN));
 		} else if (entity.getType() == EntityTypes.PILLAGER) {
 			dropPillagerItems(level, entity);
 		} else if (entity.getType() == EntityTypes.ZOMBIE) {
