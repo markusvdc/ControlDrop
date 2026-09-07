@@ -40,7 +40,7 @@ public abstract class EntityMixin {
 			&& stack.is(Items.OMINOUS_BOTTLE)) {
 			stack.setCount(1);
 			randomizeOminousLevel(raider, stack);
-			spawnBonusBottle(level, raider, offset);
+			spawnBonusBottle(level, raider, stack, offset);
 		}
 
 		if ((Object)this instanceof LivingEntity livingEntity
@@ -49,9 +49,8 @@ public abstract class EntityMixin {
 		}
 	}
 
-	private static void spawnBonusBottle(ServerLevel level, Raider raider, Vec3 offset) {
-		ItemStack bonusBottle = new ItemStack(Items.OMINOUS_BOTTLE);
-		randomizeOminousLevel(raider, bonusBottle);
+	private static void spawnBonusBottle(ServerLevel level, Raider raider, ItemStack originalBottle, Vec3 offset) {
+		ItemStack bonusBottle = originalBottle.copy();
 
 		SPAWNING_BONUS_BOTTLE.set(true);
 		try {
