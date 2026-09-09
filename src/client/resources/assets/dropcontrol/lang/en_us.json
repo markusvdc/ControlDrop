@@ -1,4 +1,9 @@
 {
+  "dropcontrol.category.polar_bear": "POLAR BEAR",
+  "dropcontrol.marker.polar_bear_fang": "POLAR BEAR FANG",
+  "item.dropcontrol.polar_bear_fang": "Polar Bear Fang",
+  "dropcontrol.marker.polar_bear_fang.lore": "Snow bear was fallen before Excalibur; its fang now crown the Knight Prince as most absolute king of dragons from frozen realm.",
+  "dropcontrol.marker.polar_bear_fang.description": "Adds exactly 1 Polar Bear Fang to 100% of polar bear drops. The Looting enchantment does not change the quantity.",
   "dropcontrol.title": "CONTROL DROP",
   "dropcontrol.subtitle": "Select the drops you want to add or remove.",
   "dropcontrol.base.label": "REFERENCE DROP",

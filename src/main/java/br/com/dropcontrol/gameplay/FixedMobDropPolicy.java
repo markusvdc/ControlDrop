@@ -31,6 +31,8 @@ public final class FixedMobDropPolicy {
 		Identifier.fromNamespaceAndPath("dropcontrol", "enderman_particles");
 	private static final Identifier WITCH_WART =
 		Identifier.fromNamespaceAndPath("dropcontrol", "witch_wart");
+	private static final Identifier POLAR_BEAR_FANG =
+		Identifier.fromNamespaceAndPath("dropcontrol", "polar_bear_fang");
 	private static final Identifier WARDEN_HORN =
 		Identifier.fromNamespaceAndPath("dropcontrol", "warden_horn");
 	private static final Identifier PILLAGER_APPLE =
@@ -47,6 +49,9 @@ public final class FixedMobDropPolicy {
 		} else if (entity.getType() == EntityTypes.WARDEN
 			&& DropControlConfig.isSelected(WARDEN_HORN)) {
 			spawn(level, entity, new ItemStack(DropControlItems.WARDEN_HORN));
+		} else if (entity.getType() == EntityTypes.POLAR_BEAR
+			&& DropControlConfig.isSelected(POLAR_BEAR_FANG)) {
+			spawn(level, entity, new ItemStack(DropControlItems.POLAR_BEAR_FANG));
 		} else if (entity.getType() == EntityTypes.PILLAGER) {
 			dropPillagerItems(level, entity);
 		} else if (entity.getType() == EntityTypes.ZOMBIE) {

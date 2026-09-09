@@ -26,6 +26,10 @@ public final class DropControlItems {
 		Identifier.fromNamespaceAndPath(DropControl.MOD_ID, "enderman_particles");
 	private static final ResourceKey<Item> ENDERMAN_PARTICLES_KEY =
 		ResourceKey.create(Registries.ITEM, ENDERMAN_PARTICLES_ID);
+	private static final Identifier POLAR_BEAR_FANG_ID =
+		Identifier.fromNamespaceAndPath(DropControl.MOD_ID, "polar_bear_fang");
+	private static final ResourceKey<Item> POLAR_BEAR_FANG_KEY =
+		ResourceKey.create(Registries.ITEM, POLAR_BEAR_FANG_ID);
 	private static final Identifier SPIDER_HEAD_ID =
 		Identifier.fromNamespaceAndPath(DropControl.MOD_ID, "spider_head");
 	private static final ResourceKey<Item> SPIDER_HEAD_KEY =
@@ -45,6 +49,11 @@ public final class DropControlItems {
 		BuiltInRegistries.ITEM,
 		ENDERMAN_PARTICLES_KEY,
 		new Item(new Item.Properties().setId(ENDERMAN_PARTICLES_KEY).stacksTo(64))
+	);
+	public static final Item POLAR_BEAR_FANG = Registry.register(
+		BuiltInRegistries.ITEM,
+		POLAR_BEAR_FANG_KEY,
+		new Item(new Item.Properties().setId(POLAR_BEAR_FANG_KEY).stacksTo(64))
 	);
 	public static final Item SPIDER_HEAD = Registry.register(
 		BuiltInRegistries.ITEM,

@@ -49,6 +49,14 @@ public final class ItemSelectionList extends AbstractWidget {
 				"dropcontrol.marker.warden_horn",
 				"dropcontrol.marker.warden_horn.lore"
 			),
+			ItemEntry.category(minecraft, "dropcontrol.category.polar_bear"),
+			new ItemEntry(
+				minecraft,
+				"dropcontrol:polar_bear_fang",
+				DropControlItems.POLAR_BEAR_FANG,
+				"dropcontrol.marker.polar_bear_fang",
+				"dropcontrol.marker.polar_bear_fang.lore"
+			),
 			ItemEntry.category(minecraft, "dropcontrol.category.remove"),
 			ItemEntry.removal(
 				minecraft,

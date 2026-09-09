@@ -28,7 +28,7 @@ public final class DropControlConfig {
 	public static final String EXACT_HORSE_HEALTH = "exact_horse_health";
 	public static final String SOVEREIGN_VOID = "sovereign_void";
 	public static final String ARCANE_REDSTONE = "arcane_redstone";
-	private static final int CURRENT_CONFIG_VERSION = 41;
+	private static final int CURRENT_CONFIG_VERSION = 42;
 	private static final String PILLAGER_WEALTH = "dropcontrol:pillager_wealth";
 	private static final String LEGACY_PILLAGER_EMERALDS = "dropcontrol:pillager_emeralds";
 	private static final String ZOMBIE_SULFUR = "dropcontrol:zombie_sulfur";
@@ -38,6 +38,7 @@ public final class DropControlConfig {
 	private static final String ENDERMAN_AMETHYST_SHARD = "dropcontrol:enderman_amethyst_shard";
 	private static final String ENDERMAN_PARTICLES = "dropcontrol:enderman_particles";
 	private static final String WITCH_WART = "dropcontrol:witch_wart";
+	private static final String POLAR_BEAR_FANG = "dropcontrol:polar_bear_fang";
 	private static final String WARDEN_HORN = "dropcontrol:warden_horn";
 	private static final String PILLAGER_APPLE = "dropcontrol:pillager_apple";
 	private static final String PHANTOM_GLOW_INK_SAC = "dropcontrol:phantom_glow_ink_sac";
@@ -50,7 +51,8 @@ public final class DropControlConfig {
 	private static final Path CONFIG_PATH = FabricLoader.getInstance().getConfigDir().resolve("dropcontrol.json");
 	private static final Set<String> ADDED_MARKERS = Set.of(
 		WITCH_WART,
-		WARDEN_HORN
+		WARDEN_HORN,
+		POLAR_BEAR_FANG
 	);
 	private static final Set<String> REMOVED_MARKERS = Set.of(
 		SKELETON_ARMOR,
@@ -258,6 +260,9 @@ public final class DropControlConfig {
 			migrated.add(PILLAGER_CROSSBOW);
 			migrated.add(ZOMBIE_ARMOR);
 			migrated.add("dropcontrol:witch_all");
+		}
+		if (data.configVersion < 42) {
+			migrated.add(POLAR_BEAR_FANG);
 		}
 		return sanitize(migrated);
 	}

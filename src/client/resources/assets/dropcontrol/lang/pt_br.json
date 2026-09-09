@@ -1,4 +1,9 @@
 {
+  "dropcontrol.category.polar_bear": "URSO-POLAR",
+  "dropcontrol.marker.polar_bear_fang": "PRESA DE URSO-POLAR",
+  "item.dropcontrol.polar_bear_fang": "Presa de Urso-Polar",
+  "dropcontrol.marker.polar_bear_fang.lore": "O urso das neves tombou perante Excalibur; sua presa agora coroa o Cavaleiro Príncipe como soberano dos dragões do reino gelado.",
+  "dropcontrol.marker.polar_bear_fang.description": "Adiciona exatamente 1 Presa de Urso-Polar a 100% dos drops de ursos-polares. O encantamento Saque não altera a quantidade.",
   "dropcontrol.title": "CONTROL DROP",
   "dropcontrol.subtitle": "Marque os drops que você deseja adicionar ou remover.",
   "dropcontrol.base.label": "DROP DE REFERÊNCIA",
