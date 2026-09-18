@@ -34,7 +34,7 @@ public final class DropControlBlocks {
 			BlockBehaviour.Properties.of()
 				.setId(SPIDER_HEAD_KEY)
 				.strength(1.0F)
-				.pushReaction(PushReaction.DESTROY)
+				.pushReaction(PushReaction.POPPED)
 				.noOcclusion()
 		)
 	);
@@ -46,7 +46,7 @@ public final class DropControlBlocks {
 			BlockBehaviour.Properties.of()
 				.setId(SPIDER_WALL_HEAD_KEY)
 				.strength(1.0F)
-				.pushReaction(PushReaction.DESTROY)
+				.pushReaction(PushReaction.POPPED)
 				.noOcclusion()
 		)
 	);

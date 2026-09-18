@@ -45,7 +45,8 @@ final class DescriptionTooltip {
 			mouseX,
 			mouseY,
 			POSITIONER,
-			null
+			null,
+			false
 		);
 	}
 

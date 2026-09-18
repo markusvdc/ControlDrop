@@ -43,7 +43,7 @@ public final class DropControlClient implements ClientModInitializer {
 	}
 
 	private static void onEndClientTick(Minecraft minecraft) {
-		boolean graveAccentDown = InputConstants.isKeyDown(minecraft.getWindow(), InputConstants.KEY_GRAVE);
+		boolean graveAccentDown = InputConstants.isKeyDown(InputConstants.KEY_GRAVE);
 		if (graveAccentDown && !graveAccentWasDown) {
 			boolean swapEnabled = DropControlConfig.chestplateElytraSwap();
 			boolean sortingEnabled = DropControlConfig.inventorySorting();
@@ -109,7 +109,7 @@ public final class DropControlClient implements ClientModInitializer {
 	}
 
 	private static void tickSovereignVoid(Minecraft minecraft) {
-		boolean gDown = InputConstants.isKeyDown(minecraft.getWindow(), InputConstants.KEY_G);
+		boolean gDown = InputConstants.isKeyDown(InputConstants.KEY_G);
 		if (gDown && !gWasDown && DropControlConfig.sovereignVoid()) {
 			if (minecraft.hasControlDown() && !minecraft.hasShiftDown()) {
 				deleteHoveredStack(minecraft);

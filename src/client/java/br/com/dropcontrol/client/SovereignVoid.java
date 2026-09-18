@@ -4,6 +4,7 @@ import java.util.UUID;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.server.IntegratedServer;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.util.Prediction;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ChestMenu;
@@ -97,7 +98,7 @@ final class SovereignVoid {
 				inventory.add(remaining);
 			}
 			if (!remaining.isEmpty()) {
-				player.drop(remaining, false);
+				player.drop(remaining, false, Prediction.SERVER_ONLY);
 			}
 			synchronize(player);
 		});
