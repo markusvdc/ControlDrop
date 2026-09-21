@@ -23,6 +23,7 @@ public final class DropControlConfig {
 	public static final String ETERNAL_RELICS = "eternal_relics";
 	public static final String CHESTPLATE_ELYTRA_SWAP = "chestplate_elytra_swap";
 	public static final String INVENTORY_SORTING = "inventory_sorting";
+	public static final String MATCHING_TRANSFER = "matching_transfer";
 	public static final String ASCENDING_TREASURE = "ascending_treasure";
 	public static final String PAUSE_WHEN_MOUSE_IDLE = "pause_when_mouse_idle";
 	public static final String EXACT_HORSE_HEALTH = "exact_horse_health";
@@ -69,6 +70,7 @@ public final class DropControlConfig {
 		ETERNAL_RELICS,
 		CHESTPLATE_ELYTRA_SWAP,
 		INVENTORY_SORTING,
+		MATCHING_TRANSFER,
 		ASCENDING_TREASURE,
 		PAUSE_WHEN_MOUSE_IDLE,
 		EXACT_HORSE_HEALTH,
@@ -130,6 +132,7 @@ public final class DropControlConfig {
 	public static boolean eternalRelics() { return isOptionEnabled(ETERNAL_RELICS); }
 	public static boolean chestplateElytraSwap() { return isOptionEnabled(CHESTPLATE_ELYTRA_SWAP); }
 	public static boolean inventorySorting() { return isOptionEnabled(INVENTORY_SORTING); }
+	public static boolean matchingTransfer() { return isOptionEnabled(MATCHING_TRANSFER); }
 	public static boolean ascendingTreasure() { return isOptionEnabled(ASCENDING_TREASURE); }
 	public static boolean pauseWhenMouseIdle() { return isOptionEnabled(PAUSE_WHEN_MOUSE_IDLE); }
 	public static boolean exactHorseHealth() { return isOptionEnabled(EXACT_HORSE_HEALTH); }

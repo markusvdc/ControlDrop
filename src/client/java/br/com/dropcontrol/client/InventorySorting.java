@@ -37,6 +37,10 @@ final class InventorySorting {
 	private InventorySorting() {
 	}
 
+	static void cancel() {
+		pending = null;
+	}
+
 	static void request(Minecraft minecraft) {
 		LocalPlayer player = minecraft.player;
 		Screen screen = minecraft.gui.screen();

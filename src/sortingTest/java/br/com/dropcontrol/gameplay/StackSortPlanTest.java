@@ -27,6 +27,7 @@ public final class StackSortPlanTest {
 	private static final Comparator<Stack> ORDER = Comparator.comparing(Stack::item);
 
 	public static void main(String[] args) {
+		MatchingTransferPlanTest.verify();
 		List<Stack> mixed = List.of(new Stack("stone", "", 40, 64),
 			new Stack("apple", "", 2, 64), new Stack("stone", "", 30, 64),
 			new Stack("stone", "named", 1, 64), EMPTY);

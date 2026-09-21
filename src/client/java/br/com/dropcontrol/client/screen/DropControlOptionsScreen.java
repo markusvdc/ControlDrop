@@ -80,6 +80,12 @@ public final class DropControlOptionsScreen extends Screen {
 					Component.translatable("dropcontrol.options.inventory_sorting.description")
 				),
 				new GlobalOptionList.Option(
+					DropControlConfig.MATCHING_TRANSFER,
+					Component.translatable("dropcontrol.options.matching_transfer"),
+					Component.translatable("dropcontrol.options.matching_transfer.lore"),
+					Component.translatable("dropcontrol.options.matching_transfer.description")
+				),
+				new GlobalOptionList.Option(
 					DropControlConfig.ASCENDING_TREASURE,
 					Component.translatable("dropcontrol.options.ascending_treasure"),
 					Component.translatable("dropcontrol.options.ascending_treasure.lore"),

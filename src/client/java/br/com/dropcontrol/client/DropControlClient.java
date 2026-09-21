@@ -44,13 +44,17 @@ public final class DropControlClient implements ClientModInitializer {
 
 	private static void onEndClientTick(Minecraft minecraft) {
 		boolean graveAccentDown = InputConstants.isKeyDown(InputConstants.KEY_GRAVE);
+		boolean modified = minecraft.hasAltDown() || minecraft.hasControlDown();
 		if (graveAccentDown && !graveAccentWasDown) {
-			boolean swapEnabled = DropControlConfig.chestplateElytraSwap();
-			if (swapEnabled) {
-				swapChestEquipment(minecraft);
-			}
-			if (DropControlConfig.inventorySorting()) {
-				InventorySorting.request(minecraft);
+			if (modified) {
+				InventorySorting.cancel();
+			} else {
+				if (DropControlConfig.chestplateElytraSwap()) {
+					swapChestEquipment(minecraft);
+				}
+				if (DropControlConfig.inventorySorting()) {
+					InventorySorting.request(minecraft);
+				}
 			}
 		}
 		graveAccentWasDown = graveAccentDown;

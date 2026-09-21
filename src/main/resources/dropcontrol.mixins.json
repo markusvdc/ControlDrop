@@ -23,6 +23,7 @@
     "RedstoneWallTorchBlockMixin"
   ],
   "client": [
+    "client.MatchingTransferKeyMixin",
     "client.AbstractContainerScreenAccessor",
     "client.BlockStateBaseMixin",
     "client.RedstoneTorchParticlesMixin",
