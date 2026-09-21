@@ -13,5 +13,6 @@ public final class DropControl implements ModInitializer {
 		DropControlBlocks.initialize();
 		DropControlItems.initialize();
 		DropControlConfig.load();
+		br.com.dropcontrol.gameplay.AutoRefill.initialize();
 	}
 }
