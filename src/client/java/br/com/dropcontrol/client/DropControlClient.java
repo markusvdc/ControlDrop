@@ -46,17 +46,16 @@ public final class DropControlClient implements ClientModInitializer {
 		boolean graveAccentDown = InputConstants.isKeyDown(InputConstants.KEY_GRAVE);
 		if (graveAccentDown && !graveAccentWasDown) {
 			boolean swapEnabled = DropControlConfig.chestplateElytraSwap();
-			boolean sortingEnabled = DropControlConfig.inventorySorting();
 			if (swapEnabled) {
 				swapChestEquipment(minecraft);
 			}
-			if (sortingEnabled) {
-				InventoryProfilesIntegration.requestSort(minecraft);
+			if (DropControlConfig.inventorySorting()) {
+				InventorySorting.request(minecraft);
 			}
 		}
 		graveAccentWasDown = graveAccentDown;
+		InventorySorting.tick(minecraft);
 		tickSovereignVoid(minecraft);
-		InventoryProfilesIntegration.tick(minecraft);
 		tickMouseIdlePause(minecraft);
 		tickArcaneRedstoneVisibility(minecraft);
 	}

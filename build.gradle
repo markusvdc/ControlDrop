@@ -59,3 +59,20 @@ java {
 tasks.named('sourcesJar') {
 	destinationDirectory = layout.buildDirectory.dir('devlibs')
 }
+
+sourceSets {
+	sortingTest {
+		compileClasspath += sourceSets.main.output
+		runtimeClasspath += sourceSets.main.output
+	}
+}
+
+tasks.register('verifyStackSorting', JavaExec) {
+	dependsOn tasks.named('sortingTestClasses')
+	classpath = sourceSets.sortingTest.runtimeClasspath
+	mainClass = 'br.com.dropcontrol.gameplay.StackSortPlanTest'
+}
+
+tasks.named('check') {
+	dependsOn tasks.named('verifyStackSorting')
+}
