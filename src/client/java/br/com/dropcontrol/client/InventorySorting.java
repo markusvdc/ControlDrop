@@ -21,6 +21,8 @@ import net.minecraft.world.inventory.InventoryMenu;
 import net.minecraft.world.inventory.ShulkerBoxMenu;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.level.block.ShulkerBoxBlock;
 
 final class InventorySorting {
 	private static Pending pending;
@@ -99,9 +101,11 @@ final class InventorySorting {
 		String language = minecraft.getLanguageManager().getSelected();
 		Collator collator = Collator.getInstance(Locale.forLanguageTag(language.replace('_', '-')));
 		collator.setStrength(Collator.PRIMARY);
-		Comparator<ItemStack> order = Comparator.comparing(
-			(ItemStack stack) -> stack.getHoverName().getString(), collator
-		).thenComparing(stack -> BuiltInRegistries.ITEM.getKey(stack.getItem()).toString());
+		Comparator<ItemStack> order = Comparator.comparingInt(
+			(ItemStack stack) -> stack.getItem() instanceof BlockItem blockItem
+				&& blockItem.getBlock() instanceof ShulkerBoxBlock ? 0 : 1
+		).thenComparing(stack -> stack.getHoverName().getString(), collator)
+			.thenComparing(stack -> BuiltInRegistries.ITEM.getKey(stack.getItem()).toString());
 		List<Change> changes = new ArrayList<>();
 		try {
 			plan(inventory, order, changes);
