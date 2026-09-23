@@ -57,8 +57,9 @@ public abstract class DragTransferMixin {
 		}
 		Minecraft minecraft = Minecraft.getInstance();
 		var screen = (AbstractContainerScreen<?>)(Object)this;
+		// Drag events retain the modifiers from the original click; read the live Shift state.
 		if (!DropControlConfig.dragTransfer() || event.button() != InputConstants.MOUSE_BUTTON_LEFT
-			|| !event.hasShiftDown() || !minecraft.isWindowActive() || minecraft.player == null
+			|| !minecraft.hasShiftDown() || !minecraft.isWindowActive() || minecraft.player == null
 			|| minecraft.gui.screen() != screen || !screen.getMenu().getCarried().isEmpty()) {
 			dropcontrol$reset();
 			return;
