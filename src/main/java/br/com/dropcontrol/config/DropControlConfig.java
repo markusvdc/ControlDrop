@@ -18,6 +18,7 @@ import net.minecraft.resources.Identifier;
 public final class DropControlConfig {
 	public static final String CONSTANT_THREAT = "constant_threat";
 	public static final String PARKED_SADDLED_HORSES = "parked_saddled_horses";
+	public static final String SOVEREIGN_REINS = "sovereign_reins";
 	public static final String RABBITS_AVOID_FENCES = "rabbits_avoid_fences";
 	public static final String ENDERMEN_DONT_PICK_UP_BLOCKS = "endermen_dont_pick_up_blocks";
 	public static final String ETERNAL_RELICS = "eternal_relics";
@@ -67,6 +68,7 @@ public final class DropControlConfig {
 	private static final Set<String> AVAILABLE_OPTIONS = Set.of(
 		CONSTANT_THREAT,
 		PARKED_SADDLED_HORSES,
+		SOVEREIGN_REINS,
 		RABBITS_AVOID_FENCES,
 		ENDERMEN_DONT_PICK_UP_BLOCKS,
 		ETERNAL_RELICS,
@@ -131,6 +133,7 @@ public final class DropControlConfig {
 
 	public static boolean constantThreat() { return isOptionEnabled(CONSTANT_THREAT); }
 	public static boolean saddledHorseStaysPut() { return isOptionEnabled(PARKED_SADDLED_HORSES); }
+	public static boolean sovereignReins() { return isOptionEnabled(SOVEREIGN_REINS); }
 	public static boolean rabbitsAvoidFences() { return isOptionEnabled(RABBITS_AVOID_FENCES); }
 	public static boolean endermenDontPickUpBlocks() { return isOptionEnabled(ENDERMEN_DONT_PICK_UP_BLOCKS); }
 	public static boolean eternalRelics() { return isOptionEnabled(ETERNAL_RELICS); }

@@ -44,6 +44,12 @@ public final class DropControlOptionsScreen extends Screen {
 			List.of(
 				GlobalOptionList.Option.category(Component.translatable("dropcontrol.options.category.quality")),
 				new GlobalOptionList.Option(
+					DropControlConfig.SOVEREIGN_REINS,
+					Component.translatable("dropcontrol.options.sovereign_reins"),
+					Component.translatable("dropcontrol.options.sovereign_reins.lore"),
+					Component.translatable("dropcontrol.options.sovereign_reins.description")
+				),
+				new GlobalOptionList.Option(
 					DropControlConfig.PARKED_SADDLED_HORSES,
 					Component.translatable("dropcontrol.options.parked_saddled_horses"),
 					Component.translatable("dropcontrol.options.parked_saddled_horses.lore"),

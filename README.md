@@ -6,6 +6,7 @@ O ControlDrop remodela as recompensas de bruxas e defensores com a Verruga de Br
 
 | Opção | Descrição |
 | --- | --- |
+| RÉDEAS SOBERANAS | Alinha a rotação horizontal da cabeça e do corpo de cavalos, cavalos-esqueleto e cavalos-zumbis à direção da câmera a cada quadro enquanto você os controla. Ajusta somente a aparência da montaria, preservando velocidade, saltos e movimento. |
 | REDSTONE ARCANA | Permite aplicar 1 Bolsa de Tinta Brilhante com o botão direito em pó de redstone e tochas de redstone no chão ou na parede, tornando-os invisíveis sem alterar seu funcionamento. Visão Noturna revela esses blocos somente para o jogador sob o efeito. Funciona somente em singleplayer. |
 | CERCO ETERNO | Reduz à metade o intervalo das patrulhas, de 12.000 para 6.000 ticks (10 para 5 minutos), e sua variação, de 1.200 para 600 ticks (1 minuto para 30 segundos). Capitães que já soltariam 1 Frasco Sombrio passam a soltar 2, ambos com o mesmo nível de Mau Presságio, de I a V. |
 | MONTARIA SENTINELA | Imobiliza montarias da família dos cavalos enquanto estiverem seladas e sem passageiro. O movimento normal retorna quando recebem um passageiro, perdem a sela ou entram no modo de reprodução. |
