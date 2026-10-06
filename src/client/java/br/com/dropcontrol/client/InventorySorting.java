@@ -17,7 +17,9 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ChestMenu;
+import net.minecraft.world.inventory.BrewingStandMenu;
 import net.minecraft.world.inventory.InventoryMenu;
+import net.minecraft.world.inventory.HorseInventoryMenu;
 import net.minecraft.world.inventory.ShulkerBoxMenu;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
@@ -160,8 +162,8 @@ final class InventorySorting {
 	}
 
 	private static boolean supported(AbstractContainerMenu menu) {
-		return menu.getClass() == InventoryMenu.class || menu.getClass() == ChestMenu.class
-			|| menu.getClass() == ShulkerBoxMenu.class;
+		return menu.getClass() == InventoryMenu.class || menu instanceof ChestMenu || menu instanceof ShulkerBoxMenu
+			|| menu instanceof BrewingStandMenu || menu instanceof HorseInventoryMenu;
 	}
 
 	private record Pending(LocalPlayer player, Screen screen, AbstractContainerMenu menu, int delay) {

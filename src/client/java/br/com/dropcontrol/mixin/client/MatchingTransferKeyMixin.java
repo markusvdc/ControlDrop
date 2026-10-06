@@ -1,6 +1,7 @@
 package br.com.dropcontrol.mixin.client;
 
 import br.com.dropcontrol.client.MatchingTransfer;
+import br.com.dropcontrol.client.InventorySortKey;
 import br.com.dropcontrol.config.DropControlConfig;
 import com.mojang.blaze3d.platform.InputConstants;
 import com.mojang.logging.LogUtils;
@@ -18,15 +19,14 @@ public abstract class MatchingTransferKeyMixin {
 	@Inject(method = "keyPress", at = @At("HEAD"))
 	private void dropcontrol$transferMatching(long window, int action, KeyEvent event, CallbackInfo callback) {
 		Minecraft minecraft = Minecraft.getInstance();
+		InventorySortKey.handleKeyPress(minecraft, window, action, event);
 		if (window == 0 || window != minecraft.getWindow().handle() || action != InputConstants.PRESS
 			|| !DropControlConfig.matchingTransfer() || !event.hasControlDown()
-			|| !(minecraft.gui.screen() instanceof AbstractContainerScreen<?>)) {
-			return;
-		}
-		LogUtils.getLogger().info("[ControlDrop] Ctrl container key: physical={}, logical={}, modifiers={}",
-			event.key(), event.keycode(), event.modifiers());
+			|| !(minecraft.gui.screen() instanceof AbstractContainerScreen<?>)) return;
 		// Use modifiers captured with the key event, not a later keyboard-state poll.
 		boolean gravePressed = event.key() == InputConstants.KEY_GRAVE || event.keycode() == '`';
+		LogUtils.getLogger().info("[ControlDrop] Ctrl container key: physical={}, logical={}, modifiers={}",
+			event.key(), event.keycode(), event.modifiers());
 		boolean controlPressed = event.key() == InputConstants.KEY_LCONTROL || event.key() == InputConstants.KEY_RCONTROL;
 		if ((gravePressed || (controlPressed && InputConstants.isKeyDown(InputConstants.KEY_GRAVE)))
 			&& !event.hasShiftDown() && !event.hasAltDown()) {
